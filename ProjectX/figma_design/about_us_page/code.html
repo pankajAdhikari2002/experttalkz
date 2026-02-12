@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StreamLearn - About Us</title>
+<!-- Google Fonts: Lexend -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "card-dark": "#1c2127",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111418] dark:text-white overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Navigation -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-[#283039] bg-white dark:bg-[#111418]/90 backdrop-blur-md px-4 py-3 md:px-10">
+<div class="flex items-center gap-4 md:gap-8">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white">
+<div class="size-8 text-primary">
+<svg class="w-full h-full" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] hidden sm:block">StreamLearn</h2>
+</div>
+<nav class="flex items-center gap-4 md:gap-9 hidden md:flex">
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Courses</a>
+<a class="text-[#111418] dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">My List</a>
+<a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary" href="#">About Us</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#9dabb9] flex border-none bg-[#f0f2f4] dark:bg-[#283039] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] dark:bg-[#283039] focus:border-none h-full placeholder:text-[#9dabb9] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search titles, people..." value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Sign In</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-transparent hover:border-white cursor-pointer transition-colors" data-alt="User profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDOSdKzlm8oK5AL92CiqP2LuRaPCGrxAVOuNx3ra_mgIatvBY4lcrNOuycnfYyKbj2LbNM8byj8E8Afd2lJKI0J03B33ZQr5XNFn3adiCbgrmCk28bxknnRfVaXUUqzbOqZJL0KOJopEGdYJeWxTFW_X8bBTXRR_QYUmb2tGQM5Nq3k5aV9a8VEIVMnvwtIF5-rWvg_5Gm2kr49_ZrVweWIaMSvMfgmtvRDcVQTPzRzHjbBMCL4Zmp3sjcmz7i8O0rrbQlb7bOQkAL9");'></div>
+</div>
+</header>
+<div class="flex flex-col w-full">
+<!-- Hero Section -->
+<div class="@container w-full">
+<div class="relative w-full h-[65vh] min-h-[500px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+<!-- Background with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-[#101922]/30 via-[#101922]/60 to-[#101922] z-10"></div>
+<div class="w-full h-full bg-cover bg-center" data-alt="Cinematic shot of students collaborating in a modern tech environment" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfaWqI6aiocko2Gf4HeicMGmzpmyxx8bmwoqvwd1LmSJ6zarckDkmtuVjkegcq7VceUyXFTaPH_TVhGVSnVprpd58IPBwK2WMxqHTWOHC0tcxa9tNLMEsTOOg3gnujCEn4HXuip4R1xBmWj1OlTrrIqU6r0cqonNjC7nxMrFhb5HDMVsAzDY0hrqMcf7Iw8WMbwHAea0Y0nEN1AjIz03huogm7Os5_Oa8gGXVCAzRWzNtKDtQaYZXyU1hdHPNsEMeEGs57oi-4n6fY");'></div>
+</div>
+<!-- Content -->
+<div class="relative z-20 flex flex-col gap-6 max-w-[800px] animate-fade-in-up">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-center gap-2 mb-2">
+<span class="bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded text-xs font-bold uppercase tracking-wider">A StreamLearn Original Story</span>
+</div>
+<h1 class="text-white text-5xl md:text-7xl font-black leading-tight tracking-[-0.033em] drop-shadow-xl">
+                                Empowering the Next Generation
+                            </h1>
+<h2 class="text-gray-200 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto drop-shadow-md">
+                                We are redefining education through technology and accessibility. Join us on a journey where curiosity meets opportunity.
+                            </h2>
+</div>
+<div class="flex items-center justify-center gap-4 mt-4">
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-primary hover:bg-blue-600 text-white text-base font-bold leading-normal tracking-[0.015em] transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(19,127,236,0.5)]">
+<span class="material-symbols-outlined fill-current">play_arrow</span>
+<span>Join Our Mission</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-8 bg-[#283039]/80 backdrop-blur-sm hover:bg-[#38424d] text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors border border-white/10">
+<span class="material-symbols-outlined">info</span>
+<span>More Info</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="w-full bg-[#101922] border-y border-[#283039]">
+<div class="max-w-[1200px] mx-auto px-4 py-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-[#283039]/50">
+<div class="flex flex-col gap-1">
+<span class="text-4xl font-black text-white tracking-tight">25M+</span>
+<span class="text-sm text-[#9dabb9] uppercase tracking-wide font-medium">Learners</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-4xl font-black text-white tracking-tight">150+</span>
+<span class="text-sm text-[#9dabb9] uppercase tracking-wide font-medium">Countries</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-4xl font-black text-white tracking-tight">10k+</span>
+<span class="text-sm text-[#9dabb9] uppercase tracking-wide font-medium">Instructors</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-4xl font-black text-white tracking-tight">4.9</span>
+<span class="text-sm text-[#9dabb9] uppercase tracking-wide font-medium">App Store Rating</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mission & Vision Section -->
+<div class="w-full bg-[#111418] dark:bg-[#101922] py-16 px-4 md:px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-10">
+<div class="flex items-center justify-between">
+<h2 class="text-white text-3xl font-bold tracking-tight">Our Purpose</h2>
+<div class="h-[1px] flex-1 bg-[#283039] ml-8"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Mission Card -->
+<div class="group relative overflow-hidden rounded-xl bg-card-dark border border-[#283039] hover:border-primary/50 transition-colors duration-300">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-white">flag</span>
+</div>
+<div class="flex flex-col h-full">
+<div class="h-48 w-full bg-cover bg-center relative" data-alt="Abstract blue digital network representing connection" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDCWDQjVxSlUL9_G_ycEpZw2sbe87-uxIFj37dwIW6ygLpCbFrz1h_zH6aF-Ch1K16o-xwAN8x4lzEef2163DW4HykS_wh7jnnY09uN0G_uzFpwFUkfQZm-83W_BDXJpI_Nr3Ik8-P00lg5YIRP79Q-itg6oE2WdYWy-j0H5PT4LdJl2zG4ZpoMMHt9FOk4C05G8H83rAgYt6zqv5VUrHiGl1llkMKU6Py8BNwUcS1um8ngEDdxqQe9pA5iJ_k8dQFCRFf5uym8nJzD");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-4 relative z-10 -mt-10">
+<h3 class="text-2xl font-bold text-white">Our Mission</h3>
+<p class="text-[#9dabb9] text-lg leading-relaxed">
+                                        To democratize access to world-class education for everyone, everywhere. We believe that quality learning resources should not be a privilege, but a right accessible to all.
+                                    </p>
+</div>
+</div>
+</div>
+<!-- Vision Card -->
+<div class="group relative overflow-hidden rounded-xl bg-card-dark border border-[#283039] hover:border-primary/50 transition-colors duration-300">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-white">visibility</span>
+</div>
+<div class="flex flex-col h-full">
+<div class="h-48 w-full bg-cover bg-center relative" data-alt="Futuristic horizon with light beams representing vision" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKFT8Kdx340J7_5YqJg-nXm-zE6Lwh2gJ1DNZBEmF7JhpWXPs31fO9o0InUb717dPonxoBt_QMbdHQqU6TuoYgbbik-zyi-P-XqOOKNWxK8akBjLWhNiP3OnDl8BqJ3Uaxdek8Dv4k9-FTGhRNgDRbr_rLpWFIGGi8nHDb7pii-ytQXEYm9T3TfausA_9nOheXhA3JGbL41R1TBykQTH5-Y78EDb6ew6ITllelTIYR5tN02oL9KNZY_kyo_lNLmWANnMzShv2gAQMs");'>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark to-transparent"></div>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-4 relative z-10 -mt-10">
+<h3 class="text-2xl font-bold text-white">Our Vision</h3>
+<p class="text-[#9dabb9] text-lg leading-relaxed">
+                                        A world where curiosity is the only prerequisite for success. We envision a future where technology bridges the gap between potential and opportunity.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Core Values "Episodes" -->
+<div class="w-full bg-[#111418] dark:bg-[#101922] py-10 px-4 md:px-10 pb-20">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-8">
+<div class="flex items-center justify-between">
+<h2 class="text-white text-3xl font-bold tracking-tight">Core Values</h2>
+<div class="flex gap-2">
+<button class="bg-[#283039] hover:bg-[#38424d] rounded-full p-2 text-white transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_back_ios_new</span>
+</button>
+<button class="bg-[#283039] hover:bg-[#38424d] rounded-full p-2 text-white transition-colors">
+<span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Value 1 -->
+<div class="group bg-[#1c2127] hover:bg-[#232931] rounded-lg p-6 flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 border border-transparent hover:border-primary/20 cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">lightbulb</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg mb-2">Innovation</h4>
+<p class="text-[#9dabb9] text-sm leading-relaxed">Pushing boundaries to create the most engaging learning experiences.</p>
+</div>
+</div>
+<!-- Value 2 -->
+<div class="group bg-[#1c2127] hover:bg-[#232931] rounded-lg p-6 flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 border border-transparent hover:border-primary/20 cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">public</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg mb-2">Accessibility</h4>
+<p class="text-[#9dabb9] text-sm leading-relaxed">Designing specifically for diverse needs and global bandwidths.</p>
+</div>
+</div>
+<!-- Value 3 -->
+<div class="group bg-[#1c2127] hover:bg-[#232931] rounded-lg p-6 flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 border border-transparent hover:border-primary/20 cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">groups</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg mb-2">Community</h4>
+<p class="text-[#9dabb9] text-sm leading-relaxed">Fostering a supportive network of peers and mentors worldwide.</p>
+</div>
+</div>
+<!-- Value 4 -->
+<div class="group bg-[#1c2127] hover:bg-[#232931] rounded-lg p-6 flex flex-col gap-4 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 border border-transparent hover:border-primary/20 cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<h4 class="text-white font-bold text-lg mb-2">Integrity</h4>
+<p class="text-[#9dabb9] text-sm leading-relaxed">Trusted content and transparent practices are our foundation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- The Cast (Team) Section -->
+<div class="w-full bg-[#0d1319] py-16 px-4 md:px-10 border-t border-[#283039]">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-8">
+<div class="flex items-end gap-4 mb-4">
+<h2 class="text-white text-3xl font-bold tracking-tight">The Cast</h2>
+<span class="text-[#9dabb9] text-sm font-medium pb-1 tracking-wide uppercase">Meet the Team</span>
+</div>
+<!-- Horizontal Scroll Container -->
+<div class="flex overflow-x-auto gap-6 pb-8 no-scrollbar snap-x snap-mandatory">
+<!-- Team Member 1 -->
+<div class="snap-start shrink-0 w-[200px] flex flex-col gap-3 group cursor-pointer">
+<div class="w-full aspect-[3/4] rounded-lg overflow-hidden bg-[#1c2127] relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of Sarah Jenkins, CEO" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBArKJ-l50f-H8MA2MkTxJYzWn45axxVBVQWY2t5mS4j3Mm-H9kmrgw9I8JLzQ69LsAp4ZJlijoMzlqukg3giHSCSQ52PSqQ6RmxaVJGkkh362dutmEf9k926DhcCOcjt_5pcgbF4TwXgqLcNVG2nHdpRweDQHd6kXVn57BW3iv8jg-Enq-f5HZZM_k2SS2FthwCunUADcfRNm-zojcohg4xDcu1oCcxop0nFE7nBohK_Trb-3sj-k3NnsLQt3e-3xGBpOqc5I5qSvd");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">Executive Producer</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-lg group-hover:text-primary transition-colors">Sarah Jenkins</span>
+<span class="text-[#9dabb9] text-sm">Founder &amp; CEO</span>
+</div>
+</div>
+<!-- Team Member 2 -->
+<div class="snap-start shrink-0 w-[200px] flex flex-col gap-3 group cursor-pointer">
+<div class="w-full aspect-[3/4] rounded-lg overflow-hidden bg-[#1c2127] relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of David Chen, CTO" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAC6ThVQDCgIHV5iqJZIwp3Wf9rxa2TcRhBh8-XqhICYY_mxe6JfdUSVJVHi9MUDtUYxQFs3EnVTCuSP1p5nSvmuYL9_T5HGlwdHskxhDMfqT3L4R9c2rCYkX2fjYHpI-1uiaRVoife-ahZNfYiknymMy8i4vLnqDKQ91ezEX_mqBhbwfcebyuc2MWtfEzx0u7rlw78fljMAaH5TwmhnLbnUHNh2287n9hEAzr3C0rP1TJdANkSawz8HMmShk2rPZD-xIBTl-815q5l");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">Tech Lead</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-lg group-hover:text-primary transition-colors">David Chen</span>
+<span class="text-[#9dabb9] text-sm">Chief Technology Officer</span>
+</div>
+</div>
+<!-- Team Member 3 -->
+<div class="snap-start shrink-0 w-[200px] flex flex-col gap-3 group cursor-pointer">
+<div class="w-full aspect-[3/4] rounded-lg overflow-hidden bg-[#1c2127] relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of Elena Rodriguez, Head of Content" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVTptwEXSL6hLbvmOPOF4W6gq-GyYDl3EXKl3lGGrsuQKyPxHCl1QLYAnRmtGd63hGW8dEHPbohxYArZ8dA5SVN4vYpRZ_ecXdM_cGIW11nsDrySPYcmnw_zO93PbCYwUMb0wOZD3LgLxvucWcyakVGBSN5WvN-8GVvL6JvAAaYhtgNsjSa3kmRQuMCS2QbHbAu1C53yznWqAZoNlN93AsolRPEoBSN12cJqGutNUKrwS4ywybnUlUUU0Fh1pQS-c3cxMCSjHsu3i4");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">Director</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-lg group-hover:text-primary transition-colors">Elena Rodriguez</span>
+<span class="text-[#9dabb9] text-sm">Head of Content</span>
+</div>
+</div>
+<!-- Team Member 4 -->
+<div class="snap-start shrink-0 w-[200px] flex flex-col gap-3 group cursor-pointer">
+<div class="w-full aspect-[3/4] rounded-lg overflow-hidden bg-[#1c2127] relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of Michael Ross, Product Design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDpGDHcx4kits4sgEfq7aXMakVR6N3DDGRz3VtutkSMhmtFAzCacxnxhdFPQGTQAp_dDkQF2k22whO4AFAh9VvS6ECgs5-VbO3EIYop0oGmgzXUvKzKsyypXKUTcnfx8gJul3hm6zsCHlUa_oCaEExHmPhnbXjemzMmGn_QVKbpA27bo78rX9hYnX5paWtV46MElX0IRm5l3ftI0bCbiNuppIh7t_38WEpin9wEsyb0BCvvEZgB3cPrT1yk7WiE_IYeAFtn9KG3UGo_");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">Art Director</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-lg group-hover:text-primary transition-colors">Michael Ross</span>
+<span class="text-[#9dabb9] text-sm">VP of Product</span>
+</div>
+</div>
+<!-- Team Member 5 -->
+<div class="snap-start shrink-0 w-[200px] flex flex-col gap-3 group cursor-pointer">
+<div class="w-full aspect-[3/4] rounded-lg overflow-hidden bg-[#1c2127] relative">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of Priya Patel, Community Manager" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA10ioWMMp85n4RsQw5-7-3NQy7h9STqyglKHnEYxqLxzKteLooO2xs86fNc21Hejm_4OJcCw9gWc4kFR2JOxlI4FWc6RlvLtbkT0TPltNfCS2urPYH3iSAYbpcty7klrSNV4l4Na4A4UFYaUlacvB94_tnRGjLLW4nrwPe9SFIena0j-UEiK7gC-CBVSeO4H6Va6XH3sZOPaJtr9nqNfOuqqjloCF-H5lM1tZ9DUepD9fFXiN-unsYA8tBBaQwyzcS5ExFg4kY4eQi");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+<span class="text-white text-xs font-bold bg-primary px-2 py-1 rounded">Casting</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-white font-bold text-lg group-hover:text-primary transition-colors">Priya Patel</span>
+<span class="text-[#9dabb9] text-sm">Community Lead</span>
+</div>
+</div>
+<!-- More Placeholders -->
+<div class="snap-start shrink-0 w-[200px] flex items-center justify-center group cursor-pointer">
+<div class="w-full aspect-[3/4] rounded-lg border-2 border-dashed border-[#283039] flex flex-col items-center justify-center hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-[#9dabb9] text-4xl mb-2">add</span>
+<span class="text-[#9dabb9] font-medium text-sm">Join the Cast</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-[#101922] border-t border-[#283039] pt-16 pb-12 px-10">
+<div class="max-w-[960px] mx-auto flex flex-col gap-10">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold">StreamLearn</h2>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Audio and Subtitles</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Media Center</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Privacy</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Contact Us</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Audio Description</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Investor Relations</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Legal Notices</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Help Center</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Jobs</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Cookie Preferences</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Gift Cards</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Terms of Use</a>
+<a class="text-[#9dabb9] hover:underline text-sm" href="#">Corporate Information</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="border border-[#9dabb9] text-[#9dabb9] px-4 py-2 text-sm w-fit hover:text-white hover:border-white transition-colors">Service Code</button>
+<p class="text-[11px] text-[#586470]">© 2023 StreamLearn, Inc.</p>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMS Landing Page</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922", // Deep charcoal/almost black
+                        "surface-dark": "#1c2127",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal scrolling to look cleaner */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Sticky Navbar with Glassmorphism -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e5e7eb] dark:border-b-[#283039] bg-white/80 dark:bg-[#111418]/80 backdrop-blur-md px-4 py-3 lg:px-10">
+<div class="flex items-center gap-4 lg:gap-8">
+<div class="flex items-center gap-2 text-[#111418] dark:text-white">
+<div class="size-8 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H10V44H4V4Z" fill="currentColor"></path>
+<path d="M20 4H26V44H20V4Z" fill="currentColor"></path>
+<path d="M36 4H42V44H36V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">StreamLearn</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Browse</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Mentors</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Pricing</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full group focus-within:ring-2 focus-within:ring-primary/50">
+<div class="text-[#637588] dark:text-[#9dabb9] flex border-none bg-[#f0f2f4] dark:bg-[#283039] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] dark:bg-[#283039] focus:border-none h-full placeholder:text-[#637588] dark:placeholder:text-[#9dabb9] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search courses..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="hidden lg:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f0f2f4] dark:bg-[#283039] hover:bg-[#e0e2e4] dark:hover:bg-[#323b46] text-[#111418] dark:text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors">
+<span class="truncate">Log In</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-primary/90 text-white text-sm font-bold leading-normal tracking-[0.015em] transition-colors shadow-lg shadow-primary/20">
+<span class="truncate">Sign Up</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<div class="relative flex min-h-[560px] flex-col justify-end overflow-hidden bg-cover bg-center px-4 pb-12 pt-40 lg:px-40" data-alt="Dark abstract gradient background representing focus and learning" style='background-image: linear-gradient(0deg, #101922 0%, rgba(16, 25, 34, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtFM5y7rVESaf_vT7FjlxRpbpmDyXYYQSqqQCyMiRflXYlNPMOFQQTzYv5UFg_vH41s7VJOOlZzvIukidHvvjPwpAHgh3_jtsVNWirUiggwqUFUP1vd-1p9O8evi448m8m9wUTPysdPYQE-uJbOuzUlHEM8CuMv3SF24ceL8k8HXTgLG1aWhk51gIrXiaqCTqQtf-vkXoT0fKhuSmHJLknL5SnM-f13d_cErWPF-RdalhgOnbK8Dtyf30Re3cqwsuPpUBs_m2s-dqW");'>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent"></div>
+<div class="relative z-10 flex flex-col gap-6 max-w-[800px]">
+<div class="flex flex-col gap-4 text-left animate-fade-in-up">
+<h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-6xl lg:text-7xl drop-shadow-lg">
+                        Master New Skills.<br/>Binge-Watch Knowledge.
+                    </h1>
+<h2 class="text-gray-200 text-lg font-normal leading-relaxed md:text-xl max-w-2xl drop-shadow-md">
+                        Unlimited access to 1000+ courses taught by industry leaders. Learn at your own pace, anytime, anywhere.
+                    </h2>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-lg bg-primary px-8 text-base font-bold text-white transition-transform hover:scale-105 shadow-xl shadow-primary/30">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined fill-current">play_circle</span>
+                            Start Learning for Free
+                        </span>
+</button>
+<button class="flex h-12 min-w-[160px] cursor-pointer items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 px-8 text-base font-bold text-white transition-colors hover:bg-white/20">
+                        View Plans
+                    </button>
+</div>
+</div>
+</div>
+<!-- Logo Strip / Social Proof -->
+<div class="w-full bg-background-dark border-b border-[#283039]">
+<div class="px-4 py-8 lg:px-40 text-center">
+<p class="text-[#9dabb9] text-sm font-medium mb-6 uppercase tracking-widest">Trusted by teams at</p>
+<div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Using FontAwesome icons as placeholders for logos to avoid external images -->
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">rocket_launch</span> Acme Corp</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">public</span> GlobalTech</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">bolt</span> FastCo</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">cloud</span> Nebulon</span>
+<span class="text-xl font-bold text-white flex items-center gap-2"><span class="material-symbols-outlined">diamond</span> GemStone</span>
+</div>
+</div>
+</div>
+<!-- Main Content Container -->
+<div class="layout-container flex flex-col w-full bg-background-light dark:bg-background-dark">
+<!-- Trending Carousel -->
+<div class="flex flex-col py-8 pl-4 lg:pl-40 overflow-hidden">
+<div class="flex items-center justify-between pr-4 lg:pr-40 mb-4">
+<h2 class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Trending Now</h2>
+<a class="text-primary text-sm font-bold hover:underline flex items-center" href="#">See All <span class="material-symbols-outlined text-sm ml-1">arrow_forward_ios</span></a>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar pb-8 pt-2 gap-4 pr-10 snap-x snap-mandatory">
+<!-- Card 1 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Abstract colorful code syntax on a screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAov6jWJxXlPqdv0eEZ51xBhSOt78H6gcBtxfQbVQXw5qM00SptNgNLPs2AWehLDI4gKYoQf-7UQbo4Ac5mUkA3D5Z57zaLNPtDnwjMVFK8jrqZQI5mr98yfX3KDHl6Ci6YvOVkF8hHn2pYu2Hkx5vyILFRUXnnFm1r7XSuKoyYmHhZVb-0L_jBofQ2IbKjQl6WvJd5oRC7xanCHZQqnFgTZWR7x-SuwU8cTHkpi29SM2b1yeD61D8ga7509OOEd4nN45UqWEdldNkV");'></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">
+                                    4h 30m
+                                </div>
+</div>
+<div>
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">Advanced React Patterns</p>
+<span class="text-[#9dabb9] text-xs flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-yellow-500 fill-1">star</span> 4.8</span>
+</div>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">Master compound components, render props, and hooks.</p>
+<div class="mt-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-white text-black p-1.5 rounded-full hover:bg-gray-200"><span class="material-symbols-outlined text-[20px] fill-1">play_arrow</span></button>
+<button class="border border-gray-500 text-gray-300 p-1.5 rounded-full hover:border-white hover:text-white"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Designer sketching wireframes on a tablet" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCFUTIclWbGxr9pxpzcZUWsXeWzlGtbK0iBw1-Ax9z7Q0MSzL-pXNO__CyW3CbPQna_yJNfvnKl7X7NYgj5gvXLncYXa4aFKBHzEiy7hMA2YNcOLLY8yX-CtAvDqiJocxxMd3cyjCg3H2zJSPkHtkj25uLQUjccb0E9qhNi2R5FroK75VBw6CcLjbrWtOW-Fc6eVn6aNC0GEPh4bvcT5NWw05mL3nupDS8vSOQ8lzo1tDxc6UQU7geyHf0EW4vrjKF6DL0i4SIhgkuH");'></div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">6h 15m</div>
+</div>
+<div>
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">UX Design Fundamentals</p>
+<span class="text-[#9dabb9] text-xs flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-yellow-500 fill-1">star</span> 4.9</span>
+</div>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">Learn user research, wireframing, and prototyping from scratch.</p>
+<div class="mt-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-white text-black p-1.5 rounded-full hover:bg-gray-200"><span class="material-symbols-outlined text-[20px] fill-1">play_arrow</span></button>
+<button class="border border-gray-500 text-gray-300 p-1.5 rounded-full hover:border-white hover:text-white"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Data visualization dashboard on a monitor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8BwNRaBgW26KwmoQ3fcl0kviSifP7vlBepTCpgHTDe2qVhr_7VFDCsNIG_VB84nSiPAno-5B3ejDZRpLHKwOrZ1NcnfNpUkmoBCI57_LL4GgIMGthNcVYKGFhAgjbKXBbsn3XE3ySS4HXGp_Fu-C6OZmfiNGSP_A3bZ216Y2JhNuvEyyduwjPjY1iN0JSOZi6FrvjmeFzj03bv8ySYO7ieD2oDofc-4y2xrfNlb6Prqfvbyz5UV4Gpzz9mS_VlsktJZrF8CJpPGlf");'></div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">12h</div>
+</div>
+<div>
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">Data Science for Beginners</p>
+<span class="text-[#9dabb9] text-xs flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-yellow-500 fill-1">star</span> 4.7</span>
+</div>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">Python, Pandas, and Machine Learning basics explained.</p>
+<div class="mt-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-white text-black p-1.5 rounded-full hover:bg-gray-200"><span class="material-symbols-outlined text-[20px] fill-1">play_arrow</span></button>
+<button class="border border-gray-500 text-gray-300 p-1.5 rounded-full hover:border-white hover:text-white"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Person working on SEO analytics on laptop" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDh9hukCW2de2gcMT7pou7y0ousWt7uGsUnps1OQj1UgRN1brJNnUqp4peKHEHzjyto6OTtErSRni24X8lnHAa__WjH3zji1gWfnuTbo8oM1_Ph684nj4aOVSKMCyJHi4_qp8mOigju3_vh5PoAZa-7RvQ_BVQbPsiFoY7hMOnherE-HWbXUO9VaXI1r2XtRvrQtzRI6fO6e7Z0BQPJuYpLnk5S2H8T08cWZBHRLH0IksydB21xcC7IuVCGxSzO8K6Prj7q8m4ByCB4");'></div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">3h 45m</div>
+</div>
+<div>
+<div class="flex justify-between items-start mb-1">
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">Digital Marketing 101</p>
+<span class="text-[#9dabb9] text-xs flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-yellow-500 fill-1">star</span> 4.6</span>
+</div>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">SEO, SEM, and Social Media Marketing strategies.</p>
+<div class="mt-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-white text-black p-1.5 rounded-full hover:bg-gray-200"><span class="material-symbols-outlined text-[20px] fill-1">play_arrow</span></button>
+<button class="border border-gray-500 text-gray-300 p-1.5 rounded-full hover:border-white hover:text-white"><span class="material-symbols-outlined text-[20px]">add</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Section -->
+<div class="flex flex-col gap-10 px-4 py-16 lg:px-40 bg-[#f0f2f4] dark:bg-[#0c1015]">
+<div class="flex flex-col gap-4 text-center items-center">
+<h2 class="text-[#111418] dark:text-white tracking-tight text-[32px] font-bold leading-tight max-w-[720px]">
+                        Why Choose StreamLearn
+                    </h2>
+<p class="text-[#637588] dark:text-[#9dabb9] text-base font-normal leading-normal max-w-[720px]">Experience the future of online learning with features designed for your success.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+<div class="flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#283039] bg-white dark:bg-surface-dark p-6 transition-all hover:border-primary/50">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">schedule</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">Self-Paced Learning</h3>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-relaxed">Life happens. Pause, rewind, and learn at your own speed with lifetime access to all purchased courses.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#283039] bg-white dark:bg-surface-dark p-6 transition-all hover:border-primary/50">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">workspace_premium</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">Official Certifications</h3>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-relaxed">Earn industry-recognized certificates upon completion to showcase your skills on LinkedIn and your resume.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-[#e5e7eb] dark:border-[#283039] bg-white dark:bg-surface-dark p-6 transition-all hover:border-primary/50">
+<div class="size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-size: 28px;">offline_bolt</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#111418] dark:text-white text-xl font-bold leading-tight">Offline Mode</h3>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-relaxed">No internet? No problem. Download courses to your mobile device and keep learning on the go.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- New Releases Carousel -->
+<div class="flex flex-col py-12 pl-4 lg:pl-40 overflow-hidden">
+<div class="flex items-center justify-between pr-4 lg:pr-40 mb-4">
+<h2 class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">New Releases</h2>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar pb-8 pt-2 gap-4 pr-10 snap-x snap-mandatory">
+<!-- Card 5 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Python code on a laptop screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCdXglf5MhaLGa3oAiOnSvyIQ0BNTarUfg_Ryi1xWtqP6BdtdHEm5owaciz8RZE1RZXy-7WdOIh1xpKwn-0tvRAZX0MWWfZEzBEmzpUnk8mhOoDiPZBwwYaVAVPFVZaV_FBkYTAaXeGVaH1-7cQ08ewZfduMeHwHNWGdIHBEsWN5lw8vwDLIhhConKnCUVaAY-tZjgpYZvHrZ0OWBRpcKwPAF9ncFRpU-ASf6vta0_4bnC8dRYNvggJEDlhwqqy8tTiTcopbx2iOBrK");'></div>
+<div class="absolute bottom-2 left-2 bg-green-600 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">New</div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">Python Mastery 2024</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">Updated for the latest version. Learn advanced features.</p>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Camera lens and film editing software UI" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_S91D3EZH6_UQMZK-Zw5TQ9fihYH86W1wOLpXmSWp__p8nLTfLmzZxGIhu4Ho-2_C4pQEfmqM756gZ50aY1EUwUJEzNzf7Df1oFZG3BjzRmhZ2iuWTqpSHbp8ahdr9OKTNI_zL4X7tyalOb5xaMcCrl8v0wZ8xWpqFP5ZuvUX3x12y9MNF200Qfu4n4KYmBMeGw5ZBkwvqBpvyeBQxoB-JirknFW9NwshAUBbkccvfuKfIyd6jmAMJB3tulv3UBmUbc1ripARwj4L");'></div>
+<div class="absolute bottom-2 left-2 bg-green-600 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">New</div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">Video Editing Pro</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">Cinematic techniques for YouTube and film.</p>
+</div>
+</div>
+</div>
+<!-- Card 7 -->
+<div class="group relative flex-none w-[280px] md:w-[320px] snap-start cursor-pointer transition-all duration-300 hover:z-20 hover:scale-105">
+<div class="flex flex-col gap-3 rounded-lg bg-white dark:bg-surface-dark p-3 shadow-md hover:shadow-2xl hover:shadow-primary/10 border border-transparent dark:border-[#283039]">
+<div class="relative w-full aspect-video rounded-md overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Bitcoin gold coin on a motherboard" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5WWDj_15zHBcfJ0I6XUu7_W5ODfhfDDXbWwfpGXMc6MD0jE1J3JKXbPWyxYTClIaFXWyuawVNT6gx4r9LO3Xj8VVCM3ZDGqjOJk8P2-zsrHfV_13V8Tht_yyuSVg-1ZI32PPqaghcs1EGMrtDyrntiYznurDkkiMy4o2ICz3QR55NJkneeskiePevS2hfwgaCdIeUgFPbwwBE33g1Xhf4VGWmNHtC5-SpDOPwqrCsYgYjW9umowGhy4-YU1NbPtVz9NbhlQUUnVWs");'></div>
+<div class="absolute bottom-2 left-2 bg-green-600 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-white uppercase tracking-wider">New</div>
+</div>
+<div>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-normal line-clamp-1">Blockchain Development</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm font-normal leading-normal line-clamp-2">Build decentralized apps with Solidity and Web3.js.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonials -->
+<div class="flex flex-col gap-10 px-4 py-16 lg:px-40 bg-[#f0f2f4] dark:bg-[#0c1015]">
+<h2 class="text-[#111418] dark:text-white tracking-tight text-[32px] font-bold leading-tight text-center">
+                    What Students Say
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Review 1 -->
+<div class="flex flex-col gap-4 p-6 rounded-xl bg-white dark:bg-[#151a21] border border-[#e5e7eb] dark:border-[#283039]">
+<div class="flex items-center gap-2 text-yellow-500">
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+</div>
+<p class="text-[#111418] dark:text-gray-200 text-base italic leading-relaxed">"The 'Netflix' style browsing makes finding courses so fun. I found myself learning about topics I never thought I'd be interested in!"</p>
+<div class="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of Sarah Jenkins" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAvBUtU3R8jYPJzjtH3MZ4tAp1qgIvnugfjCMoNF0tw9axzvk8x5YvPvef0BofZceQc70D4KuT0xA2k6KGmZpKWZePSAEJUemY5Ax1O5oIGQbq4xlBum208P1nZSrAClINGLlbMctZipm7dO0sj9V40-fFdDc1fDr8nqyNCbnKQfpAr0lMK2n9TRakQz197J7L7ijQwQ4tO_-_XGH2QWf7tHM1EiEBvp-8vqeKYS-15ze51AYWkqWXdkXqI7PWqSnex6f1bgqrpxk53");'></div>
+<div>
+<p class="text-[#111418] dark:text-white font-bold text-sm">Sarah Jenkins</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-xs">Product Designer</p>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="flex flex-col gap-4 p-6 rounded-xl bg-white dark:bg-[#151a21] border border-[#e5e7eb] dark:border-[#283039]">
+<div class="flex items-center gap-2 text-yellow-500">
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+</div>
+<p class="text-[#111418] dark:text-gray-200 text-base italic leading-relaxed">"StreamLearn helped me pivot my career from sales to software engineering in just 6 months. The offline mode is a lifesaver."</p>
+<div class="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of Michael Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuALt2sYgZP3Iso2zv-4pzUUiwRJm2Q8MLZiA7EHKErTIcv9WRu9A0YEyaR9jYBmQynZajRE3Iv2PGttgfhwdU4KNHHEFV7EOPAFP4DkAtVH6lZ-UaYp8q7_YpGSUDWk5xBIKN-1G1arUpeYnmisNdvNNA38DIfwlRVIM9NDV2oH7Bfp2aY-KIy1iqVKrI2jMbUDzFdFjXfEdqW-qhZUl3aYRmJBU04JXXjcsz8m5ZYw2KFggqE6nNov8DeDoo6T620BKEs9dLBCqzGB");'></div>
+<div>
+<p class="text-[#111418] dark:text-white font-bold text-sm">Michael Chen</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-xs">Software Engineer</p>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="flex flex-col gap-4 p-6 rounded-xl bg-white dark:bg-[#151a21] border border-[#e5e7eb] dark:border-[#283039]">
+<div class="flex items-center gap-2 text-yellow-500">
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star_half</span>
+</div>
+<p class="text-[#111418] dark:text-gray-200 text-base italic leading-relaxed">"Incredible value for money. The instructors are clearly experts in their fields, not just reading off slides."</p>
+<div class="flex items-center gap-3 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Portrait of Jessica Lee" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDdoxSuazEs6gwdEt__4Y5OJP6OLOhnkRT8_vYwsQcxCX3BgY7nXViZMGQvxlr6bkx6eLsDM_NaF7itBiEEKtBsXBBHo54W1ZkmfP1CLvkA_wYBoz1TFFH1CPb_lx7JDIRKbqWeu_YJpy9484Mx7n2C8BOpOImgee5_RmKSJH-J0-lbduurraZCYOLlrWaP9lfhOAVuWSqNqf3Q3OTLz5OnLTgICwhck_9-0ftG2BTiRvgkacc71ZWoJTuTdNJ0gXjXViU8PBJ2w9xc");'></div>
+<div>
+<p class="text-[#111418] dark:text-white font-bold text-sm">Jessica Lee</p>
+<p class="text-[#637588] dark:text-[#9dabb9] text-xs">Marketing Lead</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="py-20 px-4 lg:px-40 bg-background-light dark:bg-background-dark">
+<div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-blue-600 px-6 py-16 text-center shadow-2xl">
+<div class="relative z-10 flex flex-col items-center gap-6">
+<h2 class="text-3xl font-black text-white md:text-5xl">Ready to Start Your Journey?</h2>
+<p class="max-w-xl text-lg text-blue-100">Join thousands of learners today. Get unlimited access to every course with our 7-day free trial.</p>
+<button class="flex h-12 min-w-[200px] cursor-pointer items-center justify-center rounded-lg bg-white px-8 text-base font-bold text-primary transition-transform hover:scale-105 shadow-lg">
+                            Get Started Now
+                        </button>
+<p class="text-sm text-blue-200">No credit card required for trial.</p>
+</div>
+<!-- Decorative circles -->
+<div class="absolute -left-20 -top-20 size-64 rounded-full bg-white/10 blur-3xl"></div>
+<div class="absolute -bottom-20 -right-20 size-64 rounded-full bg-white/10 blur-3xl"></div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-white dark:bg-[#0c1015] border-t border-[#e5e7eb] dark:border-[#283039] pt-16 pb-8 px-4 lg:px-40">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+<div class="col-span-2 md:col-span-1 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-[#111418] dark:text-white mb-2">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M4 4H10V44H4V4Z" fill="currentColor"></path><path d="M20 4H26V44H20V4Z" fill="currentColor"></path><path d="M36 4H42V44H36V4Z" fill="currentColor"></path></svg>
+</div>
+<h2 class="text-lg font-bold">StreamLearn</h2>
+</div>
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm">Binge-watch knowledge. Master new skills. The future of learning is here.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-[#111418] dark:text-white font-bold text-base">Browse</h3>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Development</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Business</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Design</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Marketing</a>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-[#111418] dark:text-white font-bold text-base">Company</h3>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">About Us</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Careers</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Blog</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-[#111418] dark:text-white font-bold text-base">Legal</h3>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Terms of Service</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-[#637588] dark:text-[#9dabb9] text-sm hover:text-primary" href="#">Cookie Policy</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-[#e5e7eb] dark:border-[#283039]">
+<p class="text-[#637588] dark:text-[#9dabb9] text-sm">© 2024 StreamLearn Inc. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="text-[#637588] dark:text-[#9dabb9] hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">group</span></a> <!-- Using generic icon for social -->
+<a class="text-[#637588] dark:text-[#9dabb9] hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">public</span></a>
+<a class="text-[#637588] dark:text-[#9dabb9] hover:text-primary" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

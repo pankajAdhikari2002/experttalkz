@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LMS Learning Module - Advanced UX Principles</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-dark": "#1e252b",
+                        "surface-border": "#2d3642"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.375rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dark mode sidebar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #101922; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2d3642; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3b4754; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-hidden flex flex-col h-screen">
+<!-- Top Header / Progress Dashboard -->
+<header class="h-16 flex-none bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-surface-border px-6 flex items-center justify-between z-20">
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="text-sm font-medium hidden sm:block">Back to Dashboard</span>
+</a>
+<div class="h-6 w-px bg-slate-200 dark:bg-surface-border"></div>
+<h1 class="text-base font-bold text-slate-900 dark:text-white truncate max-w-[200px] sm:max-w-md">Advanced UX Principles</h1>
+</div>
+<div class="flex flex-1 max-w-xl mx-8 hidden md:flex flex-col gap-1.5">
+<div class="flex justify-between text-xs font-medium text-slate-500 dark:text-slate-400">
+<span>Course Progress</span>
+<span>45%</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-[#101922] rounded-full h-2">
+<div class="bg-primary h-2 rounded-full transition-all duration-500" style="width: 45%"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-cover bg-center ring-2 ring-slate-200 dark:ring-surface-border" data-alt="User profile picture of a woman" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfOJ7EGIYlOYEiqqIaHUTIrAyyd2p6hDESRfSig7_mE0d5t7hXXLcBL7UWixFDVVF9mc8bVlIJ32Mh5AtROBcTToNbsf3PthK8BGq5k54sdWGuDZigOCQGhOxFlsVSLYqbKavVZmVrKuY487BZuaHN86G4ZVsBTIvAPXQubTn7dMciq_GK31hbeb62LIcoaHrR7zNFsVI8mb5_SvPW2inFGhbGj0z43LC1anAvaX6-x5B0RIc9qo5c3DbLgNiW95jjq4wbCRwSni7t');"></div>
+</div>
+</header>
+<!-- Main Workspace -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Sidebar: Course Syllabus -->
+<aside class="w-96 flex-none bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-surface-border flex flex-col hidden lg:flex">
+<div class="p-4 border-b border-slate-200 dark:border-surface-border bg-slate-50 dark:bg-surface-dark/50">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Course Content</h2>
+<p class="text-xs text-slate-400 dark:text-slate-500">12/24 Lessons Completed</p>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2">
+<!-- Module 1 (Active) -->
+<div class="rounded-lg bg-slate-50 dark:bg-[#151b23] overflow-hidden border border-slate-200 dark:border-surface-border">
+<button class="w-full flex items-center justify-between p-3 text-left">
+<div>
+<span class="text-xs font-bold text-primary mb-0.5 block">Module 1</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">User Research</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 rotate-180">expand_more</span>
+</button>
+<div class="flex flex-col border-t border-slate-200 dark:border-surface-border">
+<!-- Completed Lesson -->
+<a class="flex items-center gap-3 p-3 hover:bg-slate-100 dark:hover:bg-surface-border/50 group transition-colors" href="#">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 line-through group-hover:text-primary transition-colors">1.1 Introduction to UX</p>
+<span class="text-[10px] text-slate-400">12:30</span>
+</div>
+</a>
+<!-- Active Lesson -->
+<a class="flex items-center gap-3 p-3 bg-primary/10 border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined text-primary text-[20px] fill-1">play_circle</span>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-white">1.2 User Interviews</p>
+<span class="text-[10px] text-primary font-medium">15:45</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary text-white">NOW</span>
+</a>
+<!-- Locked Lesson -->
+<a class="flex items-center gap-3 p-3 hover:bg-slate-100 dark:hover:bg-surface-border/50 group transition-colors opacity-60" href="#">
+<span class="material-symbols-outlined text-slate-400 text-[20px]">lock</span>
+<div class="flex-1">
+<p class="text-sm font-medium text-slate-900 dark:text-white group-hover:text-primary transition-colors">1.3 User Personas</p>
+<span class="text-[10px] text-slate-500">22:15</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Module 2 -->
+<div class="rounded-lg bg-slate-50 dark:bg-[#151b23] overflow-hidden border border-slate-200 dark:border-surface-border opacity-80">
+<button class="w-full flex items-center justify-between p-3 text-left">
+<div>
+<span class="text-xs font-bold text-slate-500 mb-0.5 block">Module 2</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">Analysis &amp; Synthesis</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+</div>
+<!-- Module 3 -->
+<div class="rounded-lg bg-slate-50 dark:bg-[#151b23] overflow-hidden border border-slate-200 dark:border-surface-border opacity-80">
+<button class="w-full flex items-center justify-between p-3 text-left">
+<div>
+<span class="text-xs font-bold text-slate-500 mb-0.5 block">Module 3</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">Ideation Techniques</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+</div>
+<!-- Module 4 -->
+<div class="rounded-lg bg-slate-50 dark:bg-[#151b23] overflow-hidden border border-slate-200 dark:border-surface-border opacity-80">
+<button class="w-full flex items-center justify-between p-3 text-left">
+<div>
+<span class="text-xs font-bold text-slate-500 mb-0.5 block">Module 4</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">Prototyping</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">expand_more</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Stage Content -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background-light dark:bg-background-dark relative">
+<div class="max-w-6xl mx-auto p-6 md:p-10 flex flex-col gap-6 pb-24">
+<!-- Breadcrumbs -->
+<div class="flex items-center flex-wrap gap-2 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">My Courses</a>
+<span class="text-slate-600">/</span>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Advanced UX Principles</a>
+<span class="text-slate-600">/</span>
+<span class="text-primary font-medium">1.2 User Interviews</span>
+</div>
+<!-- Hero Video Player -->
+<div class="w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl relative group ring-1 ring-slate-900/5 dark:ring-white/10">
+<div class="absolute inset-0 bg-cover bg-center opacity-60" data-alt="Two people discussing notes on a glass wall during a user interview session" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAc4yRIxwsxEsCf8icTCaLmgKOutCCYFi8aboFJDJBgGTKztytOahNcEfT4VjBFKgPaBS7Dkh0tJG-WUhkMsMuBGsT0yw-VtUvXsVkoSdogHfA6tBTO8jvKL6kqS8LZMzgHc8QMD12EeVk7ofmzmAEXw1dJcNL0MfCc5BsNNMASqNZEbXPpoTVhiprUHDM2rqQ8ocTnybDIh9Z2rwA5KdL8EUnV_Nr4WZP-vDcPnHSZWKM9KiB9OTzxdy1rlZ6H1-otHMMQVDJrJcMp');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20"></div>
+<!-- Center Play Button -->
+<button class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-20 w-20 bg-primary/90 hover:bg-primary text-white rounded-full flex items-center justify-center transition-all hover:scale-105 shadow-[0_0_30px_rgba(19,127,236,0.5)] backdrop-blur-sm">
+<span class="material-symbols-outlined text-4xl ml-1 fill-1">play_arrow</span>
+</button>
+<!-- Player Controls Overlay (Fake) -->
+<div class="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="h-1 bg-white/30 rounded-full cursor-pointer overflow-hidden">
+<div class="h-full bg-primary w-1/3 relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 h-3 w-3 bg-white rounded-full shadow-sm scale-0 group-hover:scale-100 transition-transform"></div>
+</div>
+</div>
+<div class="flex justify-between items-center text-white">
+<div class="flex items-center gap-4">
+<button><span class="material-symbols-outlined">play_arrow</span></button>
+<button><span class="material-symbols-outlined">volume_up</span></button>
+<span class="text-xs font-medium">04:20 / 15:45</span>
+</div>
+<div class="flex items-center gap-4">
+<button><span class="material-symbols-outlined">closed_caption</span></button>
+<button><span class="material-symbols-outlined">settings</span></button>
+<button><span class="material-symbols-outlined">fullscreen</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Controls -->
+<div class="flex items-center justify-between py-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-surface-border transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                        Previous Lesson
+                    </button>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 transition-all text-sm font-bold">
+                        Next Lesson: User Personas
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+<!-- Tabbed Resources Section -->
+<div class="flex flex-col gap-6 mt-4">
+<!-- Tabs -->
+<div class="border-b border-slate-200 dark:border-surface-border">
+<div class="flex gap-8">
+<button class="pb-3 border-b-2 border-primary text-primary font-bold text-sm px-1">Overview</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium text-sm px-1 transition-colors flex items-center gap-2">
+                                Resources <span class="bg-slate-200 dark:bg-surface-border text-xs px-1.5 py-0.5 rounded-full">3</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium text-sm px-1 transition-colors">Discussion</button>
+<button class="pb-3 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium text-sm px-1 transition-colors">Notes</button>
+</div>
+</div>
+<!-- Tab Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Col: Description -->
+<div class="lg:col-span-2 space-y-6">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Conducting Effective User Interviews</h2>
+<p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                                    In this lesson, we dive deep into the qualitative research method of user interviews. You will learn how to prepare a discussion guide, ask non-leading questions, and make the user feel comfortable enough to share their honest experiences.
+                                </p>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-xl p-6 border border-slate-200 dark:border-surface-border">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Key Takeaways</h3>
+<ul class="space-y-3">
+<li class="flex gap-3 text-slate-600 dark:text-slate-300 text-sm">
+<span class="material-symbols-outlined text-primary shrink-0">check</span>
+                                        Structure your interview with a clear warm-up, body, and cool-down phase.
+                                    </li>
+<li class="flex gap-3 text-slate-600 dark:text-slate-300 text-sm">
+<span class="material-symbols-outlined text-primary shrink-0">check</span>
+                                        Avoid "Yes/No" questions; focus on "How" and "Why".
+                                    </li>
+<li class="flex gap-3 text-slate-600 dark:text-slate-300 text-sm">
+<span class="material-symbols-outlined text-primary shrink-0">check</span>
+                                        Learn to embrace silence to let the user think and elaborate.
+                                    </li>
+</ul>
+</div>
+<!-- Interactive Quiz Component -->
+<div class="bg-gradient-to-br from-surface-dark to-[#16202c] rounded-xl p-6 border border-surface-border mt-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-white font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">quiz</span>
+                                        Quick Check
+                                    </h3>
+<span class="text-xs text-slate-400">Question 1 of 3</span>
+</div>
+<p class="text-slate-200 text-sm mb-4 font-medium">Which type of question should you avoid in a user interview?</p>
+<div class="space-y-2">
+<button class="w-full text-left p-3 rounded-lg border border-surface-border bg-background-dark text-slate-300 text-sm hover:border-primary hover:text-primary transition-all">
+                                        Open-ended questions
+                                    </button>
+<button class="w-full text-left p-3 rounded-lg border border-primary bg-primary/10 text-primary font-medium text-sm flex justify-between items-center">
+                                        Leading questions
+                                        <span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+<button class="w-full text-left p-3 rounded-lg border border-surface-border bg-background-dark text-slate-300 text-sm hover:border-primary hover:text-primary transition-all">
+                                        Follow-up questions
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Right Col: Instructor & files -->
+<div class="lg:col-span-1 space-y-6">
+<!-- Instructor Card -->
+<div class="flex items-start gap-4 p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-border">
+<div class="h-12 w-12 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait of the instructor, a man with glasses" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAwPsnSQir8uAZlhnCNam9KBccDHl8HoOJXqLR-A36YA6P44K2nQ-Li6Hn5QUf2ZIAK6-stbgybNA6ciDylprA7nkkz-00FdV29oZhyuiPpaMJyR97qNhS23JsIAT7zo5E96Y5V0qBIxAr6cRTbvf7GwM39IVd9E6HlKhs2T6XdNF24B-LsS4Lj8JRrhG1j8TyWIn-jL6vajOK8y-XavmZy5hBvVg7TQZU0lMuqDECgitysRoe8w31OGDc1VEGVn-AoAm_G1iCCAoq');"></div>
+<div>
+<p class="text-xs text-primary font-bold uppercase tracking-wide">Instructor</p>
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Marcus Chen</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Senior UX Researcher at Google. 10+ years helping startups scale.</p>
+</div>
+</div>
+<!-- Downloadable Resources -->
+<div class="space-y-3">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Lesson Resources</h4>
+<a class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-border hover:border-primary/50 group transition-all" href="#">
+<div class="h-8 w-8 rounded flex items-center justify-center bg-red-500/10 text-red-500">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 truncate group-hover:text-primary">Interview_Guide_Template.pdf</p>
+<p class="text-xs text-slate-400">2.4 MB</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-lg">download</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-surface-border hover:border-primary/50 group transition-all" href="#">
+<div class="h-8 w-8 rounded flex items-center justify-center bg-blue-500/10 text-blue-500">
+<span class="material-symbols-outlined text-lg">description</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-200 truncate group-hover:text-primary">Notes_Summary.docx</p>
+<p class="text-xs text-slate-400">1.1 MB</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-lg">download</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
