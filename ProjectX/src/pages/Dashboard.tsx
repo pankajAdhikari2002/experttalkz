@@ -18,12 +18,19 @@ const Dashboard = () => {
             </h1>
             <p className="text-slate-400 font-medium">Here's what's happening with your courses today.</p>
           </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="hidden md:flex">
               <span className="material-symbols-outlined !text-[18px] mr-1">calendar_today</span>
               Schedule
             </Button>
-          </div>
+            <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-xl">
+               <div className="w-8 h-8 bg-primary text-white font-bold flex items-center justify-center rounded-full uppercase">
+                  {user?.name?.charAt(0) || 'U'}
+               </div>
+               <div className="flex flex-col">
+                  <span className="text-sm font-bold text-white leading-tight">{user?.name}</span>
+                  <span className="text-xs text-slate-400 leading-tight">{user?.email}</span>
+               </div>
+            </div>
         </div>
 
         {/* Stats Grid */}
@@ -35,7 +42,7 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined text-blue-400 !text-[32px]">school</span>
                 <span className="text-xs font-bold text-blue-400 bg-blue-500/20 px-2 py-1 rounded-md">ACTIVE</span>
               </div>
-              <h3 className="text-3xl font-black text-white mb-1">4</h3>
+              <h3 className="text-3xl font-black text-white mb-1">0</h3>
               <p className="text-sm text-slate-400 font-medium">Enrolled Courses</p>
             </div>
           </div>
@@ -47,7 +54,7 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined text-green-400 !text-[32px]">workspace_premium</span>
                 <span className="text-xs font-bold text-green-400 bg-green-500/20 px-2 py-1 rounded-md">+12%</span>
               </div>
-              <h3 className="text-3xl font-black text-white mb-1">2</h3>
+              <h3 className="text-3xl font-black text-white mb-1">0</h3>
               <p className="text-sm text-slate-400 font-medium">Completed Courses</p>
             </div>
           </div>
@@ -59,7 +66,7 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined text-orange-400 !text-[32px]">trending_up</span>
                 <span className="text-xs font-bold text-orange-400 bg-orange-500/20 px-2 py-1 rounded-md">85%</span>
               </div>
-              <h3 className="text-3xl font-black text-white mb-1">24h</h3>
+              <h3 className="text-3xl font-black text-white mb-1">0h</h3>
               <p className="text-sm text-slate-400 font-medium">Learning This Week</p>
             </div>
           </div>
@@ -71,7 +78,7 @@ const Dashboard = () => {
                 <span className="material-symbols-outlined text-purple-400 !text-[32px]">emoji_events</span>
                 <span className="text-xs font-bold text-purple-400 bg-purple-500/20 px-2 py-1 rounded-md">TOP 10%</span>
               </div>
-              <h3 className="text-3xl font-black text-white mb-1">1,240</h3>
+              <h3 className="text-3xl font-black text-white mb-1">0</h3>
               <p className="text-sm text-slate-400 font-medium">Total Points</p>
             </div>
           </div>
@@ -85,25 +92,17 @@ const Dashboard = () => {
               <div className="p-6 border-b border-white/5">
                 <h2 className="text-xl font-bold text-white">Continue Learning</h2>
               </div>
-              <div className="p-6">
-                <div className="relative flex min-h-[280px] flex-col gap-6 overflow-hidden rounded-xl items-start justify-end p-8 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent border border-primary/20">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
-                  <div className="z-10 flex flex-col gap-3 text-left max-w-2xl">
-                    <span className="bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-md uppercase w-fit tracking-widest">Module 4 • Lesson 12</span>
-                    <h3 className="text-white text-2xl font-black">Advanced React Patterns & Custom Hooks</h3>
-                    <div className="flex items-center gap-2 text-sm text-slate-300 mb-2">
-                      <span className="material-symbols-outlined !text-[16px]">schedule</span>
-                      <span>45 min remaining</span>
-                    </div>
-                    <div className="w-full bg-white/10 rounded-full h-2 mb-2">
-                      <div className="bg-primary h-2 rounded-full" style={{ width: '68%' }}></div>
-                    </div>
-                    <Button size="sm" className="w-fit mt-2">
-                      <span className="material-symbols-outlined !text-[18px] mr-1">play_arrow</span>
-                      Resume Learning
-                    </Button>
-                  </div>
-                </div>
+              <div className="p-6 flex flex-col items-center justify-center text-center py-12">
+                 <div className="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mb-4">
+                    <span className="material-symbols-outlined text-3xl text-slate-500">menu_book</span>
+                 </div>
+                 <h3 className="text-white text-lg font-bold mb-2">No active courses</h3>
+                 <p className="text-slate-400 text-sm max-w-sm mb-6">
+                    You haven't enrolled in any courses yet. Check out the catalog to start learning.
+                 </p>
+                 <Button onClick={() => window.location.href = '/courses'}>
+                    Browse Catalog
+                 </Button>
               </div>
             </div>
 
@@ -112,22 +111,9 @@ const Dashboard = () => {
               <div className="p-6 border-b border-white/5">
                 <h2 className="text-xl font-bold text-white">Recent Activity</h2>
               </div>
-              <div className="p-6 flex flex-col gap-4">
-                {[
-                  { icon: 'check_circle', color: 'green', title: 'Completed "State Management" quiz', time: '2 hours ago' },
-                  { icon: 'star', color: 'yellow', title: 'Earned "React Master" badge', time: '1 day ago' },
-                  { icon: 'comment', color: 'blue', title: 'New comment on your discussion post', time: '2 days ago' },
-                ].map((activity, idx) => (
-                  <div key={idx} className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors cursor-pointer">
-                    <div className={`w-10 h-10 rounded-xl bg-${activity.color}-500/10 flex items-center justify-center text-${activity.color}-400`}>
-                      <span className="material-symbols-outlined !text-[20px]">{activity.icon}</span>
-                    </div>
-                    <div className="flex-grow">
-                      <p className="text-sm font-medium text-white">{activity.title}</p>
-                      <p className="text-xs text-slate-500">{activity.time}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className="p-6 flex flex-col items-center justify-center text-center py-8">
+                <span className="material-symbols-outlined text-4xl text-slate-600 mb-3">history</span>
+                <p className="text-slate-400 text-sm">No recent activity detected on your account.</p>
               </div>
             </div>
           </div>
@@ -139,25 +125,9 @@ const Dashboard = () => {
               <div className="p-6 border-b border-white/5">
                 <h2 className="text-lg font-bold text-white">Upcoming</h2>
               </div>
-              <div className="p-6 flex flex-col gap-4">
-                {[
-                  { type: 'QUIZ', title: 'SEO Strategy', due: 'Tomorrow', color: 'orange' },
-                  { type: 'ASSIGNMENT', title: 'Build Portfolio Site', due: 'In 3 days', color: 'blue' },
-                  { type: 'LIVE', title: 'Q&A Session', due: 'Friday 3PM', color: 'red' },
-                ].map((task, idx) => (
-                  <div key={idx} className="flex gap-3 p-3 rounded-xl border border-white/5 hover:border-white/20 transition-all cursor-pointer group">
-                    <div className={`w-12 h-12 bg-${task.color}-500/10 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
-                      <span className={`text-xs font-black text-${task.color}-400`}>{task.type}</span>
-                    </div>
-                    <div className="flex-grow min-w-0">
-                      <h4 className="font-bold text-sm text-white truncate">{task.title}</h4>
-                      <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
-                        <span className="material-symbols-outlined !text-[12px]">schedule</span>
-                        {task.due}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              <div className="p-6 flex flex-col items-center justify-center text-center py-6">
+                 <span className="material-symbols-outlined text-4xl text-slate-600 mb-2">event_busy</span>
+                 <p className="text-slate-400 text-sm">You have no upcoming tasks or deadlines scheduled.</p>
               </div>
             </div>
 
@@ -165,17 +135,17 @@ const Dashboard = () => {
             <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl border border-primary/20 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold text-white">Study Streak</h3>
-                <span className="material-symbols-outlined text-primary !text-[32px]">local_fire_department</span>
+                <span className="material-symbols-outlined text-slate-600 !text-[32px]">local_fire_department</span>
               </div>
               <div className="text-center">
-                <h2 className="text-5xl font-black text-primary mb-2">7</h2>
-                <p className="text-sm text-slate-400 font-medium">Days in a row!</p>
+                <h2 className="text-5xl font-black text-slate-500 mb-2">0</h2>
+                <p className="text-sm text-slate-400 font-medium">Start learning to build a streak!</p>
               </div>
               <div className="flex justify-between mt-6 gap-1">
                 {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => (
                   <div key={idx} className="flex flex-col items-center gap-1">
-                    <div className={`w-8 h-8 rounded-lg ${idx < 5 ? 'bg-primary' : 'bg-white/5'} flex items-center justify-center`}>
-                      <span className="material-symbols-outlined text-white !text-[16px]">check</span>
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center border border-white/5">
+                      {/* Empty state for days */}
                     </div>
                     <span className="text-[10px] text-slate-500 font-bold">{day}</span>
                   </div>

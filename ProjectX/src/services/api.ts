@@ -97,5 +97,43 @@ export const api = {
       console.error(e);
       return { success: false };
     }
+  },
+
+  createPaypalOrder: async (courseSlug: string) => {
+    try {
+      const token = localStorage.getItem('token');
+      const resp = await fetch(`${API_BASE_URL}/payments/create-paypal-order`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          ...(token && { 'Authorization': `Bearer ${token}` })
+        },
+        body: JSON.stringify({ slug: courseSlug })
+      });
+      if (!resp.ok) throw new Error('Order creation error');
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return { id: null };
+    }
+  },
+
+  capturePaypalOrder: async (orderID: string) => {
+    try {
+      const token = localStorage.getItem('token');
+      const resp = await fetch(`${API_BASE_URL}/payments/capture-paypal-order`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          ...(token && { 'Authorization': `Bearer ${token}` })
+        },
+        body: JSON.stringify({ orderID })
+      });
+      if (!resp.ok) return { success: false };
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return { success: false };
+    }
   }
 };

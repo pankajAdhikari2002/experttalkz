@@ -1,6 +1,8 @@
 import { Outlet, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const DashboardLayout = () => {
+    const { user } = useAuth();
     return (
         <div className="flex h-screen w-full bg-background-dark overflow-hidden font-display text-white">
             {/* Sidebar (Desktop) */}
@@ -8,10 +10,12 @@ const DashboardLayout = () => {
                 <div className="flex flex-col gap-8">
                     {/* User Profile */}
                     <div className="flex gap-3 items-center px-2">
-                        <div className="size-12 rounded-full bg-surface-dark"></div>
-                        <div className="flex flex-col">
-                            <h1 className="text-base font-bold leading-normal text-white">Alex Morgan</h1>
-                            <p className="text-[#9dabb9] text-xs font-normal">Computer Science</p>
+                        <div className="size-12 rounded-full bg-primary/20 text-primary font-black flex items-center justify-center text-xl uppercase">
+                            {user?.name?.charAt(0) || 'U'}
+                        </div>
+                        <div className="flex flex-col min-w-0">
+                            <h1 className="text-base font-bold leading-normal text-white truncate">{user?.name || 'Student'}</h1>
+                            <p className="text-[#9dabb9] text-xs font-normal truncate">{user?.email || 'ExpertTalkz Learner'}</p>
                         </div>
                     </div>
                     {/* Navigation */}
@@ -27,13 +31,13 @@ const DashboardLayout = () => {
                         {/* More links... */}
                     </nav>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-100 dark:bg-[#1c2127] border border-slate-200 dark:border-white/5">
+                <div className="p-4 rounded-xl bg-slate-100 dark:bg-[#1c2127] border border-slate-200 dark:border-white/5 relative group cursor-pointer overflow-hidden">
                     <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-semibold text-slate-500 dark:text-[#9dabb9]">Daily Goal</span>
-                        <span className="text-xs font-bold text-primary">85%</span>
+                        <span className="text-xs font-semibold text-slate-500 dark:text-[#9dabb9] group-hover:text-primary transition-colors">Daily Goal</span>
+                        <span className="text-xs font-bold text-slate-400">0%</span>
                     </div>
                     <div className="h-2 w-full bg-slate-200 dark:bg-[#283039] rounded-full overflow-hidden">
-                        <div className="h-full bg-primary w-[85%] rounded-full"></div>
+                        <div className="h-full bg-primary w-[0%] rounded-full transition-all"></div>
                     </div>
                 </div>
             </aside>
