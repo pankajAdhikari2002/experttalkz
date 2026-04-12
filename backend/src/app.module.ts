@@ -6,7 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Category } from './entities/category.entity';
 import { Course } from './entities/course.entity';
-import { InstallmentPlan } from './entities/installment-plan.entity';
+import { CourseInstallment } from './entities/course-installment.entity';
 import { Blog } from './entities/blog.entity';
 import { Award } from './entities/award.entity';
 import { AuthModule } from './auth/auth.module';
@@ -75,7 +75,7 @@ import { PaymentsModule } from './payments/payments.module';
     // LeadsModule,
     // SettingsModule,
     // TestimonialsModule,
-    TypeOrmModule.forFeature([Category, Course, InstallmentPlan, Blog, Award]),
+    TypeOrmModule.forFeature([Category, Course, CourseInstallment, Blog, Award]),
     AuthModule,
     PaymentsModule,
   ],

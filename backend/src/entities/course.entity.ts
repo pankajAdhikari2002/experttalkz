@@ -1,11 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { Category } from './category.entity';
-import { InstallmentPlan } from './installment-plan.entity';
+import { CourseInstallment } from './course-installment.entity';
 
 @Entity('courses')
 export class Course {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
+  id: number;
 
   @Column()
   course_name: string;
@@ -13,37 +13,58 @@ export class Course {
   @Column({ unique: true })
   slug: string;
 
-  @Column('text')
-  description: string;
+  @Column('varchar', { length: 255, nullable: true })
+  short_description: string;
 
-  @Column('decimal', { precision: 10, scale: 2 })
+  @Column('longtext', { nullable: true })
+  long_description: string;
+
+  @Column('decimal', { precision: 10, scale: 2, nullable: true })
   price: number;
 
   @Column('decimal', { precision: 10, scale: 2, nullable: true })
   discount_price: number;
 
-  @Column()
+  @Column('varchar', { nullable: true })
   course_duration: string;
 
-  @Column({ type: 'enum', enum: ['Online', 'Offline'], default: 'Online' })
+  @Column({ type: 'enum', enum: ['online', 'offline', 'hybrid'], default: 'online' })
   course_mode: string;
 
-  @Column({ type: 'enum', enum: ['Beginner', 'Intermediate', 'Advanced'], default: 'Beginner' })
-  level: string;
+  @Column({ type: 'enum', enum: ['basic', 'intermediate', 'advanced'], default: 'basic' })
+  course_type: string;
 
-  @Column('text')
+  @Column('varchar', { nullable: true })
   thumbnail: string;
 
+  @Column('varchar', { nullable: true })
+  banner_images: string;
+
+  @Column('varchar', { length: 250, nullable: true })
+  syllabus_file: string;
+
+  @Column('int', { nullable: true })
+  content_hour: number;
+
+  @Column({ type: 'tinyint', default: 0 })
+  is_free: number;
+
+  @Column({ type: 'tinyint', default: 1 })
+  status: number;
+
+  @Column({ type: 'int', default: 0 })
+  sorting_order: number;
+
   @ManyToOne(() => Category, category => category.courses, { nullable: true, eager: true })
-  @JoinColumn({ name: 'category_id' })
+  @JoinColumn({ name: 'main_category' })
   category: Category;
 
-  @Column('decimal', { precision: 3, scale: 1, nullable: true })
-  rating: number;
+  @OneToMany(() => CourseInstallment, installment => installment.course)
+  installments: CourseInstallment[];
 
-  @Column({ default: false })
-  is_featured: boolean;
+  @Column({ type: 'timestamp', nullable: true })
+  created_at: Date;
 
-  @OneToOne(() => InstallmentPlan, installmentPlan => installmentPlan.course, { cascade: true, eager: true, nullable: true })
-  installments: InstallmentPlan;
+  @Column({ type: 'timestamp', nullable: true })
+  updated_at: Date;
 }
