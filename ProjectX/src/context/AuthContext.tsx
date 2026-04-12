@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { api } from '../services/api';
 
 // Define the shape of the context
 interface User {
@@ -43,38 +44,31 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const login = async (email: string, password: string) => {
-    const users = getStoredUsers();
-    const foundUser = users.find(u => u.email === email && u.password === password);
+    const response = await api.login(email, password);
 
-    if (foundUser) {
-      const { password: _, ...userWithoutPassword } = foundUser;
-      setUser(userWithoutPassword);
+    if (response && response.success) {
+      setUser(response.user);
       setIsAuthenticated(true);
-      localStorage.setItem('expertTalkz_active_user', JSON.stringify(userWithoutPassword));
-      return { success: true, message: 'Logged in successfully' };
+      localStorage.setItem('expertTalkz_auth_token', response.access_token);
+      localStorage.setItem('expertTalkz_active_user', JSON.stringify(response.user));
+      return { success: true, message: response.message || 'Logged in successfully' };
     }
     
     return { success: false, message: 'Invalid email or password' };
   };
 
   const signup = async (name: string, email: string, password: string) => {
-    const users = getStoredUsers();
+    const response = await api.signup(name, email, password);
     
-    if (users.some(u => u.email === email)) {
-      return { success: false, message: 'User with this email already exists' };
+    if (response && response.success) {
+      setUser(response.user);
+      setIsAuthenticated(true);
+      localStorage.setItem('expertTalkz_auth_token', response.access_token);
+      localStorage.setItem('expertTalkz_active_user', JSON.stringify(response.user));
+      return { success: true, message: response.message || 'Account created successfully' };
     }
 
-    const newUser = { name, email, password };
-    const updatedUsers = [...users, newUser];
-    localStorage.setItem('expertTalkz_db_users', JSON.stringify(updatedUsers));
-
-    // Automatically log in after signup
-    const { password: _, ...userWithoutPassword } = newUser;
-    setUser(userWithoutPassword);
-    setIsAuthenticated(true);
-    localStorage.setItem('expertTalkz_active_user', JSON.stringify(userWithoutPassword));
-
-    return { success: true, message: 'Account created successfully' };
+    return { success: false, message: 'Registration failed. User may already exist.' };
   };
 
   const updateProfile = async (updatedData: Partial<User>) => {
@@ -104,6 +98,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem('expertTalkz_active_user');
+    localStorage.removeItem('expertTalkz_auth_token');
   };
 
   return (

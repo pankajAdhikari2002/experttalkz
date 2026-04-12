@@ -1,0 +1,420 @@
+EXPERTALKZ GLOBAL SOLUTIONS LLP
+Complete Website Copy & Content Guide
+New Site — Energetic & Motivational Edition
+Prepared: March 2026
+Pages Covered:
+1. Homepage — Hero, Intro, Industry Verticals, Testimonials, CTA
+2. About Us — Story, Vision, Mission, Team, Values
+3. Training Courses — 5 Disciplines × Offshore Courses + Software
+4. Oil & Gas Knowledge Hub — All 8 sub-sections
+5. Opportunities / Career Page
+6. Contact Us
+SECTION 1 OF 6
+🏠 HOMEPAGE
+▶ BROWSER TAB TITLE
+Expertalkz Global Solutions | No. 1 Offshore Engineering Training & Career Platform
+▶ META DESCRIPTION
+Launch your offshore engineering career with Expertalkz — India's leading training platform for Oil & Gas, Aviation, Shipping, Mining, and Fintech professionals. Expert mentors. Real industry skills. Global opportunities.
+▶ HERO SECTION
+Main Headline (H1)
+Shape Your Future in the World's Most Powerful Industries.
+Sub-Headline
+Join thousands of engineers who transformed their careers through Expertalkz — the #1 offshore engineering training and placement platform trusted globally.
+Hero Body Text
+Whether you're a fresh graduate ready to launch or an experienced professional aiming higher — we give you the knowledge, mentorship, and connections to make it happen. In Oil & Gas. In Aviation. In Shipping. In Mining. In Fintech.
+Primary CTA Button
+🚀 Explore Training Courses
+Secondary CTA Button
+💼 Browse Opportunities
+Tertiary CTA (floating/sticky)
+📞 Call Us Now: +91 7548969182
+▶ SOCIAL PROOF BAR (below hero)
+📝 Add counters/numbers here. Suggested stats:
+🎓  2,000+ Professionals Trained  |  🌍  15+ Countries Reached  |  🏭  50+ Industry Partners  |  ⭐  4.8/5 Average Rating
+▶ INTRO / VALUE PROPOSITION SECTION
+Section Label
+WHO WE ARE
+Headline
+Your Trusted Partner for Professional Growth, Career Success & Business Expansion.
+Body Paragraph
+Expertalkz Global Solutions LLP is a powerhouse of engineering expertise, career mentorship, and industry intelligence. Founded in 2020, we've grown into a global platform connecting ambitious engineers with the skills and opportunities they need to thrive in the world's most demanding sectors.
+We don't just train — we mentor. We don't just teach — we connect. Every course, every session, every resource is designed to mirror real-world offshore industry standards, so you're job-ready from day one.
+▶ INDUSTRY VERTICALS SECTION
+Section Label
+WHAT WE COVER
+Section Headline
+One Platform. Five Powerful Industries.
+We prepare professionals for the industries that power the planet:
+Energy (Oil & Gas) — PRIMARY
+The heartbeat of the global economy. Our flagship vertical covers everything from upstream exploration to downstream refining, with deep expertise in offshore piping, structural, process, electrical, and instrumentation engineering. If Oil & Gas is your world, you're home.
+Aviation
+From aircraft manufacturing to airport infrastructure — aviation demands precision, safety, and continuous innovation. We help aerospace professionals stay ahead of the curve.
+Shipping & Maritime
+Global trade runs on the sea. Our shipping vertical covers logistics, maritime operations, and supply chain resilience — critical skills for India's growing blue economy.
+Minerals & Mining
+Minerals are the backbone of modern civilization. We bridge the knowledge gap for professionals working in metallic and non-metallic mineral extraction, processing, and management.
+Fintech
+The future of finance is digital. We explore how AI, blockchain, digital banking, and smart financial solutions are reshaping global markets — and how you can lead that change.
+▶ TRAINING SNAPSHOT SECTION
+Section Label
+WHAT YOU'LL LEARN
+Headline
+Industry-Grade Courses. Real-World Results.
+Our curriculum is built by industry veterans, not just academics. Every module reflects how work actually gets done on offshore platforms, refineries, and project sites.
+Featured Courses (cards)
+Offshore Piping Stress Engineering — CAESAR II-based, ASME B31.3 compliant
+Offshore Structural Engineering — Load analysis, steel design, offshore codes
+Offshore Process Engineering — HYSYS simulations, P&ID, process safety
+Offshore Electrical Engineering — HV systems, protection, hazardous area classification
+Offshore Instrumentation Engineering — Control systems, SCADA, SIL assessment
+Software & Tools Covered
+CAESAR II  |  HYSYS  |  AutoCAD  |  SP3D  |  PDMS  |  ETAP  |  SolidWorks
+▶ TESTIMONIALS SECTION
+Section Label
+WHAT OUR STUDENTS SAY
+Headline
+Real Stories. Real Results.
+Testimonial 1
+"I went from zero industry experience to landing an offshore piping role in 8 months. The mentors at Expertalkz knew exactly what employers look for — and they made sure I was ready."
+— Ravi K., Piping Stress Engineer, UAE
+Testimonial 2
+"The courses at Expertalkz mirror actual site conditions. When I joined my first project, I already felt like I had been there before. That is the power of their training methodology."
+— Priya M., Instrumentation Engineer, Qatar
+Testimonial 3
+"Not just knowledge — Expertalkz gave me confidence. From ASME code training to mock interviews, they prepared me for everything."
+— Arun S., Process Engineer, India
+▶ BOTTOM CTA SECTION
+Headline
+Your Next Chapter Starts Here.
+Body
+Don't wait for opportunity to find you. Build the skills, earn the credentials, and step into a career that changes everything. Thousands have done it with Expertalkz — and so can you.
+CTA Buttons
+🎓 Start Learning Today   |   📩 Submit Your CV   |   📞 +91 7548969182
+SECTION 2 OF 6
+👤 ABOUT US
+▶ PAGE HERO
+Headline
+We Are Engineers of Society. Architects of Ambition.
+Sub-Headline
+Expertalkz Global Solutions LLP — Powering the Future of Industry Since 2020.
+▶ OUR STORY
+Headline
+Born from a Gap. Built for a Generation.
+Body
+Expertalkz was founded in 2020 with one clear mission: to bridge the massive gap between classroom knowledge and real-world offshore industry demands.
+We saw brilliant engineers struggling to land jobs — not because they lacked intelligence, but because no one had trained them for the realities of offshore projects, international codes, and industry-grade software. We decided to change that.
+Starting small, growing fast — we now serve professionals across India and 15+ countries, offering training that is built the way the industry works.
+▶ WHO WE ARE
+Headline
+A Team of Practitioners, Not Just Professors.
+Body
+Our team is made up of working engineers, project managers, and industry leaders — people who have spent years on offshore platforms, in refineries, and on global project sites. They don't just teach the theory. They share the real challenges, the workarounds, and the mindset you need to succeed.
+At Expertalkz, you learn from the people who have already done what you're trying to do.
+▶ VISION & MISSION
+🌍 Our Vision
+To become the world's most trusted platform for offshore engineering training, career placement, and industry innovation — empowering the next generation of global engineers.
+🎯 Our Mission
+Deliver advanced, industry-grade training, examinations, and certifications.
+Provide cutting-edge engineering consulting solutions for refineries, power plants, and infrastructure projects.
+Champion sustainable, energy-efficient engineering practices.
+Connect professionals to career-defining opportunities across Oil & Gas, Aviation, Shipping, Mining, and Fintech.
+▶ CORE VALUES
+🔬 Excellence
+We set the bar high — because the industry does.
+🤝 Integrity
+Transparent, honest, and accountable in everything we do.
+🚀 Innovation
+We evolve constantly so our students stay ahead of the curve.
+🌱 Sustainability
+We teach engineering with the future of our planet in mind.
+🤲 Empowerment
+We believe in people. We invest in potential.
+▶ WHAT WE DO (Core Services Summary)
+🎓 Professional Training & Certification
+Industry-leading courses in Piping, Mechanical, Structural, Chemical, Instrumentation, Civil, Electrical, and more — with software training in CAESAR II, HYSYS, AutoCAD, and beyond.
+🏗 Engineering & Consulting
+High-end engineering solutions for oil refineries, power plants, offshore facilities, and industrial infrastructure.
+💼 Career Development & Placement
+End-to-end job support — from CV building to mock interviews to connecting you with hiring partners across the globe.
+▶ CLOSING CTA
+Headline
+Now the Sky Is Not the Limit.
+Body
+Write your story. Own your page. Be the writer of India's future — and the world's. Become part of our growing family of engineers, leaders, and innovators.
+CTA
+🔗 Join Our Journey   |   📩 Submit Your CV: info@expertalkzglobalsolutions.in
+SECTION 3 OF 6
+🎓 TRAINING COURSES
+▶ PAGE HERO
+Headline
+Master the Skills That Move the World's Energy.
+Sub-Headline
+Every course at Expertalkz is designed by offshore industry veterans to make you job-ready, confident, and competitive — on day one.
+▶ WHY TRAIN WITH US
+Curriculum built on real offshore project standards (ASME, API, ISO, IEC)
+Learn from active engineers — not just classroom instructors
+Bilingual delivery: English & Hindi for maximum accessibility
+Software-integrated training (CAESAR II, HYSYS, AutoCAD, ETAP)
+Post-course placement support and career guidance
+Flexible batches: weekday, weekend, and self-paced options
+▶ DISCIPLINE: CHEMICAL ENGINEERING
+Course: Offshore Process Engineering
+Master the fundamentals and advanced techniques of offshore process design, from concept to commissioning.
+What you'll learn:
+Process Flow Diagrams (PFDs) and P&IDs
+HYSYS / Aspen PLUS simulations
+Heat & mass balance calculations
+Relief valve sizing and flare system design
+Process safety — HAZOP, HAZID, SIL
+Offshore topsides process design
+Ideal For
+Chemical engineers, process engineers, fresh graduates targeting O&G sector
+▶ DISCIPLINE: INSTRUMENTATION ENGINEERING
+Course: Offshore Instrumentation & Control Systems
+Develop deep expertise in measurement, control, and safety systems used on offshore platforms worldwide.
+What you'll learn:
+Instrumentation engineering basics and offshore applications
+DCS, PLC, and SCADA systems
+SIL/SIS design and assessment
+Control valve sizing and selection
+Cause & effect diagrams
+Hook-up drawings and instrument data sheets
+Ideal For
+Instrumentation engineers, automation specialists, electrical engineers seeking cross-discipline knowledge
+▶ DISCIPLINE: MECHANICAL ENGINEERING
+Course: Offshore Piping Stress Engineering (CAESAR II)
+One of our most sought-after programs — a complete deep-dive into piping stress analysis for offshore and onshore projects.
+What you'll learn:
+Piping system design fundamentals
+CAESAR II modelling and analysis
+ASME B31.3 / B31.4 / B31.8 codes
+Static and dynamic stress analysis
+Nozzle load assessment
+Piping isometrics and drawings
+Course: Rotating Equipment Engineering
+Pumps, compressors, turbines — understand selection, sizing, troubleshooting, and API standards.
+Ideal For
+Mechanical engineers, piping designers, plant engineers in Oil & Gas
+▶ DISCIPLINE: ELECTRICAL ENGINEERING
+Course: Offshore Electrical Engineering
+A comprehensive program covering HV/LV power systems, protection, and electrical area classification for offshore environments.
+What you'll learn:
+Offshore power generation and distribution
+HV/LV system design (ETAP)
+Electrical area classification (IEC 60079)
+Motor control centres (MCC) and switchgear
+Cable sizing and selection
+Hazardous area equipment standards
+Ideal For
+Electrical engineers transitioning into offshore/Oil & Gas roles
+▶ DISCIPLINE: CIVIL & STRUCTURAL ENGINEERING
+Course: Offshore Structural Engineering
+Designed for engineers who want to master the structural design and integrity of offshore platforms, jackets, and topsides.
+What you'll learn:
+Offshore structural design codes (AISC, API RP 2A, DNV)
+Jacket and topside structure design
+Wave, wind, and seismic load analysis
+Fatigue analysis and fracture mechanics
+Structural inspection and integrity management
+SACS / STAAD Pro modelling
+Ideal For
+Civil/structural engineers targeting offshore platform design roles
+▶ SOFTWARE TRAINING (Add-On / Standalone)
+📐 CAESAR II
+Piping stress analysis — beginner to advanced
+📐 HYSYS / Aspen Plus
+Process simulation for O&G applications
+📐 AutoCAD / Plant 3D
+Engineering drawing and 3D plant design
+📐 ETAP
+Electrical power system simulation
+📐 STAAD Pro / SACS
+Structural analysis for offshore and onshore
+▶ ENROLMENT CTA
+Headline
+Ready to Level Up? Your Course is Waiting.
+📧 info@expertalkzglobalsolutions.in  |  📞 +91 7548969182 / +91 8527087566
+Fill in the course enquiry form and our team will contact you within 24 hours.
+SECTION 4 OF 6
+🛢️ OIL & GAS KNOWLEDGE HUB
+▶ HUB INTRO
+Headline
+Your Free Gateway to Oil & Gas Mastery.
+Body
+The Expertalkz Oil & Gas Knowledge Hub is your always-on resource for industry intelligence — written and curated by working engineers. Whether you're a student, a professional, or a recruiter, this is where real O&G knowledge lives.
+Browse. Learn. Grow. Bookmark this page.
+▶ SUB-SECTION 1: Concept to Commissioning
+Intro
+Ever wondered how an offshore platform goes from an idea on paper to a fully operational facility pumping millions of barrels? This series walks you through every stage — FEED, detailed engineering, procurement, construction, and commissioning — with real-world context and insider insights.
+What's inside:
+Front End Engineering Design (FEED) — what it really means
+How project phases connect across disciplines
+Key deliverables at each stage
+Common pitfalls engineers face and how to avoid them
+Lessons from real-world O&G megaprojects
+▶ SUB-SECTION 2: Oil & Gas Industry Overview
+Intro
+Before you can master your discipline, you need to understand the big picture. This overview covers how the global Oil & Gas industry is structured — from upstream exploration to midstream transport to downstream refining — and where your role fits in the puzzle.
+Topics covered:
+Upstream, midstream, and downstream explained
+How offshore platforms are categorised (fixed, FPSO, semi-sub)
+The economics of Oil & Gas — how projects get funded
+Key players: operators, EPCs, contractors, and consultants
+India's Oil & Gas sector: ONGC, Reliance, IOC and the future
+▶ SUB-SECTION 3: Industry News & Trends
+Intro
+Stay sharp. Stay current. The O&G industry is evolving faster than ever — with energy transition, decarbonisation, and digital disruption reshaping every corner of the sector. Our news and trends section keeps you informed on what matters.
+What we cover:
+Global oil price movements and their impact on projects
+LNG, hydrogen, and the energy transition
+Digital twins, AI, and IoT on offshore platforms
+New regulatory frameworks and environmental mandates
+Emerging markets and investment hotspots in O&G
+▶ SUB-SECTION 4: Piping System Components & Equipment
+Intro
+Piping is the circulatory system of any oil & gas facility. In this section, we break down every component — from flanges and valves to fittings and instruments — with engineering-grade explanations that prepare you for real project work.
+Components covered:
+Pipes, flanges, and fittings — materials, schedules, ratings
+Valves: gate, globe, ball, butterfly, check, control
+Pressure vessels and heat exchangers
+Pumps and compressors — selection principles
+Instrumentation taps, bypass loops, and drains/vents
+▶ SUB-SECTION 5: Piping Design & Engineering
+Intro
+This is where theory meets practice. Our piping design section dives deep into the engineering discipline that underpins every plant and offshore facility — from layout fundamentals to stress analysis to 3D modelling.
+Topics covered:
+Piping layout and routing principles
+Pipe stress analysis — when, why, and how
+3D modelling: clash detection and isometric extraction
+Pipe support types — selection and spacing
+Line designation tables and piping specs
+▶ SUB-SECTION 6: Standards, Codes & Compliance
+Intro
+Knowing the codes isn't optional — it's essential. This section is your reference library for the standards and regulations that govern engineering in the Oil & Gas industry. From ASME to API to IEC, we break them down in plain language.
+Key codes covered:
+ASME BPVC Section VIII — Pressure Vessel Design (Parts 1, 2, 3 — Hindi & English)
+ASME B31.3 — Process Piping
+API 650 / 620 — Storage Tanks
+API RP 2A — Offshore Platform Design
+IEC 60079 — Hazardous Area Classification
+ISO 13703 — Offshore Piping Design
+📝 Podcast series: History of ASME BPVC Section VIII — available in Hindi & English (Parts 1, 2, 3)
+▶ SUB-SECTION 7: Latest Technologies in Oil & Gas
+Intro
+The oil field of tomorrow looks nothing like the one today. Digital transformation, automation, and sustainability are driving a revolution in how energy is found, extracted, and delivered. Stay ahead by understanding what's coming.
+Technologies we cover:
+Digital twins for offshore asset management
+AI and machine learning in predictive maintenance
+IoT sensors and real-time monitoring platforms
+Subsea automation and remote operations
+Carbon capture, utilisation, and storage (CCUS)
+Hydrogen-ready infrastructure design
+▶ SUB-SECTION 8: Case Studies & Real-World Applications
+Intro
+Nothing accelerates learning like seeing real problems solved in real situations. Our case study library draws on actual projects — anonymised where needed — to show you how engineering decisions play out in the field.
+Case study themes:
+Piping stress failure — root cause and redesign
+Process upset on an offshore platform — lessons learned
+Structural fatigue assessment on an ageing jacket
+Commissioning delays — how they happen and how to prevent them
+HAZOP findings that saved lives
+SECTION 5 OF 6
+💼 OPPORTUNITIES / CAREER PAGE
+▶ PAGE HERO
+Headline
+Your Dream Role in Oil & Gas Is Closer Than You Think.
+Sub-Headline
+We don't just train you — we open doors. Expertalkz connects qualified professionals with hiring opportunities across the global energy, aviation, shipping, and mining sectors.
+▶ HOW WE HELP YOU GET HIRED
+🎯 CV & Profile Building
+We help you craft a CV that speaks the language of offshore recruiters — highlighting the right skills, certifications, and project experience.
+📋 Mock Interviews & Technical Prep
+Prepare for technical rounds with simulated interviews led by industry professionals who've sat on the other side of the table.
+🤝 Recruiter Network
+We maintain active relationships with EPC companies, operators, and staffing firms across the UAE, Qatar, Saudi Arabia, UK, India, and beyond.
+📢 Live Job Listings
+Get access to curated opportunities posted directly by our industry partners — roles that don't always make it to the public job boards.
+🌍 Global Placement Support
+Whether you're targeting offshore roles in the Middle East, Southeast Asia, or India — we guide you on visa, documentation, and relocation essentials.
+▶ ROLES WE PLACE INTO (Sample List)
+Piping Stress Engineer (CAESAR II)
+Process Engineer (Offshore / Refinery)
+Instrumentation & Control Engineer
+Offshore Structural Engineer
+Electrical Engineer (HV/LV, ETAP)
+Project Engineer (EPC / PMC)
+HSE Engineer (Offshore)
+Commissioning Engineer
+Aviation Maintenance Engineer
+Marine / Shipping Superintendent
+▶ COMPANIES & SECTORS WE WORK WITH
+EPC companies  |  National Oil Companies (NOCs)  |  International Oil Companies (IOCs)  |  Offshore Contractors  |  Aviation MROs  |  Shipping & Logistics Firms
+▶ SUBMIT YOUR CV
+Headline
+Take the First Step. Submit Your Profile Today.
+Our placement team reviews every submission and matches you with roles suited to your skills and experience level.
+📧 info@expertalkzglobalsolutions.in
+📞 +91 7548969182 / +91 8527087566
+Form Fields
+• Full Name
+• Email Address
+• Phone Number
+• Engineering Discipline
+• Years of Experience
+• Upload CV (PDF)
+• Preferred Location / Sector
+• Message / Additional Info
+▶ MOTIVATIONAL CLOSE
+Headline
+Evolve. Rise. Own Your Future.
+Every great engineer started somewhere. Every offshore career begins with a decision. Make yours today — and let Expertalkz walk beside you every step of the way.
+SECTION 6 OF 6
+📞 CONTACT US
+▶ PAGE HERO
+Headline
+We'd Love to Hear From You.
+Sub-Headline
+Whether you're exploring our courses, submitting your CV, or looking for an engineering consulting partner — our team is ready to respond fast. Reach out now.
+▶ CONTACT DETAILS
+📧 Email
+info@expertalkzglobalsolutions.in
+📞 Phone / WhatsApp
++91 7548969182  |  +91 8527087566
+🕘 Working Hours
+Monday – Saturday: 9:00 AM – 7:00 PM IST
+🌐 Website
+www.expertalkzglobalsolutions.in
+📍 Registered As
+Expertalkz Global Solutions LLP — India
+▶ CONTACT FORM — FIELD LABELS & PLACEHOLDER TEXT
+Field: Full Name *
+Placeholder: "Enter your full name"
+Field: Email Address *
+Placeholder: "your@email.com"
+Field: Phone Number *
+Placeholder: "+91 XXXXX XXXXX"
+Field: Subject *
+Placeholder: "Course Enquiry / CV Submission / Partnership / Other"
+Field: Select Course (if applicable)
+Placeholder: "Choose from dropdown"
+Field: Your Message *
+Placeholder: "Tell us how we can help you…"
+Field: Attach CV (optional)
+Placeholder: "PDF preferred, max 5MB"
+▶ SUBMIT BUTTON
+🚀 Send My Message
+▶ POST-SUBMISSION MESSAGE
+"Thank you for reaching out! A member of the Expertalkz team will get back to you within 24 hours. In the meantime, explore our Knowledge Hub — your free gateway to Oil & Gas mastery."
+▶ FOOTER COPY (All Pages)
+Footer Nav Links
+Home  |  About Us  |  Training Courses  |  Knowledge Hub  |  Opportunities  |  Contact Us
+Footer Tagline
+"Shaping the Future of Oil & Gas — Jobs, Training & Industry Solutions."
+Copyright Line
+© 2020–2026 Expertalkz Global Solutions LLP. All rights reserved.
+Social Media Labels
+LinkedIn  |  YouTube  |  Instagram  |  WhatsApp
+Disclaimer
+Expertalkz Global Solutions LLP is a registered LLP in India. All training programs and content are subject to availability. Placement support does not guarantee employment.
+— END OF WEBSITE COPY DOCUMENT —
+Prepared for Expertalkz Global Solutions LLP | March 2026

@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="text-primary">
           <span className="material-symbols-outlined !text-[32px]">school</span>
         </div>
-        <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">ExpertTalkz</h2>
+        <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">Expertalkz</h2>
       </Link>
 
       {/* Desktop Nav */}

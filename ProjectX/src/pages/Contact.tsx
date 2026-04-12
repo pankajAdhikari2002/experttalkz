@@ -61,8 +61,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">Email Us</h3>
-                  <p className="text-[#9dabb9]">info@experttalkz.com</p>
-                  <p className="text-[#9dabb9]">support@experttalkz.com</p>
+                  <p className="text-[#9dabb9]"> info@expertalkzglobalsolutions.in</p>
                 </div>
               </div>
 
@@ -72,7 +71,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">Call Us</h3>
-                  <p className="text-[#9dabb9]">+1 (555) 123-4567</p>
+                  <p className="text-[#9dabb9]">+91-7548969182</p>
+                  <p className="text-[#9dabb9]">+91-8527087566</p>
                   <p className="text-[#9dabb9]">Mon-Fri from 8am to 5pm.</p>
                 </div>
               </div>
@@ -83,8 +83,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-white">Visit Us</h3>
-                  <p className="text-[#9dabb9]">123 Tech Park, Innovation Way</p>
-                  <p className="text-[#9dabb9]">Silicon Valley, CA 94025</p>
+                  <p className="text-[#9dabb9]">301, SahakarNagar, Sama</p>
+                  <p className="text-[#9dabb9]">Vadodara, Gujarat-390008</p>
                 </div>
               </div>
             </div>
@@ -122,9 +122,9 @@ const Contact = () => {
                      <input 
                         className="h-10 px-3 rounded-lg border border-white/10 bg-surface-dark text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-slate-500"
                         name="phone" 
-                        placeholder="+1 (555) 000-0000" 
+                        placeholder="+91 000-000-0000" 
                         required 
-                        value={formData.phone}
+                        value={formData.phone} 
                         onChange={handleChange}
                      />
                   </div>

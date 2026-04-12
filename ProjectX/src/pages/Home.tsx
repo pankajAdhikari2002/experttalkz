@@ -1,18 +1,52 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Meta from '../components/common/Meta';
 import Button from '../components/common/Button';
 import Section from '../components/common/Section';
 import Card from '../components/common/Card';
-import { COURSES, CATEGORIES, AWARDS } from '../services/mockData';
+import { api } from '../services/api';
+import type { Course, Category, Award } from '../types';
 
 const Home = () => {
-  const featuredCourses = COURSES.filter(course => course.is_featured);
+  const [featuredCourses, setFeaturedCourses] = useState<Course[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [awards, setAwards] = useState<Award[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [allCourses, allCats, allAwards] = await Promise.all([
+          api.getCourses(),
+          api.getCategories(),
+          api.getAwards()
+        ]);
+        setFeaturedCourses(allCourses.filter(c => c.is_featured));
+        setCategories(allCats);
+        setAwards(allAwards);
+      } catch (error) {
+        console.error('Failed to load home data', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []);
+
+  if (loading) {
+     return (
+       <div className="min-h-[70vh] flex flex-col gap-4 items-center justify-center text-white">
+         <span className="material-symbols-outlined animate-spin text-5xl text-primary">autorenew</span>
+         <p>Loading Offshore Data...</p>
+       </div>
+     );
+  }
 
   return (
     <>
       <Meta 
-        title="ExpertTalkz | Master Tech Skills" 
-        description="Mastering UI/UX Design, Development, and Business skills with industry-led courses."
+        title="Expertalkz Global Solutions | No. 1 Offshore Engineering Training & Career Platform" 
+        description="Launch your offshore engineering career with Expertalkz — India's leading training platform for Oil & Gas, Aviation, Shipping, Mining, and Fintech professionals. Expert mentors. Real industry skills. Global opportunities."
       />
       
       {/* Hero Section */}
@@ -28,18 +62,23 @@ const Home = () => {
           <div className="max-w-2xl flex flex-col gap-6 items-start">
             <div className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 backdrop-blur-md border border-white/10">
               <span className="material-symbols-outlined text-primary !text-[16px]">verified</span>
-              <span className="text-xs font-bold uppercase tracking-wider text-white">#1 Rated Tech Platform</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-white">#1 Offshore Engineering Platform</span>
             </div>
             <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl drop-shadow-lg">
-              Mastering Tech Skills with Industry Experts
+              Shape Your Future in the World's Most Powerful Industries.
             </h1>
             <p className="text-lg font-medium leading-relaxed text-slate-300 drop-shadow-md max-w-xl">
-              Join 10,000+ students in comprehensive guides to designing, developing, and deploying modern applications.
+              Join thousands of engineers who transformed their careers through Expertalkz — the #1 offshore engineering training and placement platform trusted globally. Whether you're a fresh graduate ready to launch or an experienced professional aiming higher, we give you the knowledge, mentorship, and connections to make it happen.
             </p>
             <div className="mt-4 flex flex-wrap gap-4">
               <Link to="/courses">
-                <Button size="lg" icon={<span className="material-symbols-outlined fill-current">arrow_forward</span>}>
-                  Get Started
+                <Button size="lg" icon={<span className="material-symbols-outlined fill-current">explore</span>}>
+                  Explore Training Courses
+                </Button>
+              </Link>
+              <Link to="/opportunities">
+                <Button size="lg" variant="outline" icon={<span className="material-symbols-outlined fill-current">work</span>}>
+                  Browse Opportunities
                 </Button>
               </Link>
             </div>
@@ -104,9 +143,10 @@ const Home = () => {
       {/* Browse by Category */}
       <Section variant="surface">
         <div className="max-w-[1400px] mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Browse by Category</h2>
+          <h2 className="text-3xl font-bold text-white mb-2 text-center">What We Cover</h2>
+          <p className="text-slate-300 text-center mb-8 max-w-2xl mx-auto">One Platform. Five Powerful Industries.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {CATEGORIES.map(cat => (
+            {categories.map(cat => (
               <Link key={cat.id} to={`/courses?category=${cat.slug}`} className="group">
                 <div className="bg-card-dark border border-white/5 p-6 rounded-xl text-center hover:bg-white/5 hover:border-white/20 transition-all cursor-pointer h-full flex flex-col items-center justify-center gap-3">
                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -126,7 +166,7 @@ const Home = () => {
         <div className="max-w-[1400px] mx-auto text-center">
            <h2 className="text-2xl font-bold text-white mb-10 opacity-80">Our Accreditations & Partners</h2>
            <div className="flex flex-wrap justify-center gap-10 md:gap-20 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              {AWARDS.map(award => (
+              {awards.map(award => (
                  <img key={award.id} src={award.award_image} alt={award.award_title} className="h-16 object-contain" title={award.award_title} />
               ))}
            </div>

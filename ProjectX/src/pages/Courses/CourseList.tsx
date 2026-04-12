@@ -1,14 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Meta from '../../components/common/Meta';
-import { COURSES, CATEGORIES } from '../../services/mockData';
+import { api } from '../../services/api';
 import type { Course } from '../../types';
 import Button from '../../components/common/Button';
 
 const CourseList = () => {
-  // Duplicate mock data to simulate a larger catalog for design showcase
-  const allCourses: Course[] = [...COURSES, ...COURSES, ...COURSES, ...COURSES]; 
-  const [courses, setCourses] = useState<Course[]>(allCourses);
+  const [allCourses, setAllCourses] = useState<Course[]>([]); 
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadCourses = async () => {
+      try {
+        const data = await api.getCourses();
+        // Duplicating for layout preview if there are too few courses
+        const expandedCatalog = data.length > 0 ? [...data, ...data, ...data] : [];
+        setAllCourses(expandedCatalog);
+        setCourses(expandedCatalog);
+      } catch (error) {
+        console.error('Failed to load courses', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadCourses();
+  }, []);
+
+  if (loading) {
+     return (
+       <div className="min-h-[70vh] flex flex-col gap-4 items-center justify-center text-white">
+         <span className="material-symbols-outlined animate-spin text-5xl text-primary">autorenew</span>
+         <p>Loading Course Directory...</p>
+       </div>
+     );
+  }
 
   return (
     <>
@@ -62,7 +88,7 @@ const CourseList = () => {
             </div>
             <div className="hidden md:flex items-center gap-4 text-sm text-slate-400">
                <span>Popular:</span>
-               {['React', 'Python', 'Design'].map(tag => (
+               {['Piping', 'Structural', 'Process'].map(tag => (
                   <button key={tag} className="hover:text-white transition-colors cursor-pointer" onClick={() => {
                       const term = tag.toLowerCase();
                       const filtered = allCourses.filter(c => 

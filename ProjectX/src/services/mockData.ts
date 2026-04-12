@@ -1,11 +1,11 @@
 import type { Course, Blog, Category, Award } from '../types';
 
 export const CATEGORIES: Category[] = [
-  { id: '1', category_title: 'Design', slug: 'design', count: 12 },
-  { id: '2', category_title: 'Development', slug: 'development', count: 24 },
-  { id: '3', category_title: 'Marketing', slug: 'marketing', count: 8 },
-  { id: '4', category_title: 'Data Science', slug: 'data-science', count: 15 },
-  { id: '5', category_title: 'Business', slug: 'business', count: 6 },
+  { id: '1', category_title: 'Energy (Oil & Gas)', slug: 'energy-oil-gas', count: 12 },
+  { id: '2', category_title: 'Aviation', slug: 'aviation', count: 5 },
+  { id: '3', category_title: 'Shipping & Maritime', slug: 'shipping-maritime', count: 8 },
+  { id: '4', category_title: 'Minerals & Mining', slug: 'minerals-mining', count: 6 },
+  { id: '5', category_title: 'Fintech', slug: 'fintech', count: 4 },
 ];
 
 export const AWARDS: Award[] = [
@@ -17,49 +17,49 @@ export const AWARDS: Award[] = [
 export const COURSES: Course[] = [
   {
     id: '1',
-    course_name: 'Full Stack Web Development with React & Node.js',
-    slug: 'full-stack-web-development',
-    description: 'Become a complete web developer with our comprehensive bootcamp covering modern frontend and backend technologies.',
+    course_name: 'Offshore Piping Stress Engineering',
+    slug: 'offshore-piping-stress',
+    description: 'CAESAR II-based, ASME B31.3 compliant complete deep-dive into piping stress analysis for offshore and onshore projects.',
     price: 499,
     discount_price: 399,
     course_duration: '24 Weeks',
     course_mode: 'Online',
-    level: 'Beginner',
+    level: 'Advanced',
     thumbnail: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBJHYBTTXfuqMH-TJjExbx3gjlYSVScXZ4yIGMbfXs3y5Rg5-DZDB-RtqmhorxZUG4OB1qP0chumDVyAKMir9G_9yVQM8mUwW9sgwsYDJ7NjUMnqplHQ7_-q6KSFJRH2EYCqJjRw4yqwVxt3hfdakiaCn1msmjCGECSuXTb9lG64pxvjz5KlDfMyTrCRxbT13DFBvCBIHXNyeYtJEFlcJZOFYfXfMCfcMUCj1XyGN1zQ6HMJsUqfKEKEGa2fGLxF_LZhD4sfsRTVQeY',
-    category: 'Development',
+    category: 'Energy (Oil & Gas)',
     rating: 4.9,
     is_featured: true,
     installments: { id: 'inst1', course_id: '1', total_installments: 4, installment_amount: 100 }
   },
   {
     id: '2',
-    course_name: 'Data Science & Machine Learning Bootcamp',
-    slug: 'data-science-machine-learning',
-    description: 'Master Python, Pandas, Scikit-Learn, and Deep Learning to kickstart your career as a Data Scientist.',
+    course_name: 'Offshore Structural Engineering',
+    slug: 'offshore-structural-engineering',
+    description: 'Load analysis, steel design, offshore codes. Designed for engineers who want to master the structural design and integrity of offshore platforms, jackets, and topsides.',
     price: 599,
     discount_price: 549,
     course_duration: '20 Weeks',
     course_mode: 'Online',
-    level: 'Intermediate',
+    level: 'Advanced',
     thumbnail: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuVtNAsuuMEE_LrjUQcY_JOZL3iwxYcphe6KLVwUXsjLGXcpjQyc8d623PoQxZgwNsbweOUzge-jL9bBfVFkvb5ExEPsK3pr0h82CAnL93dexMPZcwXbZtQweGJ1PC0o0IAaorviUNXqPzgvTE9LpBwfAk-91ki9iEMWzMb1wEwC1zyX_ML2fpq_oXVPqyX5xTo-D4bJztjcEVoZh1ceeQZqMdzLYhM-R8ByhwCYL3tX5Gm6p45sDOwkNOcVtnKgYABQciC5ryFpjk',
-    category: 'Data Science',
+    category: 'Energy (Oil & Gas)',
     rating: 4.8,
     is_featured: true,
     installments: { id: 'inst2', course_id: '2', total_installments: 3, installment_amount: 183 }
   },
   {
     id: '3',
-    course_name: 'Embedded Systems & IoT Engineering',
-    slug: 'embedded-systems-iot',
-    description: 'Learn to design and program smart devices using C++, Python, and Raspberry Pi.',
+    course_name: 'Offshore Process Engineering',
+    slug: 'offshore-process-engineering',
+    description: 'HYSYS simulations, P&ID, process safety. Master the fundamentals and advanced techniques of offshore process design, from concept to commissioning.',
     price: 449,
     course_duration: '16 Weeks',
-    course_mode: 'Offline',
+    course_mode: 'Online',
     level: 'Advanced',
     thumbnail: 'https://lh3.googleusercontent.com/aida-public/AB6AXuATZGrJV1nNKUN5GWVrZ1ZIVCJ80C-Y5AuRsqKVJhHsbyKxRND7vHaa2VXDNs7ewlXK7qUBNm3MsCdB3BTh4Fv7abC4rMkkZ7cDA9xADrkkho1-kyb05dL2SJB_rBV2F9gJ4SHm8NGVEuJaynxMpyyXkEsQfnnld2vQcf8VcMLbi9_QKndgsMl8Ic2ZUqU0leIOKP5-xUdptA-JnuBVNVyhp8ooUUPbtMmnb8TeCgD-POdkQ6PMIQ7loDSizHvkW1FVObFOnKmv9ca1',
-    category: 'Engineering',
+    category: 'Energy (Oil & Gas)',
     rating: 4.7,
-    is_featured: false
+    is_featured: true
   }
 ];
 

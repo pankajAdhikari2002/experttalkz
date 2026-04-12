@@ -1,45 +1,101 @@
-import { COURSES, BLOGS } from './mockData';
-import type { Course, Blog, ContactFormData } from '../types';
+import type { Course, Blog, Category, Award, ContactFormData } from '../types';
 
-const DELAY = 500;
+const API_BASE_URL = 'http://localhost:3000/api';
 
 export const api = {
-  getCourses: (): Promise<Course[]> => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(COURSES), DELAY);
-    });
+  getCourses: async (): Promise<Course[]> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/courses`);
+      if (!resp.ok) throw new Error('Network error');
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
   },
 
-  getCourseBySlug: (slug: string): Promise<Course | undefined> => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const course = COURSES.find((c) => c.slug === slug);
-        resolve(course);
-      }, DELAY);
-    });
+  getCourseBySlug: async (slug: string): Promise<Course | undefined> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/courses/${slug}`);
+      if (!resp.ok) throw new Error('Network error');
+      const data = await resp.json();
+      return data || undefined;
+    } catch (e) {
+      console.error(e);
+      return undefined;
+    }
   },
 
-  getBlogs: (): Promise<Blog[]> => {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(BLOGS), DELAY);
-    });
+  getCategories: async (): Promise<Category[]> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/categories`);
+      if (!resp.ok) throw new Error('Network error');
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
   },
 
-  getBlogBySlug: (slug: string): Promise<Blog | undefined> => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        const blog = BLOGS.find((b) => b.slug === slug);
-        resolve(blog);
-      }, DELAY);
-    });
+  getAwards: async (): Promise<Award[]> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/awards`);
+      if (!resp.ok) throw new Error('Network error');
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
   },
 
-  submitLead: (data: ContactFormData): Promise<{ success: boolean; message: string }> => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('Lead Submitted:', data);
-        resolve({ success: true, message: 'Message sent successfully!' });
-      }, DELAY);
-    });
+  getBlogs: async (): Promise<Blog[]> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/blogs`);
+      if (!resp.ok) throw new Error('Network error');
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return [];
+    }
   },
+
+  submitLead: async (data: ContactFormData): Promise<{ success: boolean; message: string }> => {
+    try {
+      console.log('Lead pseudo-submitted:', data);
+      return { success: true, message: 'Message sent successfully!' };
+    } catch (e) {
+      console.error(e);
+      return { success: false, message: 'Failed to send message.' };
+    }
+  },
+
+  login: async (email: string, password: string) => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      if (!resp.ok) return { success: false };
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return { success: false };
+    }
+  },
+
+  signup: async (name: string, email: string, password: string) => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/auth/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+      if (!resp.ok) return { success: false };
+      return await resp.json();
+    } catch (e) {
+      console.error(e);
+      return { success: false };
+    }
+  }
 };

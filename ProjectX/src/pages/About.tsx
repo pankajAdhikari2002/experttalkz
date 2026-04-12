@@ -1,5 +1,4 @@
 import Section from '../components/common/Section';
-import Card from '../components/common/Card';
 import Meta from '../components/common/Meta';
 import { Target, Heart, Zap } from 'lucide-react';
 
@@ -7,15 +6,15 @@ const About = () => {
   return (
     <>
       <Meta 
-        title="About Us | ExpertTalkz" 
-        description="Learn about ExpertTalkz's mission to bridge the gap between academic learning and industry requirements."
+        title="About Us | Expertalkz Global Solutions" 
+        description="Learn about Expertalkz's mission to bridge the massive gap between classroom knowledge and real-world offshore industry demands."
       />
       {/* Header */}
       <div className="bg-surface-dark py-16 text-center">
         <div className="container mx-auto px-6">
-          <h1 className="text-5xl font-extrabold mb-4 text-white">About Us</h1>
+          <h1 className="text-5xl font-extrabold mb-4 text-white">We Are Engineers of Society. Architects of Ambition.</h1>
           <p className="text-xl text-[#9dabb9] max-w-2xl mx-auto">
-            We're on a mission to democratize quality engineering education and make it accessible to everyone.
+            Expertalkz Global Solutions LLP — Powering the Future of Industry Since 2020.
           </p>
         </div>
       </div>
@@ -25,14 +24,17 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-4xl font-bold mb-6 text-white">
-              Bridging the Gap Between <span className="text-primary">Academia & Industry</span>
+              Born from a Gap. <span className="text-primary">Built for a Generation.</span>
             </h2>
             <div className="flex flex-col gap-4 text-[#9dabb9] text-lg leading-relaxed">
               <p>
-                Founded in 2024, ExpertTalkz emerged from a simple observation: engineering graduates often lack the practical skills required by modern industry standards.
+                Expertalkz was founded in 2020 with one clear mission: to bridge the massive gap between classroom knowledge and real-world offshore industry demands.
               </p>
               <p>
-                Our curriculum is designed by industry experts from top tech companies to ensure that what you learn is exactly what employers are looking for.
+                We saw brilliant engineers struggling to land jobs — not because they lacked intelligence, but because no one had trained them for the realities of offshore projects, international codes, and industry-grade software. We decided to change that.
+              </p>
+              <p>
+                Starting small, growing fast — we now serve professionals across India and 15+ countries, offering training that is built the way the industry works.
               </p>
             </div>
           </div>
@@ -53,19 +55,19 @@ const About = () => {
             {
               icon: <Target size={32} className="text-primary" />,
               title: "Excellence",
-              desc: "We never compromise on the quality of our content or mentors.",
+              desc: "We set the bar high — because the industry does.",
               accent: "text-primary bg-primary/10"
             },
             {
               icon: <Heart size={32} className="text-pink-500" />,
-              title: "Student-Centric",
-              desc: "Every decision we make is based on what's best for our students' growth.",
+              title: "Integrity",
+              desc: "Transparent, honest, and accountable in everything we do.",
               accent: "text-pink-500 bg-pink-500/10"
             },
             {
               icon: <Zap size={32} className="text-emerald-500" />,
               title: "Innovation",
-              desc: "We constantly update our curriculum to stay ahead of tech trends.",
+              desc: "We evolve constantly so our students stay ahead of the curve.",
               accent: "text-emerald-500 bg-emerald-500/10"
             }
           ].map((value, i) => (
