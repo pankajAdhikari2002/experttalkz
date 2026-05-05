@@ -59,6 +59,18 @@ export const api = {
     }
   },
 
+  getBlogBySlug: async (slug: string): Promise<Blog | undefined> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/blogs/${slug}`);
+      if (!resp.ok) throw new Error('Network error');
+      const data = await resp.json();
+      return data || undefined;
+    } catch (e) {
+      console.error(e);
+      return undefined;
+    }
+  },
+
   submitLead: async (data: ContactFormData): Promise<{ success: boolean; message: string }> => {
     try {
       console.log('Lead pseudo-submitted:', data);
