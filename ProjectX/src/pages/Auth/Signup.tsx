@@ -83,7 +83,7 @@ const Signup = () => {
 
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
-                  Password
+                  Create New Password
                 </label>
                 <div className="relative">
                   <input
