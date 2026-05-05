@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4169E1;
+  --color-background-light: #0b1530;
+  --color-background-dark: #0b1530;
+  --color-surface-dark: #162040;
+  --color-card-dark: #162040;
+  --color-text-secondary: #9dabb9;
+
+  --font-display: "Lexend", sans-serif;
+  --font-sans: "Lexend", sans-serif;
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Legacy Support / Overrides */
+/* Legacy Support / Overrides - Keeping these for variable usage in JS/Components if needed */
+:root {
+  --primary: #4169E1;
+  --background: #0b1530;
+  --text: #ffffff;
+}
+
+.dark {
+  --background: #0b1530;
+  --text: #ffffff;
+  color-scheme: dark;
+}
