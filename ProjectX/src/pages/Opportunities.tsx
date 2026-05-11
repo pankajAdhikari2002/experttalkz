@@ -9,98 +9,98 @@ const Opportunities = () => {
   const careerRoles = [
     {
       id: 1,
-      title: 'Full-Stack Developer',
-      salary: '$80k - $150k/year',
+      title: ' CAESAR_II Modelling & Analysis',
+      salary: '₹2.0 - ₹6.5 LPA/year',
       demand: 'High',
-      courses: ['React Fundamentals', 'Node.js Backend', 'Database Design'],
-      skills: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'REST APIs'],
-      icon: '💻',
+      courses: ['Piping (Basc-Adv)','PipeStress Analysis using CAESAR_II','ASME Codes'],
+      skills: ['Pipe routing & layout', 'AutoCAD', 'Stress & flexibility analysis', 'Nozzle load checking', 'P&ID reading'],
+      icon: '🎓',
       color: 'blue',
     },
     {
       id: 2,
-      title: 'AI/ML Engineer',
-      salary: '$100k - $180k/year',
-      demand: 'Very High',
-      courses: ['Python for AI', 'Machine Learning', 'Deep Learning'],
-      skills: ['Python', 'TensorFlow', 'PyTorch', 'Data Science', 'Neural Networks'],
-      icon: '🤖',
+      title: 'E3D',
+      salary: '₹2 - ₹5 LPA/year',
+      demand: 'High',
+      courses: ['Isometric Drawing', 'AutoCAD', 'P&ID Reading'],
+      skills: ['E3D / PDMS ⭐','Clash detection', 'Material take-off (MTO)', 'Navisworks', 'ASME standards', 'Plant safety clearances'],
+      icon: '🎓',
       color: 'purple',
     },
     {
       id: 3,
-      title: 'DevOps Engineer',
-      salary: '$90k - $160k/year',
+      title: 'SP3D',
+      salary: '₹2 - ₹5 LPA/year',
       demand: 'High',
-      courses: ['Docker & Kubernetes', 'CI/CD Pipelines', 'Cloud Computing'],
-      skills: ['Docker', 'Kubernetes', 'AWS', 'Jenkins', 'Terraform'],
-      icon: '⚙️',
+      courses: ['Equipment modeling', 'Pipe routing', 'Structural modeling','HVAC/cable tray basics','Isometric extraction','Clash checking','Drawing generation'],
+      skills: ['SP3D ⭐', 'ASME codes', 'Clash detection', 'Drawing extraction'],
+      icon: '🎓',
       color: 'green',
     },
     {
       id: 4,
-      title: 'UI/UX Designer',
-      salary: '$70k - $130k/year',
-      demand: 'Medium',
-      courses: ['Figma Mastery', 'Design Thinking', 'User Research'],
-      skills: ['Figma', 'Adobe XD', 'Prototyping', 'User Testing', 'Design Systems'],
-      icon: '🎨',
+      title: 'PDMS',
+      salary: '₹2 - ₹5 LPA/year',
+      demand: 'High',
+      courses: ['Piping Engineering Design', 'AutoCAD (2D Drafting & ISO Drawings)', 'P&ID Reading', 'Mechanical Equipment Basics', 'Pipe Fittings, Valves & Specifications'],
+      skills: ['Pipe Routing', 'Equipment Modeling', 'Isometric Extraction', 'Clash Checking', 'CAESAR II (Advanced Stress Analysis)'],
+      icon: '🎓',
       color: 'pink',
     },
     {
       id: 5,
-      title: 'Blockchain Developer',
-      salary: '$95k - $170k/year',
-      demand: 'Very High',
-      courses: ['Solidity Basics', 'Smart Contracts', 'Web3 Development'],
-      skills: ['Solidity', 'Ethereum', 'Web3.js', 'Smart Contracts', 'DeFi'],
-      icon: '⛓️',
+      title: 'AutoCAD',
+      salary: '₹1.8 - ₹4 LPA/year',
+      demand: 'Medium',
+      courses: ['AutoCAD 2D Drafting ⭐', 'Engineering Drawing Basics', 'Mechanical / Civil Drafting Basics', 'P&ID Reading', 'Isometric Drawing Basics'],
+      skills: ['2D Drafting & Annotation ⭐', 'Pipe Routing Layouts', 'Isometric Drawing', 'Structural Drafting', 'Drawing Generation'],
+      icon: '🎓',
       color: 'orange',
     },
     {
       id: 6,
-      title: 'Data Scientist',
-      salary: '$85k - $155k/year',
+      title: 'AutoPIPE',
+      salary: '₹2 - ₹5 LPA/year',
       demand: 'High',
-      courses: ['Statistics', 'Data Analysis', 'Machine Learning'],
-      skills: ['Python', 'R', 'SQL', 'Pandas', 'Data Visualization'],
-      icon: '📊',
+      courses: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'AutoCAD (2D Drafting & ISO Drawings)', 'P&ID Reading', 'Pipe Fittings, Valves & Specifications'],
+      skills: ['Pipe Stress Modeling', 'Thermal Expansion Analysis', 'Support & Restraint Modeling', 'Load Case Setup', 'Stress Analysis & Code Compliance'],
+      icon: '🎓',
       color: 'cyan',
-    },
+    }, 
   ];
 
   const roadmaps = [
     {
       id: 1,
-      title: 'Frontend Developer Roadmap',
+      title: 'CAESAR_II ',
       duration: '6-8 months',
       steps: [
-        { phase: 'Foundation', topics: ['HTML/CSS', 'JavaScript Basics', 'Git'] },
-        { phase: 'Framework', topics: ['React.js', 'State Management', 'Routing'] },
-        { phase: 'Advanced', topics: ['TypeScript', 'Testing', 'Performance'] },
-        { phase: 'Professional', topics: ['Next.js', 'CI/CD', 'Deployment'] },
+        { phase: 'Phase 1', topics: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'Pipe Fittings, Valves & Specifications', 'P&ID Reading', 'AutoCAD (2D Drafting & Isometric Drawings)' ] },
+        { phase: 'Framework', topics: ['SP3D / E3D / PDMS Basics', 'Plant Layout & Pipe Routing', 'Equipment Connections & Nozzle Orientation', 'Pipe Support Fundamentals', 'ASME B31.1 & B31.3 Code Basics ⭐'] },
+        { phase: 'Advanced', topics: ['CAESAR II Interface & Modeling', 'Load Cases & Stress Analysis', 'Thermal Expansion & Flexibility Analysis', 'Sustained, Occasional & Operating Loads', 'Spring Supports, Hangers & Restraints'] },
+        { phase: 'Professional', topics: ['Advanced CAESAR II Projects ⭐', 'Nozzle Load Evaluation', 'Dynamic & Seismic Analysis', 'Stress Optimization & Troubleshooting', 'EPC Workflow, Reports & Interview Preparation'] },
       ],
     },
     {
       id: 2,
-      title: 'Backend Developer Roadmap',
+      title: 'SP3D',
       duration: '6-9 months',
       steps: [
-        { phase: 'Foundation', topics: ['Programming Basics', 'Databases', 'APIs'] },
-        { phase: 'Framework', topics: ['Node.js/Express', 'Authentication', 'Security'] },
-        { phase: 'Advanced', topics: ['Microservices', 'Caching', 'Message Queues'] },
-        { phase: 'Professional', topics: ['Cloud Deployment', 'Monitoring', 'Scaling'] },
+        { phase: 'Foundation', topics: ['Piping Engineering Design ⭐', 'Mechanical Equipment Basics', 'P&ID Reading', 'AutoCAD (2D Drafting & ISO Drawings)', 'Pipe Fittings, Valves & Specifications'] },
+        { phase: 'Framework', topics: ['SP3D Interface & Navigation', 'Equipment Modeling', 'Pipe Routing', 'Structural Modeling', 'Catalogs & Pipe Specification'] },
+        { phase: 'Advanced', topics: ['Advanced Pipe Routing', 'Clash Detection & Resolution', 'Isometric Extraction', 'Pipe Support Basics', 'Orthographic Drawings & MTO Reports'] },
+        { phase: 'Professional', topics: ['Real EPC Project Modeling ⭐', 'Industry Standards (ASME Basics)', 'Navisworks Coordination', 'CAESAR II (Advanced Stress Analysis)','Interview Preparation & Portfolio Building'] },
       ],
     },
     {
       id: 3,
-      title: 'AI/ML Engineer Roadmap',
+      title: 'PDMS',
       duration: '8-12 months',
       steps: [
-        { phase: 'Foundation', topics: ['Python', 'Mathematics', 'Statistics'] },
-        { phase: 'Core ML', topics: ['Supervised Learning', 'Unsupervised Learning', 'Neural Networks'] },
-        { phase: 'Deep Learning', topics: ['CNNs', 'RNNs', 'Transformers'] },
-        { phase: 'Specialization', topics: ['NLP', 'Computer Vision', 'MLOps'] },
+        { phase: 'Foundation', topics: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'Pipe Fittings, Valves & Specifications', 'P&ID Reading', 'AutoCAD (2D Drafting & Isometric Drawings)'] },
+        { phase: 'Core ML', topics: ['PDMS Interface & Navigation', 'Equipment Modeling', 'Pipe Routing Basics', 'Structural Modeling', 'Catalogs & Pipe Specifications ⭐'] },
+        { phase: 'Deep Learning', topics: ['Advanced Pipe Routing', 'Clash Detection & Design Review', 'Isometric Extraction & Drawing Generation','Pipe Support Basics', 'MTO Reports & Orthographic Drawings'] },
+        { phase: 'Specialization', topics: ['Real EPC Plant Modeling Projects ⭐', 'ASME Codes & Industry Standards', 'Navisworks Coordination', 'CAESAR II (Advanced Stress Analysis)', 'Portfolio Building & Interview Preparation'] },
       ],
     },
   ];
@@ -278,6 +278,25 @@ const Opportunities = () => {
               Explore All Courses
             </Button>
           </div>
+          {/*update here*/}
+          <div className="mt-16 text-center">
+            <h1 className="text-3xl font-bold text-white mb-10">Top Hiring Companies</h1>
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+              
+              {/* International Companies */}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+              <h2 className="text-xl font-semibold text-white mb-3">🌍 International</h2>
+              <p className="text-slate-300 leading-relaxed">Worley, Wood, Technip Energies, SBM Offshore, AtkinsRéalis, McDermott</p>
+              </div>
+              
+              {/* India-based Companies */}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-3">
+              <h2 className="text-xl font-semibold text-white mb-3"> India-based </h2>
+              <p className="text-slate-300 leading-relaxed">Larsen & Toubro (L&T), Quest Global, Assystem, Cyient, Infosys, IDOM</p>
+              </div>
+             </div>
+             </div>
+          {/*update till here*/}
         </div>
       </Section>
     </>
