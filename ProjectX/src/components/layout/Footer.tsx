@@ -2,17 +2,38 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer style={{ 
-      backgroundColor: 'var(--color-card-dark)', 
-      color: 'white', 
-      padding: '3rem 0',
-      marginTop: 'auto'
+    <footer
+    style={{
+    backgroundColor: 'var(--color-card-dark)',
+    color: 'black',
+    padding: '3rem 0',
+    marginTop: 'auto',
     }}>
       <div className="container" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
         gap: '2rem'
       }}>
+      {/*update here*/}
+       {/* Background Image Section */}
+      <div
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255,255,255,0.75),
+              rgba(255,255,255,0.75)
+            ),
+            url('https://static.vecteezy.com/system/resources/thumbnails/011/883/333/small_2x/pink-purple-and-blue-gradient-abstract-blank-clean-colors-cheerful-and-simple-style-suitable-for-background-banner-flyer-pamphlet-wallpaper-or-decor-free-vector.jpg')
+          `,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          padding: '3rem 0'
+        }}
+      ></div>
+       {/*update till here*/}
+
         <div>
           <h3 style={{ marginBottom: '1rem' }}>Expertalkz Global Solutions LLP</h3>
           <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>

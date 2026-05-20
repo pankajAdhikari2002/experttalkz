@@ -9,7 +9,7 @@ const Opportunities = () => {
   const careerRoles = [
     {
       id: 1,
-      title: ' CAESAR_II Modelling & Analysis',
+      title: ' Offsour Pipelineing Stree Analysis',
       salary: '₹2.0 - ₹6.5 LPA/year',
       demand: 'High',
       courses: ['Piping (Basc-Adv)','PipeStress Analysis using CAESAR_II','ASME Codes'],
@@ -19,7 +19,7 @@ const Opportunities = () => {
     },
     {
       id: 2,
-      title: 'E3D',
+      title: 'Pipelineing Design Engineering(E3D)',
       salary: '₹2 - ₹5 LPA/year',
       demand: 'High',
       courses: ['Isometric Drawing', 'AutoCAD', 'P&ID Reading'],
@@ -29,23 +29,13 @@ const Opportunities = () => {
     },
     {
       id: 3,
-      title: 'SP3D',
+      title: 'Pipelineing Design Engineering(SPSD)',
       salary: '₹2 - ₹5 LPA/year',
       demand: 'High',
       courses: ['Equipment modeling', 'Pipe routing', 'Structural modeling','HVAC/cable tray basics','Isometric extraction','Clash checking','Drawing generation'],
       skills: ['SP3D ⭐', 'ASME codes', 'Clash detection', 'Drawing extraction'],
       icon: '🎓',
       color: 'green',
-    },
-    {
-      id: 4,
-      title: 'PDMS',
-      salary: '₹2 - ₹5 LPA/year',
-      demand: 'High',
-      courses: ['Piping Engineering Design', 'AutoCAD (2D Drafting & ISO Drawings)', 'P&ID Reading', 'Mechanical Equipment Basics', 'Pipe Fittings, Valves & Specifications'],
-      skills: ['Pipe Routing', 'Equipment Modeling', 'Isometric Extraction', 'Clash Checking', 'CAESAR II (Advanced Stress Analysis)'],
-      icon: '🎓',
-      color: 'pink',
     },
     {
       id: 5,
@@ -57,16 +47,6 @@ const Opportunities = () => {
       icon: '🎓',
       color: 'orange',
     },
-    {
-      id: 6,
-      title: 'AutoPIPE',
-      salary: '₹2 - ₹5 LPA/year',
-      demand: 'High',
-      courses: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'AutoCAD (2D Drafting & ISO Drawings)', 'P&ID Reading', 'Pipe Fittings, Valves & Specifications'],
-      skills: ['Pipe Stress Modeling', 'Thermal Expansion Analysis', 'Support & Restraint Modeling', 'Load Case Setup', 'Stress Analysis & Code Compliance'],
-      icon: '🎓',
-      color: 'cyan',
-    }, 
   ];
 
   const roadmaps = [
