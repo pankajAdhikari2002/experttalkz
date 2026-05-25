@@ -1,6 +1,6 @@
 import Section from '../components/common/Section';
 import Meta from '../components/common/Meta';
-import { Target, Heart, Zap } from 'lucide-react';
+import { Target, Award, Lightbulb } from 'lucide-react';
 
 const About = () => {
   return (
@@ -59,13 +59,13 @@ const About = () => {
               accent: "text-primary bg-primary/10"
             },
             {
-              icon: <Heart size={32} className="text-pink-500" />,
+              icon: <Award size={32} className="text-pink-500" />,
               title: "Integrity",
               desc: "Transparent, honest, and accountable in everything we do.",
               accent: "text-pink-500 bg-pink-500/10"
             },
             {
-              icon: <Zap size={32} className="text-emerald-500" />,
+              icon: <Lightbulb size={32} className="text-emerald-500" />,
               title: "Innovation",
               desc: "We evolve constantly so our students stay ahead of the curve.",
               accent: "text-emerald-500 bg-emerald-500/10"

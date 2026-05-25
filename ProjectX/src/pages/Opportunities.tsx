@@ -52,7 +52,7 @@ const Opportunities = () => {
   const roadmaps = [
     {
       id: 1,
-      title: 'CAESAR_II ',
+      title: 'Offsour Pipelineing Stree Analysis',
       duration: '6-8 months',
       steps: [
         { phase: 'Phase 1', topics: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'Pipe Fittings, Valves & Specifications', 'P&ID Reading', 'AutoCAD (2D Drafting & Isometric Drawings)' ] },
@@ -74,7 +74,7 @@ const Opportunities = () => {
     },
     {
       id: 3,
-      title: 'PDMS',
+      title: 'E3D',
       duration: '8-12 months',
       steps: [
         { phase: 'Foundation', topics: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'Pipe Fittings, Valves & Specifications', 'P&ID Reading', 'AutoCAD (2D Drafting & Isometric Drawings)'] },
