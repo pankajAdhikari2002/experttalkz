@@ -3,61 +3,60 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer
-    style={{
-    backgroundColor: 'var(--color-card-dark)',
-    color: 'black',
-    padding: '3rem 0',
-    marginTop: 'auto',
-    }}>
+      style={{
+        backgroundImage: `
+          linear-gradient(
+            rgba(255, 255, 255, 0.82),
+            rgba(255, 255, 255, 0.82)
+          ),
+          url('https://static.vecteezy.com/system/resources/thumbnails/011/883/333/small_2x/pink-purple-and-blue-gradient-abstract-blank-clean-colors-cheerful-and-simple-style-suitable-for-background-banner-flyer-pamphlet-wallpaper-or-decor-free-vector.jpg')
+        `,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        color: '#1e293b',
+        padding: '4rem 2rem',
+        marginTop: 'auto',
+        borderTop: '1px solid rgba(0, 0, 0, 0.05)',
+      }}
+    >
       <div className="container" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '2rem'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+        gap: '2.5rem',
+        maxWidth: '1200px',
+        margin: '0 auto'
       }}>
-      {/*update here*/}
-       {/* Background Image Section */}
-      <div
-        style={{
-          backgroundImage: `
-            linear-gradient(
-              rgba(255,255,255,0.75),
-              rgba(255,255,255,0.75)
-            ),
-            url('https://static.vecteezy.com/system/resources/thumbnails/011/883/333/small_2x/pink-purple-and-blue-gradient-abstract-blank-clean-colors-cheerful-and-simple-style-suitable-for-background-banner-flyer-pamphlet-wallpaper-or-decor-free-vector.jpg')
-          `,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
-          padding: '3rem 0'
-        }}
-      ></div>
-       {/*update till here*/}
-
         <div>
-          <h3 style={{ marginBottom: '1rem' }}>Expertalkz Global Solutions LLP</h3>
-          <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>
+          <h3 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1.2rem', color: '#0f172a' }}>
+            Expertalkz Global Solutions LLP
+          </h3>
+          <p style={{ color: '#475569', fontSize: '0.875rem', lineHeight: '1.6' }}>
             "Shaping the Future of Oil & Gas — Jobs, Training & Industry Solutions."
           </p>
         </div>
         
         <div>
-          <h4 style={{ marginBottom: '1rem' }}>Quick Links</h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link to="/" style={{ color: '#cbd5e1' }}>Home</Link>
-            <Link to="/about" style={{ color: '#cbd5e1' }}>About Us</Link>
-            <Link to="/courses" style={{ color: '#cbd5e1' }}>Training Courses</Link>
-            <Link to="/blog" style={{ color: '#cbd5e1' }}>Knowledge Hub</Link>
-            <Link to="/opportunities" style={{ color: '#cbd5e1' }}>Opportunities</Link>
-            <Link to="/contact" style={{ color: '#cbd5e1' }}>Contact Us</Link>
+          <h4 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1rem', color: '#0f172a' }}>
+            Quick Links
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            <Link to="/" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Home</Link>
+            <Link to="/about" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">About Us</Link>
+            <Link to="/courses" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Training Courses</Link>
+            <Link to="/blog" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Knowledge Hub</Link>
+            <Link to="/opportunities" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Opportunities</Link>
+            <Link to="/contact" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Contact Us</Link>
           </div>
         </div>
 
         <div>
-          <h4 style={{ marginBottom: '1rem' }}>Legal</h4>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            <Link to="/privacy" style={{ color: '#cbd5e1' }}>Privacy Policy</Link>
-            <Link to="/terms" style={{ color: '#cbd5e1' }}>Terms & Conditions</Link>
+          <h4 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1rem', color: '#0f172a' }}>
+            Legal
+          </h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            <Link to="/privacy" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Privacy Policy</Link>
+            <Link to="/terms" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </div>
@@ -65,16 +64,22 @@ const Footer = () => {
       <div className="container" style={{ 
         marginTop: '3rem', 
         paddingTop: '2rem', 
-        borderTop: '1px solid #334155',
+        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
         textAlign: 'center',
-        color: '#94a3b8',
-        fontSize: '0.875rem',
+        color: '#64748b',
+        fontSize: '0.8rem',
         display: 'flex',
         flexDirection: 'column',
-        gap: '0.5rem'
+        gap: '0.6rem',
+        maxWidth: '1200px',
+        margin: '3rem auto 0 auto'
       }}>
-        <p>Expertalkz Global Solutions LLP is a registered LLP in India. All training programs and content are subject to availability. Placement support does not guarantee employment.</p>
-        <p>© 2020–{new Date().getFullYear()} Expertalkz Global Solutions LLP. All rights reserved.</p>
+        <p style={{ lineHeight: '1.6' }}>
+          Expertalkz Global Solutions LLP is a registered LLP in India. All training programs and content are subject to availability. Placement support does not guarantee employment.
+        </p>
+        <p style={{ fontWeight: '600', color: '#475569' }}>
+          © 2020–{new Date().getFullYear()} Expertalkz Global Solutions LLP. All rights reserved.
+        </p>
       </div>
     </footer>
   );

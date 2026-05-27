@@ -1,4 +1,5 @@
 import type { Course, Blog, Category, Award, ContactFormData } from '../types';
+import { COURSES, BLOGS, CATEGORIES, AWARDS } from './mockData';
 
 const API_BASE_URL = 'http://localhost:3000/api';
 
@@ -7,10 +8,11 @@ export const api = {
     try {
       const resp = await fetch(`${API_BASE_URL}/courses`);
       if (!resp.ok) throw new Error('Network error');
-      return await resp.json();
+      const data = await resp.json();
+      return data && data.length > 0 ? data : COURSES;
     } catch (e) {
-      console.error(e);
-      return [];
+      console.warn('API getCourses offline, falling back to mock data:', e);
+      return COURSES;
     }
   },
 
@@ -19,10 +21,10 @@ export const api = {
       const resp = await fetch(`${API_BASE_URL}/courses/${slug}`);
       if (!resp.ok) throw new Error('Network error');
       const data = await resp.json();
-      return data || undefined;
+      return data || COURSES.find(c => c.slug === slug);
     } catch (e) {
-      console.error(e);
-      return undefined;
+      console.warn(`API getCourseBySlug offline for slug "${slug}", falling back to mock data:`, e);
+      return COURSES.find(c => c.slug === slug);
     }
   },
 
@@ -30,10 +32,11 @@ export const api = {
     try {
       const resp = await fetch(`${API_BASE_URL}/categories`);
       if (!resp.ok) throw new Error('Network error');
-      return await resp.json();
+      const data = await resp.json();
+      return data && data.length > 0 ? data : CATEGORIES;
     } catch (e) {
-      console.error(e);
-      return [];
+      console.warn('API getCategories offline, falling back to mock data:', e);
+      return CATEGORIES;
     }
   },
 
@@ -41,10 +44,11 @@ export const api = {
     try {
       const resp = await fetch(`${API_BASE_URL}/awards`);
       if (!resp.ok) throw new Error('Network error');
-      return await resp.json();
+      const data = await resp.json();
+      return data && data.length > 0 ? data : AWARDS;
     } catch (e) {
-      console.error(e);
-      return [];
+      console.warn('API getAwards offline, falling back to mock data:', e);
+      return AWARDS;
     }
   },
 
@@ -52,10 +56,11 @@ export const api = {
     try {
       const resp = await fetch(`${API_BASE_URL}/blogs`);
       if (!resp.ok) throw new Error('Network error');
-      return await resp.json();
+      const data = await resp.json();
+      return data && data.length > 0 ? data : BLOGS;
     } catch (e) {
-      console.error(e);
-      return [];
+      console.warn('API getBlogs offline, falling back to mock data:', e);
+      return BLOGS;
     }
   },
 
@@ -64,10 +69,10 @@ export const api = {
       const resp = await fetch(`${API_BASE_URL}/blogs/${slug}`);
       if (!resp.ok) throw new Error('Network error');
       const data = await resp.json();
-      return data || undefined;
+      return data || BLOGS.find(b => b.slug === slug);
     } catch (e) {
-      console.error(e);
-      return undefined;
+      console.warn(`API getBlogBySlug offline for slug "${slug}", falling back to mock data:`, e);
+      return BLOGS.find(b => b.slug === slug);
     }
   },
 
