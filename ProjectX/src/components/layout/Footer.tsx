@@ -4,12 +4,7 @@ const Footer = () => {
   return (
     <footer
       style={{
-        backgroundImage: `
-          linear-gradient(
-            rgba(255, 255, 255, 0.82),
-            rgba(255, 255, 255, 0.82)
-          ),
-          url('https://static.vecteezy.com/system/resources/thumbnails/011/883/333/small_2x/pink-purple-and-blue-gradient-abstract-blank-clean-colors-cheerful-and-simple-style-suitable-for-background-banner-flyer-pamphlet-wallpaper-or-decor-free-vector.jpg')
+        backgroundImage: `url('https://cdn.prod.website-files.com/6768f29a6d5da42209173f20/6768f29b6d5da42209177487_Rectangle%20(83).svg')
         `,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
