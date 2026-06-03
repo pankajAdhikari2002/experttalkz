@@ -54,7 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return { success: true, message: response.message || 'Logged in successfully' };
     }
     
-    return { success: false, message: 'Invalid email or password' };
+    return { success: false, message: response?.message || 'Invalid email or password' };
   };
 
   const signup = async (name: string, email: string, password: string) => {
@@ -68,7 +68,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return { success: true, message: response.message || 'Account created successfully' };
     }
 
-    return { success: false, message: 'Registration failed. User may already exist.' };
+    return { success: false, message: response?.message || 'Registration failed. User may already exist.' };
   };
 
   const updateProfile = async (updatedData: Partial<User>) => {

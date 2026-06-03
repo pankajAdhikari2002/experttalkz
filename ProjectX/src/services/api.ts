@@ -1,7 +1,7 @@
 import type { Course, Blog, Category, Award, ContactFormData } from '../types';
 import { COURSES, BLOGS, CATEGORIES, AWARDS } from './mockData';
 
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 export const api = {
   getCourses: async (): Promise<Course[]> => {
@@ -93,11 +93,15 @@ export const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-      if (!resp.ok) return { success: false };
+      if (!resp.ok) {
+        let msg = 'Login failed';
+        try { const err = await resp.json(); msg = err.message || msg; } catch (e) {}
+        return { success: false, message: msg };
+      }
       return await resp.json();
     } catch (e) {
       console.error(e);
-      return { success: false };
+      return { success: false, message: 'Network error or server unreachable' };
     }
   },
 
@@ -108,11 +112,15 @@ export const api = {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, password })
       });
-      if (!resp.ok) return { success: false };
+      if (!resp.ok) {
+        let msg = 'Registration failed';
+        try { const err = await resp.json(); msg = err.message || msg; } catch (e) {}
+        return { success: false, message: msg };
+      }
       return await resp.json();
     } catch (e) {
       console.error(e);
-      return { success: false };
+      return { success: false, message: 'Network error or server unreachable' };
     }
   },
 
