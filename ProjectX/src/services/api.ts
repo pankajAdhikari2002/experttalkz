@@ -10,7 +10,14 @@ export const api = {
       const resp = await fetch(`${API_BASE_URL}/courses`);
       if (!resp.ok) throw new Error('Network error');
       const data = await resp.json();
-      return data && data.length > 0 ? data : COURSES;
+      if (data && data.length > 0) {
+        const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+        return data.map((c: any) => ({
+          ...c,
+          thumbnail: c.thumbnail && !c.thumbnail.startsWith('http') ? `${baseUrl}/${c.thumbnail}` : c.thumbnail,
+        }));
+      }
+      return COURSES;
     } catch (e) {
       console.warn('API getCourses offline, falling back to mock data:', e);
       return COURSES;
@@ -22,7 +29,12 @@ export const api = {
       const resp = await fetch(`${API_BASE_URL}/courses/${slug}`);
       if (!resp.ok) throw new Error('Network error');
       const data = await resp.json();
-      return data || COURSES.find(c => c.slug === slug);
+      if (data) {
+        const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+        data.thumbnail = data.thumbnail && !data.thumbnail.startsWith('http') ? `${baseUrl}/${data.thumbnail}` : data.thumbnail;
+        return data;
+      }
+      return COURSES.find(c => c.slug === slug);
     } catch (e) {
       console.warn(`API getCourseBySlug offline for slug "${slug}", falling back to mock data:`, e);
       return COURSES.find(c => c.slug === slug);
