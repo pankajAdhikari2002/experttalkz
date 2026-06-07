@@ -50,8 +50,8 @@ const Footer = () => {
             Legal
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            <Link to="/privacy" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Privacy Policy</Link>
-            <Link to="/terms" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Terms & Conditions</Link>
+            <Link to="/privacy" style={{ color: '#2e353e', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Privacy Policy</Link>
+            <Link to="/terms" style={{ color: '#2e353e', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </div>
@@ -61,7 +61,7 @@ const Footer = () => {
         paddingTop: '2rem', 
         borderTop: '1px solid rgba(0, 0, 0, 0.1)',
         textAlign: 'center',
-        color: '#64748b',
+        color: '#244777',
         fontSize: '0.8rem',
         display: 'flex',
         flexDirection: 'column',

@@ -258,25 +258,6 @@ const Opportunities = () => {
               Explore All Courses
             </Button>
           </div>
-          {/*update here*/}
-          <div className="mt-16 text-center">
-            <h1 className="text-3xl font-bold text-white mb-10">Top Hiring Companies</h1>
-            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              
-              {/* International Companies */}
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3">
-              <h2 className="text-xl font-semibold text-white mb-3">🌍 International</h2>
-              <p className="text-slate-300 leading-relaxed">Worley, Wood, Technip Energies, SBM Offshore, AtkinsRéalis, McDermott</p>
-              </div>
-              
-              {/* India-based Companies */}
-              <div className="bg-white/5 border border-white/10 rounded-xl p-3">
-              <h2 className="text-xl font-semibold text-white mb-3"> India-based </h2>
-              <p className="text-slate-300 leading-relaxed">Larsen & Toubro (L&T), Quest Global, Assystem, Cyient, Infosys, IDOM</p>
-              </div>
-             </div>
-             </div>
-          {/*update till here*/}
         </div>
       </Section>
     </>

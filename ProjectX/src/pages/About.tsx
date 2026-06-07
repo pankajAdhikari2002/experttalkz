@@ -5,8 +5,8 @@ import { Target, Award, Lightbulb } from 'lucide-react';
 const About = () => {
   return (
     <>
-      <Meta 
-        title="About Us | Expertalkz Global Solutions" 
+      <Meta
+        title="About Us | Expertalkz Global Solutions"
         description="Learn about Expertalkz's mission to bridge the massive gap between classroom knowledge and real-world offshore industry demands."
       />
       {/* Header */}
@@ -39,7 +39,7 @@ const About = () => {
             </div>
           </div>
           <div className="h-[400px] bg-card-dark rounded-2xl border border-white/5 relative overflow-hidden">
-            <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: 'url("/Cointainer/expertalkz_600x400.png")' }}></div>
+            <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: 'url("/Cointainer/Group Logo 2.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-background-transparent"></div>
           </div>
         </div>

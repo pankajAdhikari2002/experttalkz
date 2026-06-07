@@ -559,6 +559,54 @@ const Home = () => {
         </div>
       </Section>
 
+        {/*updated here*/}
+      {/*─── Who Should Enroll───────────────────────────────────────── */}
+      <Section className="py-20 bg-[#080f1f] border-t border-white/5">
+      <div className="max-w-[1400px] mx-auto text-center">
+        <h2 className="text-3xl font-bold text-white mb-8">
+          Who Should Enroll?
+        </h2>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Link
+          to="/mechanical-engineers"
+          className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+            ✅ Mechanical Engineers (Students & Professionals)
+            </Link>
+            
+            <Link
+            to="/piping-engineers"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              ✅ Piping Engineers
+            </Link>
+            
+            <Link
+            to="/stress-analysis-engineers"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              ✅ Stress Analysis Engineers
+            </Link>
+            
+            <Link
+            to="/pipeline-design-professionals"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              ✅ Pipeline Design Professionals
+              </Link>
+              
+            <Link
+            to="/oil & gas industry professional"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              ✅ Oil & Gas Industry Professionals
+            </Link>
+
+            <Link
+            to="/freshers"
+            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
+              ✅ Freshers
+            </Link>
+          </div>
+        </div>
+      </Section>
+
       {/* ─── ACCREDITATIONS ───────────────────────────────────────── */}
       {awards.length > 0 && (
         <Section className="py-14 border-t border-white/5 bg-background-dark">
