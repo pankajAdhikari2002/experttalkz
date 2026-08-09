@@ -1,7 +1,7 @@
 import type { Course, Blog, Category, Award, ContactFormData } from '../types';
 import { COURSES, BLOGS, CATEGORIES, AWARDS } from './mockData';
 
-const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const rawApiUrl = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3000/api' : '/api');
 const API_BASE_URL = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl.replace(/\/$/, '')}/api`;
 
 export const api = {
