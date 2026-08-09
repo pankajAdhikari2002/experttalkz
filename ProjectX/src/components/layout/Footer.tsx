@@ -4,12 +4,11 @@ const Footer = () => {
   return (
     <footer
       style={{
-        backgroundImage: `url('https://cdn.prod.website-files.com/6768f29a6d5da42209173f20/6768f29b6d5da42209177487_Rectangle%20(83).svg')
-        `,
+        backgroundColor: '#070924',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        color: '#1e293b',
+        
         padding: '4rem 2rem',
         marginTop: 'auto',
         borderTop: '1px solid rgba(0, 0, 0, 0.05)',
@@ -23,35 +22,35 @@ const Footer = () => {
         margin: '0 auto'
       }}>
         <div>
-          <h3 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1.2rem', color: '#0f172a' }}>
+          <h3 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1.2rem', color: '#ffffff' }}>
             Expertalkz Global Solutions LLP
           </h3>
-          <p style={{ color: '#475569', fontSize: '0.875rem', lineHeight: '1.6' }}>
+          <p style={{ color: '#50739b', fontSize: '0.875rem', lineHeight: '1.6' }}>
             "Shaping the Future of Oil & Gas — Jobs, Training & Industry Solutions."
           </p>
         </div>
         
         <div>
-          <h4 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1rem', color: '#0f172a' }}>
+          <h4 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1rem', color: '#ffffff' }}>
             Quick Links
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            <Link to="/" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Home</Link>
-            <Link to="/about" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">About Us</Link>
-            <Link to="/courses" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Training Courses</Link>
-            <Link to="/blog" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Knowledge Hub</Link>
-            <Link to="/opportunities" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Opportunities</Link>
-            <Link to="/contact" style={{ color: '#334155', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Contact Us</Link>
+            <Link to="/" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Home</Link>
+            <Link to="/about" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">About Us</Link>
+            <Link to="/courses" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Training Courses</Link>
+            <Link to="/blog" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Knowledge Hub</Link>
+            <Link to="/opportunities" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Opportunities</Link>
+            <Link to="/contact" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Contact Us</Link>
           </div>
         </div>
 
         <div>
-          <h4 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1rem', color: '#0f172a' }}>
+          <h4 style={{ marginBottom: '1rem', fontWeight: 'bold', fontSize: '1rem', color: '#ffffff' }}>
             Legal
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-            <Link to="/privacy" style={{ color: '#2e353e', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Privacy Policy</Link>
-            <Link to="/terms" style={{ color: '#2e353e', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Terms & Conditions</Link>
+            <Link to="/privacy" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Privacy Policy</Link>
+            <Link to="/terms" style={{ color: '#50739b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '500' }} className="hover:text-[#4169E1] hover:underline transition-colors">Terms & Conditions</Link>
           </div>
         </div>
       </div>
@@ -69,7 +68,7 @@ const Footer = () => {
         maxWidth: '1200px',
         margin: '3rem auto 0 auto'
       }}>
-        <p style={{ lineHeight: '1.6' }}>
+        <p style={{ lineHeight: '1.6' ,color: '#50739b' }}>
           Expertalkz Global Solutions LLP is a registered LLP in India. All training programs and content are subject to availability. Placement support does not guarantee employment.
         </p>
         <p style={{ fontWeight: '600', color: '#475569' }}>
