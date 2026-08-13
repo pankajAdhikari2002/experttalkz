@@ -323,6 +323,7 @@ const Home = () => {
 
       {/* ─── EXPLORE CURRICULUMS (Cards with image + square-ish) ── */}
       <Section className="py-20 bg-background-dark border-t border-white/5">
+
         <div className="max-w-[1400px] mx-auto px-4 md:px-8">
           <div className="text-center mb-12">
             <span className="text-primary font-bold text-xs uppercase tracking-widest block mb-2">Our Programs</span>
@@ -423,6 +424,87 @@ const Home = () => {
                     </Link>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── WHY CHOOSE EXPERTTALKZ ───────────────────────────────── */}
+      <Section className="py-20 bg-[#050914] border-t border-white/5">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <span className="text-primary font-bold text-xs uppercase tracking-widest block mb-2">Why Us</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white">Why Choose Experttalkz?</h2>
+            <p className="text-[#9dabb9] text-sm max-w-2xl mx-auto mt-3">
+              We don't just teach — we prepare you for the real engineering world with expert mentorship, hands-on learning, and dedicated career support.
+            </p>
+            <div className="h-1 w-20 bg-primary mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: 'engineering',
+                color: 'from-blue-600 to-blue-400',
+                glow: 'rgba(59,130,246,0.15)',
+                title: 'Industry-Experienced Trainers',
+                desc: 'Learn directly from professionals with extensive real-world project experience in EPC, Oil & Gas, and offshore engineering.'
+              },
+              {
+                icon: 'handyman',
+                color: 'from-violet-600 to-purple-400',
+                glow: 'rgba(139,92,246,0.15)',
+                title: 'Hands-on Practical Training',
+                desc: 'Gain practical skills through live sessions, real-world projects, and industry case studies — not just theory.'
+              },
+              {
+                icon: 'verified',
+                color: 'from-emerald-600 to-green-400',
+                glow: 'rgba(16,185,129,0.15)',
+                title: 'Industry-Ready Curriculum',
+                desc: 'Courses are designed based on current industry requirements and global engineering standards, keeping you job-ready.'
+              },
+              {
+                icon: 'workspace_premium',
+                color: 'from-amber-600 to-yellow-400',
+                glow: 'rgba(245,158,11,0.15)',
+                title: 'Career Support & Certification',
+                desc: 'Receive career guidance, interview preparation, resume building support, and a course completion certificate.'
+              },
+              {
+                icon: 'devices',
+                color: 'from-cyan-600 to-sky-400',
+                glow: 'rgba(14,165,233,0.15)',
+                title: 'Flexible Online Learning',
+                desc: 'Attend live online classes from anywhere with access to all learning resources, assignments, and recorded sessions.'
+              },
+              {
+                icon: 'public',
+                color: 'from-rose-600 to-pink-400',
+                glow: 'rgba(244,63,94,0.15)',
+                title: 'Global Career Opportunities',
+                desc: 'Build skills that open doors to leading EPC, Oil & Gas, Infrastructure, and Engineering companies worldwide.'
+              }
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="group relative bg-[#0b1428] border border-white/8 rounded-2xl p-7 hover:border-white/20 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
+                style={{ boxShadow: `0 0 0 0 ${item.glow}` }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 32px ${item.glow}`; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.boxShadow = `0 0 0 0 ${item.glow}`; }}
+              >
+                <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500`} />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-5 shadow-lg`}>
+                  <span className="material-symbols-outlined text-white text-[22px]">{item.icon}</span>
+                </div>
+                <h3 className="text-base font-black text-white mb-2.5 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-[#9dabb9] text-xs leading-relaxed">
+                  {item.desc}
+                </p>
+                <div className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r ${item.color} transition-all duration-500 rounded-b-2xl`} />
               </div>
             ))}
           </div>
