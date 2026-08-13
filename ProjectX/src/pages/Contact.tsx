@@ -53,7 +53,7 @@ const Contact = () => {
             CONTACT US
           </h1>
           <p className="text-lg md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-md cursor-pointer hover:text-black transition duration-300">
-            Have questions? We'd love to hear from you.
+            Have questions? We would love to hear from you.
           </p>
         </div>
       </div>
@@ -81,7 +81,8 @@ const Contact = () => {
                   <h3 className="text-lg font-semibold text-white">Call Us</h3>
                   <p className="text-[#9dabb9]">+91-7548969182</p>
                   <p className="text-[#9dabb9]">+91-8527087566</p>
-                  <p className="text-[#9dabb9]">Mon-Fri from 8am to 5pm.</p>
+                  <p className="text-[#9dabb9]">Mon-Sat from 8am to 9pm.</p>
+                  <p className="text-[#9dabb9]">We are available 24/7</p>
                 </div>
               </div>
 

@@ -5,6 +5,7 @@ import Button from '../components/common/Button';
 import Section from '../components/common/Section';
 import { api } from '../services/api';
 import type { Course, Category, Award } from '../types';
+import { Wrench, Layers, Activity, Compass, Flame, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const Home = () => {
   const [featuredCourses, setFeaturedCourses] = useState<Course[]>([]);
@@ -287,14 +288,7 @@ const Home = () => {
                         </h3>
                         <div className="flex items-center justify-between">
                           <div className="flex items-baseline gap-1.5">
-                            {course.discount_price ? (
-                              <>
-                                <span className="text-base font-black text-white">${course.discount_price}</span>
-                                <span className="text-[10px] text-slate-500 line-through">${course.price}</span>
-                              </>
-                            ) : (
-                              <span className="text-base font-black text-white">${course.price}</span>
-                            )}
+                            <span className="text-base font-black text-white">${course.discount_price || course.price}</span>
                           </div>
                           <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full transition-colors ${isActive ? 'bg-primary text-white' : 'bg-white/5 text-slate-400 group-hover:bg-primary/20 group-hover:text-primary'}`}>
                             Enroll →
@@ -374,18 +368,11 @@ const Home = () => {
                     {course.course_name}
                   </h3>
                   <p className="text-[#9dabb9] text-xs leading-relaxed line-clamp-2">
-                    {course.description}
+                    {course.description?.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()}
                   </p>
                   <div className="flex items-center justify-between mt-2 pt-3 border-t border-white/5">
                     <div className="flex items-baseline gap-1.5">
-                      {course.discount_price ? (
-                        <>
-                          <span className="text-lg font-black text-white">${course.discount_price}</span>
-                          <span className="text-xs text-slate-500 line-through">${course.price}</span>
-                        </>
-                      ) : (
-                        <span className="text-lg font-black text-white">${course.price}</span>
-                      )}
+                      <span className="text-lg font-black text-white">${course.discount_price || course.price}</span>
                     </div>
                     <Link to={`/buy/${course.slug}`}>
                       <span className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all cursor-pointer">
@@ -399,7 +386,9 @@ const Home = () => {
                 <div className="absolute inset-0 bg-[#080f1f]/95 border border-primary/30 rounded-2xl p-5 flex flex-col justify-between opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-300 z-20">
                   <div>
                     <h4 className="text-[10px] font-black text-primary uppercase tracking-widest mb-3">Curriculum Quick-Look</h4>
-                    <p className="text-[11px] text-slate-300 leading-relaxed mb-4 line-clamp-5">{course.description}</p>
+                    <p className="text-[11px] text-slate-300 leading-relaxed mb-4 line-clamp-5">
+                      {course.description?.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()}
+                    </p>
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-2 text-[10px] text-slate-400">
                         <span className="material-symbols-outlined !text-[12px] text-primary">check_circle</span>
@@ -560,49 +549,95 @@ const Home = () => {
       </Section>
 
         {/*updated here*/}
-      {/*─── Who Should Enroll───────────────────────────────────────── */}
+      {/*─── Who Should Enroll ───────────────────────────────────────── */}
       <Section className="py-20 bg-[#080f1f] border-t border-white/5">
-      <div className="max-w-[1400px] mx-auto text-center">
-        <h2 className="text-3xl font-bold text-white mb-8">
-          Who Should Enroll?
-        </h2>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Link
-          to="/mechanical-engineers"
-          className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
-            ✅ Mechanical Engineers (Students & Professionals)
-            </Link>
-            
-            <Link
-            to="/piping-engineers"
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
-              ✅ Piping Engineers
-            </Link>
-            
-            <Link
-            to="/stress-analysis-engineers"
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
-              ✅ Stress Analysis Engineers
-            </Link>
-            
-            <Link
-            to="/pipeline-design-professionals"
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
-              ✅ Pipeline Design Professionals
-              </Link>
-              
-            <Link
-            to="/oil & gas industry professional"
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
-              ✅ Oil & Gas Industry Professionals
-            </Link>
+        <div className="max-w-[1400px] mx-auto text-center">
+          <div className="text-center mb-12">
+            <span className="text-primary font-bold text-xs uppercase tracking-widest block mb-2">Target Audience</span>
+            <h2 className="text-3xl md:text-4xl font-black text-white">Who Should Enroll?</h2>
+            <p className="text-[#9dabb9] text-sm max-w-2xl mx-auto mt-3">
+              Industry-aligned training programs built specifically for engineering students, practicing professionals, and career switchers looking to excel in EPC design.
+            </p>
+            <div className="h-1 w-20 bg-primary mx-auto mt-4 rounded-full" />
+          </div>
 
-            <Link
-            to="/freshers"
-            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all">
-              ✅ Freshers
-            </Link>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {[
+              {
+                icon: Wrench,
+                title: "Mechanical Engineers",
+                tag: "Students & Professionals",
+                desc: "Bridge the gap between mechanical theory and real-world EPC plant design, 3D piping, and equipment layout.",
+                link: "/courses"
+              },
+              {
+                icon: Layers,
+                title: "Piping & Layout Engineers",
+                tag: "Design & Modeling",
+                desc: "Master 3D plant design software like SP3D & AVEVA E3D, ASME B31.3 codes, and isometric drawing extraction.",
+                link: "/courses"
+              },
+              {
+                icon: Activity,
+                title: "Stress Analysis Engineers",
+                tag: "CAESAR II & ASME",
+                desc: "Perform static/dynamic pipe stress, thermal expansion, spring hanger sizing, and offshore wave load analysis.",
+                link: "/courses"
+              },
+              {
+                icon: Compass,
+                title: "Pipeline Design Professionals",
+                tag: "Onshore & Subsea",
+                desc: "Develop onshore and subsea pipeline routing, wall thickness calculations, alignment sheets, and offshore design.",
+                link: "/courses"
+              },
+              {
+                icon: Flame,
+                title: "Oil & Gas Industry Veterans",
+                tag: "Career Advancement",
+                desc: "Upgrade your skill set with modern software tools to transition into senior lead engineer & PMC consultancy roles.",
+                link: "/courses"
+              },
+              {
+                icon: GraduationCap,
+                title: "Freshers & Graduates",
+                tag: "Job-Ready Skills",
+                desc: "Gain practical EPC project experience, industry portfolio projects, and dedicated placement guidance to land your first job.",
+                link: "/courses"
+              }
+            ].map((item, idx) => {
+              const IconComponent = item.icon;
+              return (
+                <Link
+                  key={idx}
+                  to={item.link}
+                  className="bg-[#0f1a2e] border border-white/10 rounded-2xl p-6 hover:border-primary/50 hover:bg-[#13223f] hover:-translate-y-1.5 transition-all duration-300 shadow-xl group flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <IconComponent size={24} />
+                      </div>
+                      <span className="flex items-center gap-1.5 text-[11px] font-bold text-green-400 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/20">
+                        <CheckCircle2 size={13} /> {item.tag}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white mb-2.5 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-[#9dabb9] text-xs leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="text-xs font-bold text-slate-400 group-hover:text-primary flex items-center gap-1.5 transition-colors mt-6 pt-4 border-t border-white/5">
+                    <span>Explore Suitable Programs</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </Section>
@@ -612,10 +647,23 @@ const Home = () => {
         <Section className="py-14 border-t border-white/5 bg-background-dark">
           <div className="max-w-[1400px] mx-auto text-center">
             <h2 className="text-sm font-bold text-slate-500 mb-10 uppercase tracking-widest">Our Accreditations & Partners</h2>
-            <div className="flex flex-wrap justify-center gap-10 md:gap-20 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              {awards.map(award => (
-                <img key={award.id} src={award.award_image} alt={award.award_title} className="h-12 object-contain" title={award.award_title} />
-              ))}
+            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+              {awards.map(award => {
+                const label = award.id === '1' ? 'Award' : award.id === '2' ? 'Excellence' : award.id === '3' ? 'Top Rated' : award.award_title;
+                return (
+                  <div 
+                    key={award.id} 
+                    className="w-40 h-14 bg-white rounded-xl shadow-md border border-gray-200 flex items-center justify-center text-black font-black text-sm tracking-wide hover:scale-105 transition-transform"
+                    title={award.award_title}
+                  >
+                    {award.award_image && !award.award_image.includes('placehold.co') ? (
+                      <img src={award.award_image} alt={award.award_title} className="max-h-10 max-w-[85%] object-contain" />
+                    ) : (
+                      <span>{label}</span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </Section>

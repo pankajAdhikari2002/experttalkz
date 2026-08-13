@@ -9,17 +9,17 @@ const Opportunities = () => {
   const careerRoles = [
     {
       id: 1,
-      title: ' Offsour Pipelineing Stree Analysis',
+      title: 'Offshore Piping Stress Analysis',
       salary: '₹2.0 - ₹6.5 LPA/year',
       demand: 'High',
-      courses: ['Piping (Basc-Adv)','PipeStress Analysis using CAESAR_II','ASME Codes'],
+      courses: ['Piping (Basic-Advanced)', 'Pipe Stress Analysis using CAESAR II', 'ASME Codes'],
       skills: ['Pipe routing & layout', 'AutoCAD', 'Stress & flexibility analysis', 'Nozzle load checking', 'P&ID reading'],
       icon: '🎓',
       color: 'blue',
     },
     {
       id: 2,
-      title: 'Pipelineing Design Engineering(E3D)',
+      title: 'Piping Design Engineering (E3D)',
       salary: '₹2 - ₹5 LPA/year',
       demand: 'High',
       courses: ['Isometric Drawing', 'AutoCAD', 'P&ID Reading'],
@@ -29,7 +29,7 @@ const Opportunities = () => {
     },
     {
       id: 3,
-      title: 'Pipelineing Design Engineering(SPSD)',
+      title: 'Piping Design Engineering (SP3D)',
       salary: '₹2 - ₹5 LPA/year',
       demand: 'High',
       courses: ['Equipment modeling', 'Pipe routing', 'Structural modeling','HVAC/cable tray basics','Isometric extraction','Clash checking','Drawing generation'],
@@ -52,7 +52,7 @@ const Opportunities = () => {
   const roadmaps = [
     {
       id: 1,
-      title: 'Offsour Pipelineing Stree Analysis',
+      title: 'Offshore Piping Stress Analysis',
       duration: '6-8 months',
       steps: [
         { phase: 'Phase 1', topics: ['Piping Engineering Design ⭐', 'Mechanical Engineering Fundamentals', 'Pipe Fittings, Valves & Specifications', 'P&ID Reading', 'AutoCAD (2D Drafting & Isometric Drawings)' ] },

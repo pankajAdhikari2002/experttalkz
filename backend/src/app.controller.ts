@@ -34,11 +34,18 @@ export class AppController {
   }
 
   private mapCourse(c: any) {
+    let learnings: string[] = [];
+    try {
+      learnings = c.learnings ? JSON.parse(c.learnings) : [];
+    } catch {
+      learnings = [];
+    }
     return {
       ...c,
       description: c.short_description || c.long_description, // Map to frontend 'description' key
       level: c.course_type?.charAt(0).toUpperCase() + c.course_type?.slice(1), // Map 'basic' to 'Basic'
       category: c.category?.category_title,
+      learnings,
       installments: c.installments ? {
           total_installments: c.installments.length,
           installment_amount: c.installments[0]?.amount

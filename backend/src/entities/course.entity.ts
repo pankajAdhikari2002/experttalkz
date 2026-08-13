@@ -19,6 +19,9 @@ export class Course {
   @Column('longtext', { nullable: true })
   long_description: string;
 
+  @Column('text', { nullable: true })
+  learnings: string; // JSON string: ["Point 1", "Point 2", ...]
+
   @Column('decimal', { precision: 10, scale: 2, nullable: true })
   price: number;
 

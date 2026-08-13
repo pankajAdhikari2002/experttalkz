@@ -28,6 +28,9 @@ export interface Course {
   course_name: string;
   slug: string;
   description: string;
+  short_description?: string;
+  long_description?: string;
+  learnings?: string[]; // Dynamic "What You'll Learn" bullet points
   price: number;
   discount_price?: number;
   course_duration: string;

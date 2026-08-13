@@ -10,16 +10,6 @@ const Events = () => {
 
   const events = [
     {
-      id: 1,
-      type: 'Sales',
-      title: 'Black Friday Sale - 50% Off All Courses',
-      date: 'Nov 24-27, 2024',
-      description: 'Get 50% off on all our premium courses. Limited time offer!',
-      image: '🎉',
-      color: 'red',
-      badge: 'HOT DEAL',
-    },
-    {
       id: 2,
       type: 'New Courses',
       title: 'Advanced AI & Machine Learning Course',
@@ -48,16 +38,6 @@ const Events = () => {
       image: '⚡',
       color: 'purple',
       badge: 'WORKSHOP',
-    },
-    {
-      id: 5,
-      type: 'Sales',
-      title: 'Year-End Clearance - Up to 70% Off',
-      date: 'Dec 20-31, 2024',
-      description: 'Biggest sale of the year! Save up to 70% on selected courses.',
-      image: '🎁',
-      color: 'orange',
-      badge: 'MEGA SALE',
     },
     {
       id: 6,

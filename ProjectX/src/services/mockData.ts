@@ -9,9 +9,9 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const AWARDS: Award[] = [
-  { id: '1', award_title: 'Best Tech Education 2024', award_image: 'https://placehold.co/150x80/162040/FFFFFF?text=Award+2024' },
-  { id: '2', award_title: 'Excellence in E-Learning', award_image: 'https://placehold.co/150x80/162040/FFFFFF?text=Excellence' },
-  { id: '3', award_title: 'Top Rated Curriculum', award_image: 'https://placehold.co/150x80/162040/FFFFFF?text=Top+Rated' },
+  { id: '1', award_title: 'Best Tech Education', award_image: 'https://placehold.co/150x80/FFFFFF/000000?text=Award' },
+  { id: '2', award_title: 'Excellence in E-Learning', award_image: 'https://placehold.co/150x80/FFFFFF/000000?text=Excellence' },
+  { id: '3', award_title: 'Top Rated Curriculum', award_image: 'https://placehold.co/150x80/FFFFFF/000000?text=Top+Rated' },
 ];
 
 export const COURSES: Course[] = [

@@ -114,11 +114,7 @@ const Buy = () => {
                 </div>
 
                 <div className="space-y-3 mb-6">
-                  <div className="flex justify-between text-slate-300">
-                    <span>Original Price</span>
-                    <span className="line-through">${course.originalPrice}</span>
-                  </div>
-                  <div className="pt-3 border-t border-white/5 flex justify-between text-white text-xl font-black">
+                  <div className="flex justify-between text-white text-xl font-black">
                     <span>Total</span>
                     <span>${course.price}</span>
                   </div>
