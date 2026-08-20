@@ -48,8 +48,8 @@ const CourseList = () => {
           <div className="max-w-2xl flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <span className="bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-sm">Featured Course</span>
-              <span className="text-primary font-medium text-sm flex items-center gap-1">
-                <span className="material-symbols-outlined text-base">star</span> 4.9 Rating
+              <span className="text-[#FFB800] font-bold text-sm flex items-center gap-1">
+                <span className="material-symbols-outlined text-base filled" style={{color:'#FFB800'}}>star</span> 4.9 Rating
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black leading-tight tracking-tight text-white drop-shadow-lg">
@@ -133,6 +133,12 @@ const CourseList = () => {
                            <span className="text-slate-400 text-xs flex items-center gap-1">
                               <span className="material-symbols-outlined text-[14px]">schedule</span> {course.course_duration}
                            </span>
+                           {course.rating && (
+                              <span className="ml-auto flex items-center gap-0.5 text-[#FFB800] text-xs font-bold">
+                                <span className="material-symbols-outlined text-[13px]" style={{color:'#FFB800', fontVariationSettings: "'FILL' 1"}}>star</span>
+                                {course.rating}
+                              </span>
+                            )}
                         </div>
 
                         <h3 className="text-lg font-bold text-white leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-2">

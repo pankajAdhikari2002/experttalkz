@@ -271,8 +271,8 @@ const Home = () => {
                             Trending
                           </div>
                         )}
-                        <div className="absolute bottom-3 left-3 flex items-center gap-1 text-yellow-400 text-[11px] font-bold">
-                          <span className="material-symbols-outlined text-[13px] filled">star</span>
+                        <div className="absolute bottom-3 left-3 flex items-center gap-1 text-[11px] font-bold" style={{color:'#FFB800'}}>
+                          <span className="material-symbols-outlined text-[13px]" style={{color:'#FFB800', fontVariationSettings:"'FILL' 1"}}>star</span>
                           {course.rating}
                         </div>
                       </div>
@@ -353,8 +353,8 @@ const Home = () => {
                       EMI
                     </div>
                   )}
-                  <div className="absolute top-3 right-3 flex items-center gap-1 text-yellow-400 text-[11px] font-bold bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded-md">
-                    <span className="material-symbols-outlined text-[13px] filled">star</span>
+                  <div className="absolute top-3 right-3 flex items-center gap-1 text-[11px] font-bold bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded-md" style={{color:'#FFB800'}}>
+                    <span className="material-symbols-outlined text-[13px]" style={{color:'#FFB800', fontVariationSettings:"'FILL' 1"}}>star</span>
                     {course.rating}
                   </div>
                 </div>
