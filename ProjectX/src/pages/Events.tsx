@@ -76,14 +76,14 @@ const Events = () => {
       <Meta title="Events | ExpertTalkz" description="Upcoming events, sales, and special sessions." />
       
       {/* Hero Banner Section */}
-      <div className="relative py-16 md:py-28 text-center bg-cover bg-center"
+      <div className="relative py-14 md:py-28 text-center bg-cover bg-center"
           style={{ backgroundImage: "url('/Cointainer/upcoming events.png')" }}>
         <div className="absolute inset-0 bg-background-dark/40 backdrop-blur-[2px]"></div>
         <div className="relative z-10 px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight drop-shadow-lg cursor-pointer hover:scale-95 transition duration-300">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-3 tracking-tight drop-shadow-lg">
             UPCOMING EVENTS
           </h1>
-          <p className="text-lg md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-md cursor-pointer hover:text-black transition duration-300">
+          <p className="text-base md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-md">
             Stay updated with our latest course sales, new launches, and exclusive student sessions.
           </p>
         </div>
@@ -116,28 +116,28 @@ const Events = () => {
                 key={event.id}
                 className={`bg-gradient-to-br ${colorMap[event.color]} border rounded-2xl overflow-hidden group hover:scale-105 transition-all duration-300 cursor-pointer`}
               >
-                <div className="p-8">
+                <div className="p-5 md:p-8">
                   {/* Icon */}
-                  <div className="text-6xl mb-4">{event.image}</div>
+                  <div className="text-4xl md:text-6xl mb-3 md:mb-4">{event.image}</div>
                   
                   {/* Badge */}
-                  <div className="mb-4">
+                  <div className="mb-3 md:mb-4">
                     <span className={`inline-block px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest border ${badgeColorMap[event.color]}`}>
                       {event.badge}
                     </span>
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
                     {event.title}
                   </h3>
                   
-                  <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
+                  <div className="flex items-center gap-2 text-sm text-slate-400 mb-3 md:mb-4">
                     <span className="material-symbols-outlined !text-[16px]">calendar_today</span>
                     <span>{event.date}</span>
                   </div>
 
-                  <p className="text-slate-300 text-sm mb-6 leading-relaxed">
+                  <p className="text-slate-300 text-sm mb-4 md:mb-6 leading-relaxed">
                     {event.description}
                   </p>
 
@@ -150,16 +150,16 @@ const Events = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-20 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl border border-primary/20 p-8 md:p-12 text-center">
-            <h2 className="text-3xl font-black text-white mb-4">Don't Miss Out!</h2>
-            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
+          <div className="mt-12 md:mt-20 bg-gradient-to-r from-primary/20 to-primary/5 rounded-2xl border border-primary/20 p-6 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-3 md:mb-4">Don't Miss Out!</h2>
+            <p className="text-slate-300 mb-5 md:mb-6 max-w-2xl mx-auto text-sm md:text-base">
               Subscribe to our newsletter to get notified about upcoming events, exclusive deals, and new course launches.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-500 outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all"
+                className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-slate-500 outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all text-sm"
               />
               <Button className="w-full sm:w-auto whitespace-nowrap">
                 Subscribe

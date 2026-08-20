@@ -10,10 +10,10 @@ const About = () => {
         description="Learn about Expertalkz's mission to bridge the massive gap between classroom knowledge and real-world offshore industry demands."
       />
       {/* Header */}
-      <div className="bg-surface-dark py-16 text-center">
-        <div className="container mx-auto px-6">
-          <h1 className="text-5xl font-extrabold mb-4 text-white">We Are Engineers of Society. Architects of Ambition.</h1>
-          <p className="text-xl text-[#9dabb9] max-w-2xl mx-auto">
+      <div className="bg-surface-dark py-12 md:py-16 text-center">
+        <div className="container mx-auto px-4 md:px-6">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 text-white leading-tight">We Are Engineers of Society.<br className="md:hidden" /> Architects of Ambition.</h1>
+          <p className="text-base md:text-xl text-[#9dabb9] max-w-2xl mx-auto">
             Expertalkz Global Solutions LLP — Powering the Future of Industry Since 2020.
           </p>
         </div>
@@ -21,12 +21,12 @@ const About = () => {
 
       {/* Mission Section */}
       <Section>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div>
-            <h2 className="text-4xl font-bold mb-6 text-white">
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-white">
               Born from a Gap. <span className="text-primary">Built for a Generation.</span>
             </h2>
-            <div className="flex flex-col gap-4 text-[#9dabb9] text-lg leading-relaxed">
+            <div className="flex flex-col gap-4 text-[#9dabb9] text-base md:text-lg leading-relaxed">
               <p>
                 Expertalkz was founded in 2020 with one clear mission: to bridge the massive gap between classroom knowledge and real-world offshore industry demands.
               </p>
@@ -38,7 +38,7 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="h-[400px] bg-card-dark rounded-2xl border border-white/5 relative overflow-hidden">
+          <div className="h-[260px] md:h-[400px] bg-card-dark rounded-2xl border border-white/5 relative overflow-hidden mt-4 md:mt-0">
             <div className="absolute inset-0 bg-cover bg-center opacity-50" style={{ backgroundImage: 'url("/Cointainer/Group Logo 2.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-background-transparent"></div>
           </div>

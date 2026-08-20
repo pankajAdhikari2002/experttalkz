@@ -96,29 +96,29 @@ const Opportunities = () => {
       <Meta title="Opportunities | ExpertTalkz" description="Explore career opportunities and learning roadmaps." />
       
       {/* Hero Banner Section */}
-      <div className="relative py-16 md:py-28 text-center bg-cover bg-center"
+      <div className="relative py-14 md:py-28 text-center bg-cover bg-center"
           style={{ backgroundImage: 'url("https://cdn.searchenginejournal.com/wp-content/uploads/2018/06/5-SEO-Opportunities-You-May-Be-Missing-Out-On.png")' }}>
         <div className="absolute inset-0 bg-background-dark/40 backdrop-blur-[2px]"></div>
         <div className="relative z-10 px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight drop-shadow-lg cursor-pointer hover:scale-95 transition duration-300">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-3 tracking-tight drop-shadow-lg">
             CAREER OPPORTUNITIES
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 font-medium max-w-2xl mx-auto drop-shadow-md cursor-pointer hover:text-white transition duration-300">
+          <p className="text-base md:text-xl text-slate-300 font-medium max-w-2xl mx-auto drop-shadow-md">
             Discover what roles you can pursue and the courses you need to get there.
           </p>
         </div>
       </div>
 
-      <Section className="py-20">
+      <Section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
 
           {/* Tabs */}
-          <div className="flex justify-center gap-4 mb-12">
+          <div className="flex justify-center gap-3 mb-8 md:mb-12">
             {['Roles', 'Roadmaps'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-8 py-3 rounded-xl font-bold text-sm transition-all ${
+                className={`px-6 md:px-8 py-2.5 md:py-3 rounded-xl font-bold text-sm transition-all ${
                   activeTab === tab
                     ? 'bg-primary text-white shadow-lg shadow-primary/20'
                     : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white border border-white/10'
@@ -131,11 +131,11 @@ const Opportunities = () => {
 
           {/* Career Roles Tab */}
           {activeTab === 'Roles' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
               {careerRoles.map((role) => (
                 <div
                   key={role.id}
-                  className="bg-card-dark border border-white/10 rounded-2xl p-8 hover:border-primary/30 transition-all group"
+                  className="bg-card-dark border border-white/10 rounded-2xl p-5 md:p-8 hover:border-primary/30 transition-all group"
                 >
                   {/* Icon & Title */}
                   <div className="flex items-center gap-4 mb-6">

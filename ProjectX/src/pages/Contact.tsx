@@ -45,20 +45,20 @@ const Contact = () => {
       />
       
       {/* Hero Banner Section */}
-      <div className="relative py-16 md:py-28 text-center bg-cover bg-center"
+      <div className="relative py-14 md:py-28 text-center bg-cover bg-center"
           style={{ backgroundImage: "url('/Cointainer/Handshake_A.png')" }}>
         <div className="absolute inset-0 bg-background-dark/40 backdrop-blur-[2px]"></div>
         <div className="relative z-10 px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight drop-shadow-lg cursor-pointer hover:scale-95 transition duration-300">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-3 tracking-tight drop-shadow-lg">
             CONTACT US
           </h1>
-          <p className="text-lg md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-md cursor-pointer hover:text-black transition duration-300">
+          <p className="text-base md:text-xl text-white font-medium max-w-2xl mx-auto drop-shadow-md">
             Have questions? We would love to hear from you.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 md:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
           {/* Contact Info */}
           <div>
             <h2 className="text-2xl font-bold mb-8 text-white">Get in Touch</h2>
