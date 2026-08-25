@@ -11,6 +11,7 @@ import { Blog } from './entities/blog.entity';
 import { Award } from './entities/award.entity';
 import { AuthModule } from './auth/auth.module';
 import { PaymentsModule } from './payments/payments.module';
+import { UploadModule } from './upload/upload.module';
 
 // ─── Feature Modules ───────────────────────────────────────────────────────
 // Uncomment each line as you create the module folder
@@ -78,6 +79,7 @@ import { PaymentsModule } from './payments/payments.module';
     TypeOrmModule.forFeature([Category, Course, CourseInstallment, Blog, Award]),
     AuthModule,
     PaymentsModule,
+    UploadModule,
   ],
 
   controllers: [AppController],
