@@ -171,7 +171,7 @@ export default function RichWordEditor({
   return (
     <div className="bg-[#161b22] border border-[#30363d] rounded-2xl overflow-hidden shadow-2xl flex flex-col transition-all">
       {/* ─── Top Word-Style Ribbon Toolbar ─────────────────────────────── */}
-      <div className="bg-[#0d1117] border-b border-[#30363d] p-2 sm:p-2.5 flex flex-wrap items-center gap-1 sm:gap-1.5 text-slate-300 select-none sticky top-16 z-20 backdrop-blur">
+      <div className="bg-[#0d1117] border-b border-[#30363d] p-2 sm:p-2.5 flex flex-wrap items-center gap-1 sm:gap-1.5 text-slate-300 select-none relative z-10">
         {/* Undo / Redo */}
         <div className="flex items-center gap-0.5 border-r border-[#30363d] pr-1.5 mr-0.5">
           <button
