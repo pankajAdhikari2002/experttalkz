@@ -12,42 +12,25 @@ import {
   Query,
 } from '@nestjs/common';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import { extname, join } from 'path';
+import { join } from 'path';
 import { existsSync, readdirSync, unlinkSync } from 'fs';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 // ─── Allowed file types ────────────────────────────────────────────────────
-const IMAGE_MIME_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+const IMAGE_EXTENSIONS = /\.(jpg|jpeg|png|webp|gif)$/i;
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
 // ─── Valid upload folders ──────────────────────────────────────────────────
 const VALID_FOLDERS = ['courses', 'blogs', 'misc'];
 const BASE_UPLOAD_PATH = join(process.cwd(), '..', 'uploads');
 
-// ─── Multer storage factory ────────────────────────────────────────────────
-function makeStorage(folder: string) {
-  return diskStorage({
-    destination: join(BASE_UPLOAD_PATH, folder),
-    filename: (_req, file, cb) => {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-      const ext = extname(file.originalname).toLowerCase();
-      const safeName = file.originalname
-        .replace(ext, '')
-        .toLowerCase()
-        .replace(/[^a-z0-9]/g, '-')
-        .substring(0, 50);
-      cb(null, `${safeName}-${uniqueSuffix}${ext}`);
-    },
-  });
-}
-
 // ─── Multer file filter ────────────────────────────────────────────────────
-function imageFileFilter(_req: any, file: Express.Multer.File, cb: any) {
-  if (IMAGE_MIME_TYPES.includes(file.mimetype)) {
+function imageFileFilter(_req: any, file: Express.Multer.File, cb: (error: Error | null, acceptFile: boolean) => void) {
+  const allowed = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+  if (allowed.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new BadRequestException(`Invalid file type. Allowed: JPG, PNG, WebP, GIF`), false);
+    cb(new BadRequestException('Invalid file type. Allowed: JPG, PNG, WebP, GIF'), false);
   }
 }
 
@@ -56,15 +39,13 @@ export class UploadController {
   private readonly baseUrl = process.env.BASE_URL || 'https://expertalkzglobalsolutions.in';
 
   // ─── POST /api/upload/:folder ─────────────────────────────────────────
-  // Upload a single image to the specified folder
-  // Requires JWT auth (admin only)
+  // Upload a single image to the specified folder (requires login)
   @Post(':folder')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(
     FileInterceptor('file', {
       fileFilter: imageFileFilter,
       limits: { fileSize: MAX_FILE_SIZE },
-      // storage is set dynamically — see below
     }),
   )
   uploadSingle(
@@ -78,7 +59,6 @@ export class UploadController {
       throw new BadRequestException('No file uploaded. Use multipart/form-data with field name "file"');
     }
 
-    // Move file to correct folder (multer stored it in temp — reconfigure via interceptor override)
     const url = `${this.baseUrl}/uploads/${folder}/${file.filename}`;
     return {
       success: true,
@@ -122,7 +102,7 @@ export class UploadController {
   }
 
   // ─── GET /api/upload/:folder ──────────────────────────────────────────
-  // List all images in a folder (admin only)
+  // List all images in a folder
   @Get(':folder')
   @UseGuards(JwtAuthGuard)
   listFiles(@Param('folder') folder: string) {
@@ -134,7 +114,7 @@ export class UploadController {
     if (!existsSync(dir)) return { files: [] };
 
     const files = readdirSync(dir)
-      .filter((f) => IMAGE_MIME_TYPES.some((mime) => f.match(/\.(jpg|jpeg|png|webp|gif)$/i)))
+      .filter((f) => IMAGE_EXTENSIONS.test(f))
       .map((filename) => ({
         filename,
         url: `${this.baseUrl}/uploads/${folder}/${filename}`,
@@ -144,12 +124,12 @@ export class UploadController {
   }
 
   // ─── DELETE /api/upload/:folder?filename=xxx ─────────────────────────
-  // Delete a specific file (admin only)
+  // Delete a specific file
   @Delete(':folder')
   @UseGuards(JwtAuthGuard)
   deleteFile(@Param('folder') folder: string, @Query('filename') filename: string) {
     if (!VALID_FOLDERS.includes(folder)) {
-      throw new BadRequestException(`Invalid folder.`);
+      throw new BadRequestException('Invalid folder.');
     }
     if (!filename || filename.includes('..') || filename.includes('/')) {
       throw new BadRequestException('Invalid filename.');
