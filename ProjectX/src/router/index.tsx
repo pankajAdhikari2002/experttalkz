@@ -19,6 +19,14 @@ const Profile = lazy(() => import('../pages/Dashboard/Profile'));
 const ProtectedRoute = lazy(() => import('../components/common/ProtectedRoute'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
+// Admin pages
+const AdminGuard = lazy(() => import('../pages/Admin/AdminGuard'));
+const AdminLayout = lazy(() => import('../pages/Admin/AdminLayout'));
+const AdminDashboard = lazy(() => import('../pages/Admin/AdminDashboard'));
+const AdminCourses = lazy(() => import('../pages/Admin/AdminCourses'));
+const AdminCourseForm = lazy(() => import('../pages/Admin/AdminCourseForm'));
+const AdminBlogs = lazy(() => import('../pages/Admin/AdminBlogs'));
+const AdminBlogForm = lazy(() => import('../pages/Admin/AdminBlogForm'));
 // Loading component
 const Loading = () => (
   <div style={{ 
@@ -73,6 +81,29 @@ export const router = createBrowserRouter([
             path: 'profile',
             element: <Profile />,
           }
+        ]
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AdminGuard />
+      </Suspense>
+    ),
+    children: [
+      {
+        path: '',
+        element: <AdminLayout />,
+        children: [
+          { index: true, element: <AdminDashboard /> },
+          { path: 'courses', element: <AdminCourses /> },
+          { path: 'courses/new', element: <AdminCourseForm /> },
+          { path: 'courses/:id/edit', element: <AdminCourseForm /> },
+          { path: 'blogs', element: <AdminBlogs /> },
+          { path: 'blogs/new', element: <AdminBlogForm /> },
+          { path: 'blogs/:id/edit', element: <AdminBlogForm /> },
         ]
       }
     ]
