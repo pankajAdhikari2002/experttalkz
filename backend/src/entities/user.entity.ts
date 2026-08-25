@@ -29,6 +29,9 @@ export class User {
   @Column({ nullable: true })
   remember_token: string;
 
+  @Column({ type: 'enum', enum: ['user', 'admin'], default: 'user' })
+  role: string;
+
   @Column({ default: true })
   is_active: boolean;
 

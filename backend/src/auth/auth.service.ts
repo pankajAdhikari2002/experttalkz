@@ -29,7 +29,7 @@ export class AuthService {
     });
     user = await this.usersRepository.save(user);
 
-    const payload = { email: user.email, sub: user.id, name: user.name };
+    const payload = { email: user.email, sub: user.id, name: user.name, role: user.role };
     return {
       success: true,
       message: 'Account created successfully',
@@ -49,7 +49,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { email: user.email, sub: user.id, name: user.name };
+    const payload = { email: user.email, sub: user.id, name: user.name, role: user.role };
     return {
       success: true,
       message: 'Logged in successfully',

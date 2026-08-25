@@ -12,6 +12,7 @@ import { Award } from './entities/award.entity';
 import { AuthModule } from './auth/auth.module';
 import { PaymentsModule } from './payments/payments.module';
 import { UploadModule } from './upload/upload.module';
+import { AdminModule } from './admin/admin.module';
 
 // ─── Feature Modules ───────────────────────────────────────────────────────
 // Uncomment each line as you create the module folder
@@ -80,6 +81,7 @@ import { UploadModule } from './upload/upload.module';
     AuthModule,
     PaymentsModule,
     UploadModule,
+    AdminModule,
   ],
 
   controllers: [AppController],
