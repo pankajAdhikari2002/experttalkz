@@ -39,16 +39,16 @@ const BlogList = () => {
     });
   }, [blogs, searchQuery, selectedTag]);
 
-  // Featured Hero Article (first featured or latest)
+  // Featured Hero Article (only if explicitly marked as featured)
   const featuredBlog = useMemo(() => {
     if (blogs.length === 0) return null;
-    return blogs.find((b: any) => b.is_featured) || blogs[0];
+    return blogs.find((b: any) => Boolean(b.is_featured && Number(b.is_featured) !== 0)) || null;
   }, [blogs]);
 
-  // Regular grid articles (excluding hero if no search is active)
+  // Regular grid articles (excluding hero if featured article exists and no search query)
   const gridBlogs = useMemo(() => {
     if (searchQuery.trim()) return filteredBlogs;
-    if (featuredBlog && filteredBlogs.length > 1) {
+    if (featuredBlog) {
       return filteredBlogs.filter((b) => b.id !== featuredBlog.id);
     }
     return filteredBlogs;
