@@ -1,4 +1,5 @@
-import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
+import { useEffect, useState } from 'react';
+import type { ChangeEvent, FormEvent } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 export default function AdminBlogForm() {
