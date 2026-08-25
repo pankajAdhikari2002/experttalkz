@@ -13,7 +13,7 @@ export class Course {
   @Column({ unique: true })
   slug: string;
 
-  @Column('varchar', { length: 255, nullable: true })
+  @Column('text', { nullable: true })
   short_description: string;
 
   @Column('longtext', { nullable: true })
@@ -28,7 +28,7 @@ export class Course {
   @Column('decimal', { precision: 10, scale: 2, nullable: true })
   discount_price: number;
 
-  @Column('varchar', { nullable: true })
+  @Column('varchar', { length: 255, nullable: true })
   course_duration: string;
 
   @Column({ type: 'enum', enum: ['online', 'offline', 'hybrid'], default: 'online' })
@@ -37,10 +37,10 @@ export class Course {
   @Column({ type: 'enum', enum: ['basic', 'intermediate', 'advanced'], default: 'basic' })
   course_type: string;
 
-  @Column('varchar', { nullable: true })
+  @Column('varchar', { length: 500, nullable: true })
   thumbnail: string;
 
-  @Column('varchar', { nullable: true })
+  @Column('varchar', { length: 500, nullable: true })
   banner_images: string;
 
   @Column('varchar', { length: 250, nullable: true })
