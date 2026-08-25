@@ -56,10 +56,12 @@ const BlogList = () => {
           {blogs.map((blog) => (
             <Link key={blog.id} to={`/blog/${blog.slug}`} className="block group">
               <Card hover className="h-full">
-                <div className="h-60 bg-surface-dark rounded-lg mb-6 overflow-hidden">
-                   {/* Placeholder for blog image */}
-                   <div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style={{ backgroundImage: "url('/Cointainer/5 Soft Skill.png')" }}></div>
-                   </div>
+                <div className="h-60 bg-surface-dark rounded-xl mb-6 overflow-hidden relative">
+                   <div 
+                     className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110" 
+                     style={{ backgroundImage: `url('${blog.featured_image || blog.banner_image || '/Cointainer/5 Soft Skill.png'}')` }}
+                   />
+                </div>
 
                 <div className="flex items-center gap-2 text-[#9dabb9] text-sm mb-4">
                   <Calendar size={14} />

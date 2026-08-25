@@ -70,7 +70,18 @@ export const api = {
       const resp = await fetch(`${API_BASE_URL}/blogs`);
       if (!resp.ok) throw new Error('Network error');
       const data = await resp.json();
-      return data && data.length > 0 ? data : BLOGS;
+      if (data && data.length > 0) {
+        const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+        return data.map((b: any) => ({
+          ...b,
+          featured_image: b.featured_image && !b.featured_image.startsWith('http') ? `${baseUrl}/${b.featured_image.replace(/^\//, '')}` : b.featured_image,
+          banner_image: b.banner_image && !b.banner_image.startsWith('http') ? `${baseUrl}/${b.banner_image.replace(/^\//, '')}` : b.banner_image,
+          date: b.published_at
+            ? new Date(b.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+            : (b.created_at ? new Date(b.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : ''),
+        }));
+      }
+      return BLOGS;
     } catch (e) {
       console.warn('API getBlogs offline, falling back to mock data:', e);
       return BLOGS;
@@ -82,7 +93,16 @@ export const api = {
       const resp = await fetch(`${API_BASE_URL}/blogs/${slug}`);
       if (!resp.ok) throw new Error('Network error');
       const data = await resp.json();
-      return data || BLOGS.find(b => b.slug === slug);
+      if (data) {
+        const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+        data.featured_image = data.featured_image && !data.featured_image.startsWith('http') ? `${baseUrl}/${data.featured_image.replace(/^\//, '')}` : data.featured_image;
+        data.banner_image = data.banner_image && !data.banner_image.startsWith('http') ? `${baseUrl}/${data.banner_image.replace(/^\//, '')}` : data.banner_image;
+        data.date = data.published_at
+          ? new Date(data.published_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+          : (data.created_at ? new Date(data.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '');
+        return data;
+      }
+      return BLOGS.find(b => b.slug === slug);
     } catch (e) {
       console.warn(`API getBlogBySlug offline for slug "${slug}", falling back to mock data:`, e);
       return BLOGS.find(b => b.slug === slug);

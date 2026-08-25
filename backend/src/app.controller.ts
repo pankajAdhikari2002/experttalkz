@@ -33,6 +33,11 @@ export class AppController {
     return this.appService.getBlogs();
   }
 
+  @Get('blogs/:slug')
+  getBlogBySlug(@Param('slug') slug: string) {
+    return this.appService.getBlogBySlug(slug);
+  }
+
   private mapCourse(c: any) {
     let learnings: string[] = [];
     try {

@@ -44,11 +44,20 @@ export interface Course {
 }
 
 export interface Blog {
-  id: string;
+  id: string | number;
   title: string;
   slug: string;
-  excerpt: string;
-  date: string;
+  excerpt?: string;
+  content?: string;
+  featured_image?: string;
+  banner_image?: string;
+  status?: 'draft' | 'published' | 'archived' | string;
+  is_featured?: number | boolean;
+  is_active?: number | boolean;
+  published_at?: string;
+  created_at?: string;
+  updated_at?: string;
+  date?: string; // Formatted date for frontend display
 }
 
 export interface ContactFormData {

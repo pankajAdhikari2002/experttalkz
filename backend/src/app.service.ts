@@ -53,4 +53,10 @@ export class AppService {
       order: { created_at: 'DESC' }
     });
   }
+
+  async getBlogBySlug(slug: string) {
+    return this.blogRepo.findOne({ 
+      where: { slug, is_active: 1 } 
+    });
+  }
 }
