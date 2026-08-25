@@ -1,8 +1,8 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 export default function AdminGuard() {
-  const token = localStorage.getItem('token');
-  const userStr = localStorage.getItem('user');
+  const token = localStorage.getItem('expertTalkz_auth_token');
+  const userStr = localStorage.getItem('expertTalkz_active_user');
 
   if (!token || !userStr) {
     return <Navigate to="/login" replace />;

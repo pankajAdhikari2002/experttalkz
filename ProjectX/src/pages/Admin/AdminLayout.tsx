@@ -7,8 +7,8 @@ export default function AdminLayout() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    localStorage.removeItem('expertTalkz_auth_token');
+    localStorage.removeItem('expertTalkz_active_user');
     navigate('/login');
   };
 

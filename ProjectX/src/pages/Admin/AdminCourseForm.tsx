@@ -25,7 +25,7 @@ export default function AdminCourseForm() {
     if (isEdit) {
       const fetchCourse = async () => {
         try {
-          const token = localStorage.getItem('token');
+          const token = localStorage.getItem('expertTalkz_auth_token');
           const res = await fetch(`/api/admin/courses/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
@@ -61,7 +61,7 @@ export default function AdminCourseForm() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('expertTalkz_auth_token');
     const uploadData = new FormData();
     uploadData.append('file', file);
 
@@ -88,7 +88,7 @@ export default function AdminCourseForm() {
     setSaving(true);
 
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const method = isEdit ? 'PUT' : 'POST';
       const url = isEdit ? `/api/admin/courses/${id}` : '/api/admin/courses';
 

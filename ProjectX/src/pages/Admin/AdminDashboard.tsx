@@ -8,7 +8,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('expertTalkz_auth_token');
         const headers = { Authorization: `Bearer ${token}` };
 
         // Fetch counts in parallel

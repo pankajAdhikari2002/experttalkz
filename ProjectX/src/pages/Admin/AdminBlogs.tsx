@@ -7,7 +7,7 @@ export default function AdminBlogs() {
 
   const fetchBlogs = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const res = await fetch('/api/admin/blogs?limit=50', {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -30,7 +30,7 @@ export default function AdminBlogs() {
     if (!confirm('Are you sure you want to delete this blog?')) return;
     
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const res = await fetch(`/api/admin/blogs/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
@@ -48,7 +48,7 @@ export default function AdminBlogs() {
 
   const handleToggleStatus = async (id: number, currentStatus: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const newStatus = currentStatus === 'published' ? 'draft' : 'published';
       const res = await fetch(`/api/admin/blogs/${id}/status`, {
         method: 'PATCH',

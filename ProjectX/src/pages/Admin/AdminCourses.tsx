@@ -7,7 +7,7 @@ export default function AdminCourses() {
 
   const fetchCourses = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const res = await fetch('/api/admin/courses?limit=50', {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -30,7 +30,7 @@ export default function AdminCourses() {
     if (!confirm('Are you sure you want to delete this course?')) return;
     
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const res = await fetch(`/api/admin/courses/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
@@ -48,7 +48,7 @@ export default function AdminCourses() {
 
   const handleToggleStatus = async (id: number, currentStatus: number) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token');
       const newStatus = currentStatus === 1 ? 0 : 1;
       const res = await fetch(`/api/admin/courses/${id}/status`, {
         method: 'PATCH',

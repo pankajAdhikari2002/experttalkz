@@ -21,6 +21,17 @@ const Login = () => {
     try {
       const result = await login(email, password);
       if (result.success) {
+        // Decode the JWT token to get the user's role securely
+        const token = localStorage.getItem('expertTalkz_auth_token');
+        if (token) {
+          const payloadBase64 = token.split('.')[1];
+          const decodedPayload = JSON.parse(atob(payloadBase64));
+          
+          if (decodedPayload.role === 'admin') {
+            navigate('/admin');
+            return;
+          }
+        }
         navigate('/dashboard');
       } else {
         setError(result.message);
