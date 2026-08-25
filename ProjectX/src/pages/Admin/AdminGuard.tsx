@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 export default function AdminGuard() {
@@ -10,7 +9,7 @@ export default function AdminGuard() {
   }
 
   try {
-    const user = JSON.parse(userStr);
+    JSON.parse(userStr);
     
     // We parse the token payload to check for the admin role
     const payloadBase64 = token.split('.')[1];
