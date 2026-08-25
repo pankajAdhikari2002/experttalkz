@@ -22,10 +22,10 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
 // ─── Valid upload folders ──────────────────────────────────────────────────
 const VALID_FOLDERS = ['courses', 'blogs', 'misc'];
-const BASE_UPLOAD_PATH = join(process.cwd(), '..', 'uploads');
+const BASE_UPLOAD_PATH = join(process.cwd(), 'uploads');
 
 // ─── Multer file filter ────────────────────────────────────────────────────
-function imageFileFilter(_req: any, file: Express.Multer.File, cb: (error: Error | null, acceptFile: boolean) => void) {
+function imageFileFilter(_req: any, file: any, cb: (error: Error | null, acceptFile: boolean) => void) {
   const allowed = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
   if (allowed.includes(file.mimetype)) {
     cb(null, true);
@@ -49,7 +49,7 @@ export class UploadController {
     }),
   )
   uploadSingle(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: any,
     @Param('folder') folder: string,
   ) {
     if (!VALID_FOLDERS.includes(folder)) {
@@ -81,7 +81,7 @@ export class UploadController {
     }),
   )
   uploadMultiple(
-    @UploadedFiles() files: Express.Multer.File[],
+    @UploadedFiles() files: any[],
     @Param('folder') folder: string,
   ) {
     if (!VALID_FOLDERS.includes(folder)) {

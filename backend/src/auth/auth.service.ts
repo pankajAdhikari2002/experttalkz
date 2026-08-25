@@ -33,7 +33,7 @@ export class AuthService {
     return {
       success: true,
       message: 'Account created successfully',
-      user: { name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
       access_token: this.jwtService.sign(payload),
     };
   }
@@ -53,7 +53,7 @@ export class AuthService {
     return {
       success: true,
       message: 'Logged in successfully',
-      user: { name: user.name, email: user.email },
+      user: { id: user.id, name: user.name, email: user.email, role: user.role },
       access_token: this.jwtService.sign(payload),
     };
   }

@@ -1,26 +1,39 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 export default function AdminGuard() {
+  const location = useLocation();
   const token = localStorage.getItem('expertTalkz_auth_token');
-  const userStr = localStorage.getItem('expertTalkz_active_user');
 
-  if (!token || !userStr) {
-    return <Navigate to="/login" replace />;
+  if (!token) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   try {
-    JSON.parse(userStr);
-    
-    // We parse the token payload to check for the admin role
-    const payloadBase64 = token.split('.')[1];
-    const decodedPayload = JSON.parse(atob(payloadBase64));
+    const parts = token.split('.');
+    if (parts.length !== 3) {
+      localStorage.removeItem('expertTalkz_auth_token');
+      localStorage.removeItem('expertTalkz_active_user');
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
 
-    if (decodedPayload.role !== 'admin') {
-      return <Navigate to="/" replace />; // Redirect non-admins to home
+    const payload = JSON.parse(atob(parts[1]));
+
+    // Check expiration if exp claim is present
+    if (payload.exp && payload.exp * 1000 < Date.now()) {
+      localStorage.removeItem('expertTalkz_auth_token');
+      localStorage.removeItem('expertTalkz_active_user');
+      return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    if (payload.role !== 'admin') {
+      return <Navigate to="/" replace />;
     }
 
     return <Outlet />;
   } catch (err) {
-    return <Navigate to="/login" replace />;
+    console.error('Failed to verify admin token:', err);
+    localStorage.removeItem('expertTalkz_auth_token');
+    localStorage.removeItem('expertTalkz_active_user');
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 }

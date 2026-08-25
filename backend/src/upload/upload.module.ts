@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
+// @ts-ignore
 import { diskStorage } from 'multer';
 import { extname, join } from 'path';
 import { UploadController } from './upload.controller';
 
 const VALID_FOLDERS = ['courses', 'blogs', 'misc'];
-const BASE_UPLOAD_PATH = join(process.cwd(), '..', 'uploads');
+const BASE_UPLOAD_PATH = join(process.cwd(), 'uploads');
 
 @Module({
   imports: [
