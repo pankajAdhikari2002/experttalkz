@@ -11,14 +11,14 @@ const BASE_UPLOAD_PATH = join(process.cwd(), '..', 'uploads');
   imports: [
     MulterModule.register({
       storage: diskStorage({
-        destination: (req, _file, cb) => {
-          const folder = req.params?.folder;
+        destination: (req: any, _file: any, cb: any) => {
+          const folder = String(req.params?.folder ?? 'misc');
           const dest = VALID_FOLDERS.includes(folder)
             ? join(BASE_UPLOAD_PATH, folder)
             : join(BASE_UPLOAD_PATH, 'misc');
           cb(null, dest);
         },
-        filename: (_req, file, cb) => {
+        filename: (_req: any, file: any, cb: any) => {
           const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
           const ext = extname(file.originalname).toLowerCase();
           const safeName = file.originalname
