@@ -42,7 +42,8 @@ const Home = () => {
           api.getAwards()
         ]);
         setAllCourses(coursesData);
-        setFeaturedCourses(coursesData.filter(c => c.is_featured));
+        const explicitFeatured = coursesData.filter(c => Boolean(c.is_featured && Number(c.is_featured) !== 0));
+        setFeaturedCourses(explicitFeatured.length > 0 ? explicitFeatured : coursesData.slice(0, 5));
         setCategories(allCats);
         setAwards(allAwards);
       } catch (error) {

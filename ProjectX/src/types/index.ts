@@ -39,7 +39,8 @@ export interface Course {
   thumbnail: string;
   category?: string; // This might need to link to Category ID in real DB, but keeping string for now
   rating?: number;
-  is_featured?: boolean;
+  is_featured?: number | boolean;
+  status?: number;
   installments?: InstallmentPlan; // Mocking the relationship
 }
 

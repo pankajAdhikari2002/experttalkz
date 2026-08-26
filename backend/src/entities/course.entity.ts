@@ -55,6 +55,9 @@ export class Course {
   @Column({ type: 'tinyint', default: 1 })
   status: number;
 
+  @Column({ type: 'tinyint', default: 0 })
+  is_featured: number;
+
   @Column({ type: 'int', default: 0 })
   sorting_order: number;
 

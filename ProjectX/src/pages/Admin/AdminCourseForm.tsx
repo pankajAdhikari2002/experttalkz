@@ -42,6 +42,7 @@ export default function AdminCourseForm() {
     banner_images: '',
     syllabus_file: '',
     status: 1,
+    is_featured: false,
     sorting_order: 0,
   });
 
@@ -95,6 +96,7 @@ export default function AdminCourseForm() {
               banner_images: data.banner_images || '',
               syllabus_file: data.syllabus_file || '',
               status: data.status !== undefined ? data.status : 1,
+              is_featured: Boolean(data.is_featured && Number(data.is_featured) !== 0),
               sorting_order: data.sorting_order || 0,
             });
 
@@ -821,6 +823,37 @@ export default function AdminCourseForm() {
                 placeholder="0"
                 className="w-full px-4 py-3 bg-[#0d1117] border border-[#30363d] rounded-xl text-sm text-white focus:outline-none focus:border-primary"
               />
+            </div>
+
+            {/* Featured Course Toggle */}
+            <div className="p-4 rounded-xl bg-[#0d1117] border border-[#30363d] flex items-center justify-between gap-4 md:col-span-2">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                  <span className="material-symbols-outlined text-2xl">star</span>
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-white flex items-center gap-2">
+                    Feature in Hero Carousel & Top Picks
+                    {formData.is_featured && (
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                        Featured Active
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-xs text-slate-400 mt-0.5">
+                    Promote this course in the interactive 3D rotating hero carousel on the homepage and at the top of the Courses catalog.
+                  </div>
+                </div>
+              </div>
+              <label className="relative inline-flex items-center cursor-pointer shrink-0">
+                <input
+                  type="checkbox"
+                  checked={formData.is_featured}
+                  onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
+                  className="sr-only peer"
+                />
+                <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+              </label>
             </div>
           </div>
         </div>

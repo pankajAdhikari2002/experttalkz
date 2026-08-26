@@ -177,6 +177,7 @@ export class AdminCoursesController {
       content_hour: body.content_hour ? parseInt(body.content_hour, 10) : undefined,
       is_free: body.is_free ? 1 : 0,
       status: body.status !== undefined ? parseInt(body.status, 10) : 1,
+      is_featured: body.is_featured ? 1 : 0,
       sorting_order: body.sorting_order ? parseInt(body.sorting_order, 10) : 0,
       category: category,
       created_at: new Date(),
@@ -253,6 +254,7 @@ export class AdminCoursesController {
     (course as any).content_hour = body.content_hour !== undefined ? (body.content_hour ? parseInt(body.content_hour, 10) : null) : course.content_hour;
     (course as any).is_free = body.is_free !== undefined ? (body.is_free ? 1 : 0) : course.is_free;
     (course as any).status = body.status !== undefined ? parseInt(body.status, 10) : course.status;
+    (course as any).is_featured = body.is_featured !== undefined ? (body.is_featured ? 1 : 0) : course.is_featured;
     (course as any).sorting_order = body.sorting_order !== undefined ? parseInt(body.sorting_order, 10) : course.sorting_order;
     (course as any).category = category;
     (course as any).updated_at = new Date();
@@ -282,5 +284,17 @@ export class AdminCoursesController {
       updated_at: new Date(),
     });
     return { success: true, status: parsedStatus };
+  }
+
+  // ─── PATCH /api/admin/courses/:id/featured ──────────────────────────
+  @Patch(':id/featured')
+  async toggleFeatured(@Param('id') id: string, @Body('is_featured') isFeatured: any) {
+    const courseId = parseInt(id, 10);
+    const parsedFeatured = isFeatured ? 1 : 0;
+    await this.courseRepository.update(courseId, {
+      is_featured: parsedFeatured,
+      updated_at: new Date(),
+    });
+    return { success: true, is_featured: parsedFeatured };
   }
 }

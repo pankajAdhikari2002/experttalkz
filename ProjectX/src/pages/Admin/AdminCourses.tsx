@@ -13,6 +13,7 @@ interface CourseItem {
   course_type?: string;
   thumbnail?: string;
   status: number;
+  is_featured: number | boolean;
   sorting_order: number;
   created_at: string;
   category?: {
@@ -129,6 +130,45 @@ export default function AdminCourses() {
         prev.map((c) => (c.id === id ? { ...c, status: currentStatus } : c))
       );
       showToast('Network error updating status', 'error');
+    }
+  };
+
+  const handleToggleFeatured = async (id: number, currentFeatured: any) => {
+    const isCurrentlyFeatured = Boolean(currentFeatured && Number(currentFeatured) !== 0);
+    const newFeatured = isCurrentlyFeatured ? 0 : 1;
+
+    setCourses((prev) =>
+      prev.map((c) => (c.id === id ? { ...c, is_featured: newFeatured } : c))
+    );
+
+    try {
+      const token = localStorage.getItem('expertTalkz_auth_token');
+      const res = await fetch(`/api/admin/courses/${id}/featured`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ is_featured: newFeatured }),
+      });
+
+      if (res.ok) {
+        showToast(
+          newFeatured === 1
+            ? 'Course promoted to Featured carousel & top banner ⭐'
+            : 'Course removed from Featured section'
+        );
+      } else {
+        setCourses((prev) =>
+          prev.map((c) => (c.id === id ? { ...c, is_featured: isCurrentlyFeatured ? 1 : 0 } : c))
+        );
+        showToast('Failed to update featured status', 'error');
+      }
+    } catch (err) {
+      setCourses((prev) =>
+        prev.map((c) => (c.id === id ? { ...c, is_featured: isCurrentlyFeatured ? 1 : 0 } : c))
+      );
+      showToast('Network error updating featured status', 'error');
     }
   };
 
@@ -319,6 +359,7 @@ export default function AdminCourses() {
                 <th className="px-4 py-4 font-bold">Category</th>
                 <th className="px-4 py-4 font-bold">Mode & Level</th>
                 <th className="px-4 py-4 font-bold">Pricing</th>
+                <th className="px-4 py-4 font-bold">Featured</th>
                 <th className="px-4 py-4 font-bold">Status</th>
                 <th className="px-6 py-4 font-bold text-right">Actions</th>
               </tr>
@@ -326,7 +367,7 @@ export default function AdminCourses() {
             <tbody className="divide-y divide-[#21262d]">
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-16 text-center">
+                  <td colSpan={7} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center justify-center gap-3">
                       <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
                       <span className="text-sm text-slate-400">Loading courses catalog...</span>
@@ -335,7 +376,7 @@ export default function AdminCourses() {
                 </tr>
               ) : courses.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-16 text-center">
+                  <td colSpan={7} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center justify-center gap-3 max-w-sm mx-auto">
                       <div className="w-14 h-14 rounded-2xl bg-white/5 border border-[#30363d] flex items-center justify-center text-slate-500">
                         <span className="material-symbols-outlined text-3xl">search_off</span>
@@ -357,139 +398,162 @@ export default function AdminCourses() {
                   </td>
                 </tr>
               ) : (
-                courses.map((course) => (
-                  <tr key={course.id} className="hover:bg-[#1f242c] transition-colors group">
-                    {/* Course Name & Thumbnail */}
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-4">
-                        <div className="w-14 h-10 rounded-lg bg-[#0d1117] border border-[#30363d] overflow-hidden shrink-0 flex items-center justify-center relative">
-                          {course.thumbnail ? (
-                            <img
-                              src={formatImageUrl(course.thumbnail)}
-                              alt=""
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                (e.target as HTMLElement).style.display = 'none';
-                              }}
-                            />
-                          ) : (
-                            <span className="material-symbols-outlined text-slate-600 text-lg">image</span>
-                          )}
-                        </div>
-                        <div className="min-w-0">
-                          <Link
-                            to={`/admin/courses/${course.id}/edit`}
-                            className="font-semibold text-white group-hover:text-primary transition-colors truncate block max-w-xs md:max-w-sm"
-                          >
-                            {course.course_name}
-                          </Link>
-                          <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-[11px] font-mono text-slate-400 truncate">
-                              /{course.slug}
-                            </span>
-                            {course.course_duration && (
-                              <>
-                                <span className="text-slate-600 text-xs">•</span>
-                                <span className="text-[11px] text-slate-400">
-                                  {course.course_duration}
-                                </span>
-                              </>
+                courses.map((course) => {
+                  const isFeatured = Boolean(course.is_featured && Number(course.is_featured) !== 0);
+
+                  return (
+                    <tr key={course.id} className="hover:bg-[#1f242c] transition-colors group">
+                      {/* Course Name & Thumbnail */}
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-4">
+                          <div className="w-14 h-10 rounded-lg bg-[#0d1117] border border-[#30363d] overflow-hidden shrink-0 flex items-center justify-center relative">
+                            {course.thumbnail ? (
+                              <img
+                                src={formatImageUrl(course.thumbnail)}
+                                alt=""
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  (e.target as HTMLElement).style.display = 'none';
+                                }}
+                              />
+                            ) : (
+                              <span className="material-symbols-outlined text-slate-600 text-lg">image</span>
                             )}
                           </div>
+                          <div className="min-w-0">
+                            <Link
+                              to={`/admin/courses/${course.id}/edit`}
+                              className="font-semibold text-white hover:text-primary transition-colors line-clamp-1 block text-sm"
+                            >
+                              {course.course_name}
+                            </Link>
+                            <div className="flex items-center gap-2 mt-0.5">
+                              <span className="text-[11px] text-slate-400 font-mono">
+                                /{course.slug}
+                              </span>
+                              {course.course_duration && (
+                                <>
+                                  <span className="text-slate-600 text-xs">•</span>
+                                  <span className="text-[11px] text-slate-400">
+                                    {course.course_duration}
+                                  </span>
+                                </>
+                              )}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
+                      </td>
 
-                    {/* Category */}
-                    <td className="px-4 py-4">
-                      {course.category ? (
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-medium">
-                          {course.category.category_title}
-                        </span>
-                      ) : (
-                        <span className="text-xs text-slate-400 italic">Uncategorized</span>
-                      )}
-                    </td>
-
-                    {/* Mode & Level */}
-                    <td className="px-4 py-4">
-                      <div className="flex flex-col gap-1 items-start">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-500/15 text-purple-300 border border-purple-500/30">
-                          {course.course_mode || 'Online'}
-                        </span>
-                        <span className="text-[11px] text-slate-400 capitalize">
-                          {course.course_type || 'Basic'} Level
-                        </span>
-                      </div>
-                    </td>
-
-                    {/* Pricing */}
-                    <td className="px-4 py-4">
-                      {course.is_free ? (
-                        <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold text-xs border border-emerald-500/30">
-                          FREE
-                        </span>
-                      ) : (
-                        <div className="flex flex-col">
-                          <span className="font-bold text-white text-sm">
-                            ₹{course.discount_price !== null && course.discount_price !== undefined ? course.discount_price : course.price}
+                      {/* Category */}
+                      <td className="px-4 py-4">
+                        {course.category ? (
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-medium">
+                            {course.category.category_title}
                           </span>
-                          {course.discount_price && course.discount_price < course.price && (
-                            <span className="text-[11px] text-slate-400 line-through">
-                              ₹{course.price}
-                            </span>
-                          )}
+                        ) : (
+                          <span className="text-xs text-slate-400 italic">Uncategorized</span>
+                        )}
+                      </td>
+
+                      {/* Mode & Level */}
+                      <td className="px-4 py-4">
+                        <div className="flex flex-col gap-1 items-start">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-500/15 text-purple-300 border border-purple-500/30">
+                            {course.course_mode || 'Online'}
+                          </span>
+                          <span className="text-[11px] text-slate-400 capitalize">
+                            {course.course_type || 'Basic'} Level
+                          </span>
                         </div>
-                      )}
-                    </td>
+                      </td>
 
-                    {/* Status Toggle */}
-                    <td className="px-4 py-4">
-                      <button
-                        onClick={() => handleToggleStatus(course.id, course.status)}
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all ${
-                          course.status === 1
-                            ? 'bg-green-500/15 text-green-400 border border-green-500/30 hover:bg-green-500/25'
-                            : 'bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25'
-                        }`}
-                      >
-                        <span className={`w-1.5 h-1.5 rounded-full ${course.status === 1 ? 'bg-green-400' : 'bg-amber-400'}`} />
-                        {course.status === 1 ? 'Published' : 'Draft'}
-                      </button>
-                    </td>
+                      {/* Pricing */}
+                      <td className="px-4 py-4">
+                        {course.is_free ? (
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold text-xs border border-emerald-500/30">
+                            FREE
+                          </span>
+                        ) : (
+                          <div className="flex flex-col">
+                            <span className="font-bold text-white text-sm">
+                              ₹{course.discount_price !== null && course.discount_price !== undefined ? course.discount_price : course.price}
+                            </span>
+                            {course.discount_price && course.discount_price < course.price && (
+                              <span className="text-[11px] text-slate-400 line-through">
+                                ₹{course.price}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </td>
 
-                    {/* Action Buttons */}
-                    <td className="px-6 py-4 text-right">
-                      <div className="flex items-center justify-end gap-1.5">
-                        <a
-                          href={`/courses/${course.slug}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          title="Preview public page"
-                          className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
-                        >
-                          <span className="material-symbols-outlined text-lg">visibility</span>
-                        </a>
-
-                        <Link
-                          to={`/admin/courses/${course.id}/edit`}
-                          title="Edit course"
-                          className="p-2 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors"
-                        >
-                          <span className="material-symbols-outlined text-lg">edit</span>
-                        </Link>
-
+                      {/* Featured Toggle */}
+                      <td className="px-4 py-4">
                         <button
-                          onClick={() => setDeleteModal({ id: course.id, name: course.course_name })}
-                          title="Delete course"
-                          className="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                          type="button"
+                          onClick={() => handleToggleFeatured(course.id, course.is_featured)}
+                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold transition-all ${
+                            isFeatured
+                              ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40 hover:bg-amber-500/30 shadow-sm shadow-amber-500/10'
+                              : 'bg-white/5 text-slate-400 border border-white/10 hover:text-slate-200 hover:bg-white/10'
+                          }`}
+                          title={isFeatured ? 'Click to remove from Featured' : 'Click to mark as Featured'}
                         >
-                          <span className="material-symbols-outlined text-lg">delete</span>
+                          <span className={`material-symbols-outlined text-sm ${isFeatured ? 'text-amber-400' : 'text-slate-500'}`}>
+                            star
+                          </span>
+                          <span>{isFeatured ? 'Featured' : 'Standard'}</span>
                         </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                      </td>
+
+                      {/* Status Toggle */}
+                      <td className="px-4 py-4">
+                        <button
+                          onClick={() => handleToggleStatus(course.id, course.status)}
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                            course.status === 1
+                              ? 'bg-green-500/15 text-green-400 border border-green-500/30 hover:bg-green-500/25'
+                              : 'bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25'
+                          }`}
+                        >
+                          <span className={`w-1.5 h-1.5 rounded-full ${course.status === 1 ? 'bg-green-400' : 'bg-amber-400'}`} />
+                          {course.status === 1 ? 'Published' : 'Draft'}
+                        </button>
+                      </td>
+
+                      {/* Action Buttons */}
+                      <td className="px-6 py-4 text-right">
+                        <div className="flex items-center justify-end gap-1.5">
+                          <a
+                            href={`/courses/${course.slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            title="Preview public page"
+                            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                          >
+                            <span className="material-symbols-outlined text-lg">visibility</span>
+                          </a>
+
+                          <Link
+                            to={`/admin/courses/${course.id}/edit`}
+                            title="Edit course"
+                            className="p-2 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors"
+                          >
+                            <span className="material-symbols-outlined text-lg">edit</span>
+                          </Link>
+
+                          <button
+                            onClick={() => setDeleteModal({ id: course.id, name: course.course_name })}
+                            title="Delete course"
+                            className="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                          >
+                            <span className="material-symbols-outlined text-lg">delete</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>
