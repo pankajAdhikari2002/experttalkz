@@ -72,12 +72,12 @@ const Footer = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-5 pb-6 border-t border-white/10 flex flex-col gap-1.5 text-center">
-          <p className="text-white/75 text-xs leading-relaxed px-2">
+        <div className="mt-10 pt-5 pb-6 border-t border-white/10 flex flex-col gap-2 text-center">
+          <p className="text-slate-200 text-xs font-normal leading-relaxed px-2">
             Expertalkz Global Solutions LLP is a registered LLP in India. All training programs and
             content are subject to availability. Placement support does not guarantee employment.
           </p>
-          <p className="font-semibold text-white text-xs">
+          <p className="font-bold text-white text-xs">
             © 2020–{new Date().getFullYear()} Expertalkz Global Solutions LLP. All rights reserved.
           </p>
         </div>
