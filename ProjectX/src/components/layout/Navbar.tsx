@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useCurrency } from '../../context/CurrencyContext';
 import Button from '../common/Button';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
+  const { currency, setCurrency } = useCurrency();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -68,8 +70,36 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* ── Desktop Auth Buttons ── */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* ── Desktop Currency Toggle & Auth Buttons ── */}
+        <div className="hidden md:flex items-center gap-3.5">
+          {/* Currency Switcher */}
+          <div className="flex items-center p-0.5 rounded-xl bg-white/5 border border-white/10 shadow-inner">
+            <button
+              type="button"
+              onClick={() => setCurrency('USD')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                currency === 'USD'
+                  ? 'bg-primary text-black shadow-md font-black'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              $ USD
+            </button>
+            <button
+              type="button"
+              onClick={() => setCurrency('INR')}
+              className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                currency === 'INR'
+                  ? 'bg-primary text-black shadow-md font-black'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              ₹ INR
+            </button>
+          </div>
+
+          <div className="h-4 w-px bg-white/10" />
+
           {isAuthenticated ? (
             <>
               <Link to="/dashboard">
@@ -96,16 +126,39 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* ── Mobile: Hamburger only ── */}
-        <button
-          className="md:hidden text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className="material-symbols-outlined !text-[26px]">
-            {isOpen ? 'close' : 'menu'}
-          </span>
-        </button>
+        {/* ── Mobile Controls (Currency Toggle + Hamburger) ── */}
+        <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center p-0.5 rounded-lg bg-white/5 border border-white/10">
+            <button
+              type="button"
+              onClick={() => setCurrency('USD')}
+              className={`px-2 py-0.5 rounded-md text-[11px] font-bold ${
+                currency === 'USD' ? 'bg-primary text-black font-black' : 'text-slate-400'
+              }`}
+            >
+              $
+            </button>
+            <button
+              type="button"
+              onClick={() => setCurrency('INR')}
+              className={`px-2 py-0.5 rounded-md text-[11px] font-bold ${
+                currency === 'INR' ? 'bg-primary text-black font-black' : 'text-slate-400'
+              }`}
+            >
+              ₹
+            </button>
+          </div>
+
+          <button
+            className="text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="material-symbols-outlined !text-[26px]">
+              {isOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* ── Mobile Menu Overlay ── */}

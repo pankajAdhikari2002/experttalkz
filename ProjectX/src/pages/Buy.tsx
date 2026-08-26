@@ -4,12 +4,14 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import Meta from '../components/common/Meta';
 import Section from '../components/common/Section';
 import { useAuth } from '../context/AuthContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { api } from '../services/api';
 
 const Buy = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
+  const { currency, formatPrice } = useCurrency();
   const [processing, setProcessing] = useState(false);
   const [course, setCourse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -116,8 +118,13 @@ const Buy = () => {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between text-white text-xl font-black">
                     <span>Total</span>
-                    <span>${course.price}</span>
+                    <span className="text-primary">{formatPrice(course.price)}</span>
                   </div>
+                  {currency === 'INR' && (
+                    <p className="text-[11px] text-slate-400 text-right">
+                      (Approx. ${course.price} USD)
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

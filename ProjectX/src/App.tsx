@@ -3,12 +3,15 @@ import { HelmetProvider } from 'react-helmet-async';
 import { router } from './router';
 
 import { AuthProvider } from './context/AuthContext';
+import { CurrencyProvider } from './context/CurrencyContext';
 
 function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <CurrencyProvider>
+          <RouterProvider router={router} />
+        </CurrencyProvider>
       </AuthProvider>
     </HelmetProvider>
   );

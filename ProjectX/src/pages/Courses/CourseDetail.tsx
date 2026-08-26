@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import type { Course } from '../../types';
 import { api } from '../../services/api';
+import { useCurrency } from '../../context/CurrencyContext';
 import Section from '../../components/common/Section';
 import Button from '../../components/common/Button';
 import Meta from '../../components/common/Meta';
@@ -10,6 +11,7 @@ import { CheckCircle, Clock, BarChart } from 'lucide-react';
 const CourseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+  const { formatPrice } = useCurrency();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -64,7 +66,12 @@ const CourseDetail = () => {
           />
           <div className="flex items-center gap-10">
             <div className="flex flex-col">
-              <span className="text-4xl font-extrabold text-white">${course.discount_price || course.price}</span>
+              <span className="text-4xl font-extrabold text-white">{formatPrice(course.discount_price || course.price)}</span>
+              {course.discount_price && course.discount_price < course.price && (
+                <span className="text-sm text-slate-400 line-through mt-0.5">
+                  {formatPrice(course.price)}
+                </span>
+              )}
             </div>
             <Link to={`/buy/${slug}`}>
               <Button size="lg" className="px-8 py-3 font-bold bg-white text-black hover:bg-gray-100 border-none">Enroll Now</Button>
