@@ -18,6 +18,12 @@ const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const sliderIntervalRef = useRef<any>(null);
 
+  const formatImageUrl = (url?: string) => {
+    if (!url) return 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `/${url.replace(/^\/+/, '')}`;
+  };
+
   const startSlider = (total: number) => {
     stopSlider();
     if (total === 0) return;
@@ -43,7 +49,7 @@ const Home = () => {
         ]);
         setAllCourses(coursesData);
         const explicitFeatured = coursesData.filter(c => Boolean(c.is_featured && Number(c.is_featured) !== 0));
-        setFeaturedCourses(explicitFeatured.length > 0 ? explicitFeatured : coursesData.slice(0, 5));
+        setFeaturedCourses(explicitFeatured);
         setCategories(allCats);
         setAwards(allAwards);
       } catch (error) {
@@ -261,7 +267,7 @@ const Home = () => {
                       <div className="relative w-full aspect-[4/3] overflow-hidden bg-[#0b1530]">
                         <div
                           className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                          style={{ backgroundImage: `url("${course.thumbnail}")` }}
+                          style={{ backgroundImage: `url("${formatImageUrl(course.thumbnail)}")` }}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b1530] via-transparent to-transparent" />
                         {course.installments && (
