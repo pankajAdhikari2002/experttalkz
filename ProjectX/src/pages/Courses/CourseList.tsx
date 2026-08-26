@@ -117,6 +117,12 @@ export default function CourseList() {
     setSortBy('default');
   };
 
+  const formatImageUrl = (url?: string) => {
+    if (!url) return 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `/${url.replace(/^\/+/, '')}`;
+  };
+
   const getCleanDescription = (desc?: string) => {
     if (!desc) return '';
     return desc.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -145,11 +151,9 @@ export default function CourseList() {
           <div
             className="absolute inset-0 w-full h-full bg-cover bg-center opacity-25 filter blur-xs scale-105"
             style={{
-              backgroundImage: `url(${
-                (featuredCourse as any).banner_images ||
-                featuredCourse.thumbnail ||
-                'https://arrowwingsacademy.com/wp-content/uploads/2024/05/industrial-furnace-heat-exchanger-cracking-hydrocarbons-factory-sky-sunset-close-up-equipment-petrochemical-plant-min-scaled-1.jpg'
-              })`,
+              backgroundImage: `url(${formatImageUrl(
+                featuredCourse.thumbnail || (featuredCourse as any).banner_images
+              )})`,
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b14] via-[#070b14]/90 to-transparent" />
@@ -395,11 +399,12 @@ export default function CourseList() {
                   >
                     {course.thumbnail ? (
                       <img
-                        src={course.thumbnail}
+                        src={formatImageUrl(course.thumbnail)}
                         alt={course.course_name}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => {
-                          (e.target as HTMLElement).style.display = 'none';
+                          (e.target as HTMLImageElement).src =
+                            'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80';
                         }}
                       />
                     ) : (

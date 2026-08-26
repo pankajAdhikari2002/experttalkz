@@ -58,10 +58,13 @@ const CourseDetail = () => {
     );
   }
 
-  const courseImage =
-    (course as any).banner_images ||
-    course.thumbnail ||
-    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80';
+  const formatImageUrl = (url?: string) => {
+    if (!url) return 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `/${url.replace(/^\/+/, '')}`;
+  };
+
+  const courseImage = formatImageUrl(course.thumbnail || (course as any).banner_images);
 
   return (
     <div className="min-h-screen bg-[#070b14] text-white">
@@ -147,7 +150,8 @@ const CourseDetail = () => {
                     alt={course.course_name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      (e.target as HTMLElement).style.display = 'none';
+                      (e.target as HTMLImageElement).src =
+                        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
@@ -192,6 +196,10 @@ const CourseDetail = () => {
                   src={courseImage}
                   alt={course.course_name}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col items-center justify-center gap-2">
                   <div className="w-12 h-12 rounded-full bg-primary text-black flex items-center justify-center shadow-lg">
