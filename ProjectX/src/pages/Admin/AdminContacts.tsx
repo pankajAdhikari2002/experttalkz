@@ -55,6 +55,7 @@ export default function AdminContacts() {
         setContacts(data.items || []);
         setTotalCount(data.total || 0);
         setUnreadCount(data.unreadCount || 0);
+        window.dispatchEvent(new CustomEvent('inquiriesUpdated', { detail: { unreadCount: data.unreadCount || 0 } }));
       } else {
         showToast('Failed to load contact inquiries', 'error');
       }
@@ -92,7 +93,17 @@ export default function AdminContacts() {
         showToast(`Marked as ${newStatus}`);
         // update unread count
         if (newStatus === 'read') {
-          setUnreadCount((c) => Math.max(0, c - 1));
+          setUnreadCount((c) => {
+            const next = Math.max(0, c - 1);
+            window.dispatchEvent(new CustomEvent('inquiriesUpdated', { detail: { unreadCount: next } }));
+            return next;
+          });
+        } else if (newStatus === 'unread') {
+          setUnreadCount((c) => {
+            const next = c + 1;
+            window.dispatchEvent(new CustomEvent('inquiriesUpdated', { detail: { unreadCount: next } }));
+            return next;
+          });
         }
       } else {
         showToast('Failed to update status', 'error');

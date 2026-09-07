@@ -5,8 +5,23 @@ export default function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('Admin');
+  const [unreadInquiriesCount, setUnreadInquiriesCount] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const fetchUnreadCount = async () => {
+    try {
+      const token = localStorage.getItem('expertTalkz_auth_token');
+      if (!token) return;
+      const res = await fetch('/api/admin/contacts/unread-count', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setUnreadInquiriesCount(data.unreadCount || 0);
+      }
+    } catch {}
+  };
 
   useEffect(() => {
     try {
@@ -17,6 +32,24 @@ export default function AdminLayout() {
         if (u.name) setUserName(u.name);
       }
     } catch {}
+
+    fetchUnreadCount();
+
+    const handleCustomUpdate = (e: any) => {
+      if (e?.detail?.unreadCount !== undefined) {
+        setUnreadInquiriesCount(e.detail.unreadCount);
+      } else {
+        fetchUnreadCount();
+      }
+    };
+
+    window.addEventListener('inquiriesUpdated', handleCustomUpdate);
+    const interval = setInterval(fetchUnreadCount, 30000);
+
+    return () => {
+      window.removeEventListener('inquiriesUpdated', handleCustomUpdate);
+      clearInterval(interval);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -114,9 +147,17 @@ export default function AdminLayout() {
                     >
                       {item.icon}
                     </span>
-                    <div className="flex flex-col flex-1">
-                      <span className="text-sm leading-none">{item.name}</span>
-                      <span className="text-[11px] text-slate-400 mt-1 font-normal leading-none group-hover:text-slate-300">
+                    <div className="flex flex-col flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1.5">
+                        <span className="text-sm leading-none truncate">{item.name}</span>
+                        {item.path === '/admin/contacts' && unreadInquiriesCount > 0 && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500 text-black shadow-sm shrink-0">
+                            <span className="w-1.5 h-1.5 rounded-full bg-black animate-pulse" />
+                            {unreadInquiriesCount > 99 ? '99+' : unreadInquiriesCount} new
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[11px] text-slate-400 mt-1 font-normal leading-none group-hover:text-slate-300 truncate">
                         {item.description}
                       </span>
                     </div>
@@ -209,7 +250,25 @@ export default function AdminLayout() {
           </div>
 
           {/* Quick Header Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            {/* Notification Bell */}
+            <Link
+              to="/admin/contacts"
+              className="relative p-2 text-slate-400 hover:text-white rounded-lg hover:bg-white/5 transition-colors"
+              title={
+                unreadInquiriesCount > 0
+                  ? `${unreadInquiriesCount} new inquiry${unreadInquiriesCount > 1 ? 's' : ''}`
+                  : 'Inquiries & Leads'
+              }
+            >
+              <span className="material-symbols-outlined text-xl">notifications</span>
+              {unreadInquiriesCount > 0 && (
+                <span className="absolute top-1 right-1 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-amber-500 text-[10px] font-black text-black ring-2 ring-[#161b22]">
+                  {unreadInquiriesCount > 99 ? '99+' : unreadInquiriesCount}
+                </span>
+              )}
+            </Link>
+
             <Link
               to="/admin/courses/new"
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/15 text-primary border border-primary/30 text-xs font-semibold hover:bg-primary/25 transition-colors"
@@ -220,7 +279,7 @@ export default function AdminLayout() {
             <div className="h-5 w-px bg-[#30363d] hidden sm:block" />
             <button
               onClick={handleLogout}
-              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-red-400 py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors font-medium"
+              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-red-400 py-1.5 px-2 rounded-lg hover:bg-white/5 transition-colors font-medium cursor-pointer"
             >
               <span className="material-symbols-outlined text-base">logout</span>
               <span className="hidden sm:inline">Logout</span>

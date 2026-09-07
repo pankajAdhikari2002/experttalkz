@@ -66,6 +66,13 @@ export class AdminContactsController {
     };
   }
 
+  // Get unread contact count for badge
+  @Get('unread-count')
+  async getUnreadCount() {
+    const count = await this.contactRepo.count({ where: { status: 'unread' } });
+    return { unreadCount: count };
+  }
+
   // Get single contact message details
   @Get(':id')
   async findOne(@Param('id') id: string) {
