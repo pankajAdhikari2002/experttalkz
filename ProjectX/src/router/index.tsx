@@ -29,18 +29,10 @@ const AdminBlogs = lazy(() => import('../pages/Admin/AdminBlogs'));
 const AdminBlogForm = lazy(() => import('../pages/Admin/AdminBlogForm'));
 const AdminUsers = lazy(() => import('../pages/Admin/AdminUsers'));
 const AdminContacts = lazy(() => import('../pages/Admin/AdminContacts'));
+import Loader from '../components/common/Loader';
+
 // Loading component
-const Loading = () => (
-  <div style={{ 
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    height: '100vh',
-    color: 'var(--primary)'
-  }}>
-    Loading...
-  </div>
-);
+const Loading = () => <Loader fullScreen />;
 
 
 const Login = lazy(() => import('../pages/Auth/Login'));

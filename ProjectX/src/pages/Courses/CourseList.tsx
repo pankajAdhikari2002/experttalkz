@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Meta from '../../components/common/Meta';
+import Loader from '../../components/common/Loader';
 import { api } from '../../services/api';
 import { useCurrency } from '../../context/CurrencyContext';
 import type { Course, Category } from '../../types';
@@ -129,12 +130,7 @@ export default function CourseList() {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-[70vh] flex flex-col gap-4 items-center justify-center text-white">
-        <div className="w-12 h-12 rounded-full border-2 border-primary border-t-transparent animate-spin" />
-        <p className="text-sm font-semibold text-slate-300">Loading Engineering Courses...</p>
-      </div>
-    );
+    return <Loader className="min-h-[70vh]" />;
   }
 
   return (

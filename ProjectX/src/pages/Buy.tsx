@@ -6,6 +6,7 @@ import Section from '../components/common/Section';
 import { useAuth } from '../context/AuthContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { api } from '../services/api';
+import Loader from '../components/common/Loader';
 
 const Buy = () => {
   const { slug } = useParams();
@@ -70,7 +71,7 @@ const Buy = () => {
   };
 
   if (loading) {
-    return <div className="min-h-screen bg-background-dark pt-32 flex justify-center"><div className="animate-spin text-primary material-symbols-outlined text-4xl">autorenew</div></div>;
+    return <Loader fullScreen />;
   }
 
   if (!course) {
@@ -137,8 +138,8 @@ const Buy = () => {
 
                 {processing && (
                   <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 mb-8 flex flex-col items-center justify-center gap-3">
-                    <span className="material-symbols-outlined animate-spin text-primary !text-[32px]">autorenew</span>
-                    <p className="text-primary font-bold text-lg">Verifying transaction...</p>
+                    <div className="w-8 h-8 rounded-full border-2 border-primary/20 border-t-primary animate-spin" />
+                    <p className="text-primary font-semibold text-sm">Verifying transaction...</p>
                   </div>
                 )}
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Loader from '../../components/common/Loader';
 
 interface ContactItem {
   id: number;
@@ -258,12 +259,7 @@ export default function AdminContacts() {
       {/* Inquiries Table */}
       <div className="bg-[#161b22] border border-[#30363d] rounded-2xl overflow-hidden shadow-xl">
         {loading ? (
-          <div className="py-20 flex flex-col items-center justify-center gap-3 text-slate-400">
-            <span className="material-symbols-outlined animate-spin text-3xl text-primary">
-              progress_activity
-            </span>
-            <span className="text-xs font-semibold">Loading contact messages...</span>
-          </div>
+          <Loader className="py-20" text="Loading contact messages..." />
         ) : contacts.length === 0 ? (
           <div className="py-16 text-center space-y-3 px-4">
             <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-slate-400">

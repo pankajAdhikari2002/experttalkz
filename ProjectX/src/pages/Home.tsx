@@ -7,6 +7,7 @@ import { api } from '../services/api';
 import { useCurrency } from '../context/CurrencyContext';
 import type { Course, Category, Award } from '../types';
 import { Wrench, Layers, Activity, Compass, Flame, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react';
+import Loader from '../components/common/Loader';
 
 const Home = () => {
   const { formatPrice } = useCurrency();
@@ -79,12 +80,7 @@ const Home = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-[70vh] flex flex-col gap-4 items-center justify-center text-white bg-background-dark">
-        <span className="material-symbols-outlined animate-spin text-5xl text-primary">autorenew</span>
-        <p className="text-slate-300 font-medium">Loading Offshore Engineering Data...</p>
-      </div>
-    );
+    return <Loader fullScreen />;
   }
 
   // Testimonials with real student images

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import type { Blog } from '../../types';
 import { api } from '../../services/api';
 import Meta from '../../components/common/Meta';
+import Loader from '../../components/common/Loader';
 import { Calendar, ArrowLeft, Clock, Share2, Check, ArrowRight, BookOpen, ChevronRight } from 'lucide-react';
 
 const BlogDetail = () => {
@@ -76,14 +77,7 @@ const BlogDetail = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-[#07090e] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-10 h-10 rounded-full border-3 border-primary border-t-transparent animate-spin" />
-          <span className="text-sm text-slate-400 font-medium">Loading engineering article...</span>
-        </div>
-      </div>
-    );
+    return <Loader fullScreen />;
   }
 
   if (!blog) {

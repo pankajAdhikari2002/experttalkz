@@ -4,6 +4,7 @@ import type { Course } from '../../types';
 import { api } from '../../services/api';
 import { useCurrency } from '../../context/CurrencyContext';
 import Meta from '../../components/common/Meta';
+import Loader from '../../components/common/Loader';
 import { CheckCircle2, Clock, BarChart3, Award, PlayCircle, ShieldCheck, FileText, ArrowLeft } from 'lucide-react';
 
 const CourseDetail = () => {
@@ -30,12 +31,7 @@ const CourseDetail = () => {
   }, [slug]);
 
   if (loading) {
-    return (
-      <div className="min-h-[70vh] flex flex-col gap-4 items-center justify-center text-white">
-        <div className="w-12 h-12 rounded-full border-2 border-primary border-t-transparent animate-spin" />
-        <p className="text-sm font-medium text-slate-300">Loading course curriculum...</p>
-      </div>
-    );
+    return <Loader fullScreen />;
   }
 
   if (!course) {

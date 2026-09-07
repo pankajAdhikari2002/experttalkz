@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import type { Blog } from '../../types';
 import { api } from '../../services/api';
 import Meta from '../../components/common/Meta';
+import Loader from '../../components/common/Loader';
 import { Calendar, Clock, ArrowRight, Search, Sparkles, BookOpen, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -145,10 +146,7 @@ const BlogList = () => {
       <section className="py-12 md:py-20">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
           {loading ? (
-            <div className="flex flex-col items-center justify-center py-24 gap-3">
-              <div className="w-10 h-10 rounded-full border-3 border-primary border-t-transparent animate-spin" />
-              <span className="text-sm text-slate-400 font-medium">Loading articles...</span>
-            </div>
+            <Loader className="py-24" />
           ) : (
             <>
               {/* ─── Featured Hero Magazine Post (When no search query) ── */}
