@@ -56,7 +56,9 @@ export class PaymentsService {
             total_amount: price,
             currency: 'USD',
             payment_method: 'paypal',
-            status: 'pending'
+            status: 'pending',
+            created_at: new Date(),
+            updated_at: new Date()
         });
         const savedOrder = await this.orderRepo.save(newOrder);
 
@@ -106,7 +108,9 @@ export class PaymentsService {
                 payment_id: response.result.id,
                 amount: price,
                 currency: 'USD',
-                status: 'pending'
+                status: 'pending',
+                created_at: new Date(),
+                updated_at: new Date()
             });
             await this.paymentRepo.save(newPayment);
 
@@ -114,6 +118,7 @@ export class PaymentsService {
         } catch (e: any) {
             console.error('PayPal create order error:', e);
             savedOrder.status = 'failed';
+            savedOrder.updated_at = new Date();
             await this.orderRepo.save(savedOrder);
             throw new InternalServerErrorException(e?.message || 'Error creating paypal order');
         }
@@ -133,10 +138,11 @@ export class PaymentsService {
                 payment.status = 'paid';
                 payment.payer_id = capture.result.payer?.payer_id;
                 payment.payment_response = JSON.stringify(capture.result);
+                payment.updated_at = new Date();
                 await this.paymentRepo.save(payment);
                 
                 // Finalize primary order status
-                await this.orderRepo.update(payment.order_id, { status: 'paid' });
+                await this.orderRepo.update(payment.order_id, { status: 'paid', updated_at: new Date() });
 
                 // Securely enroll student into course_user
                 const order = await this.orderRepo.findOne({ where: { id: payment.order_id } });
@@ -149,6 +155,8 @@ export class PaymentsService {
                             user_id: order.user_id,
                             course_id: order.course_id,
                             order_id: order.id,
+                            created_at: new Date(),
+                            updated_at: new Date()
                         });
                         await this.courseUserRepo.save(enrollment);
                     }
@@ -160,8 +168,9 @@ export class PaymentsService {
             console.error('PayPal capture error:', e);
             if (payment) {
                 payment.status = 'failed';
+                payment.updated_at = new Date();
                 await this.paymentRepo.save(payment);
-                await this.orderRepo.update(payment.order_id, { status: 'failed' });
+                await this.orderRepo.update(payment.order_id, { status: 'failed', updated_at: new Date() });
             }
             return { success: false };
         }
