@@ -68,3 +68,32 @@ export interface ContactFormData {
   subject: string;
   message: string;
 }
+
+export interface EventCategory {
+  id: number;
+  name: string;
+  slug: string;
+  color?: string;
+  sort_order?: number;
+  status?: number;
+  eventCount?: number;
+}
+
+export interface EventItem {
+  id: number;
+  title: string;
+  slug?: string;
+  category_id?: number | null;
+  category?: EventCategory;
+  date_text: string;
+  description: string;
+  image?: string | null;
+  badge?: string;
+  color?: string;
+  link_url?: string | null;
+  link_text?: string;
+  is_featured?: number;
+  status?: number;
+  created_at?: string;
+  updated_at?: string;
+}

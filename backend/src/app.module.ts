@@ -10,6 +10,8 @@ import { CourseInstallment } from './entities/course-installment.entity';
 import { Blog } from './entities/blog.entity';
 import { Award } from './entities/award.entity';
 import { Contact } from './entities/contact.entity';
+import { Event } from './entities/event.entity';
+import { EventCategory } from './entities/event-category.entity';
 import { AuthModule } from './auth/auth.module';
 import { PaymentsModule } from './payments/payments.module';
 import { UploadModule } from './upload/upload.module';
@@ -78,7 +80,16 @@ import { AdminModule } from './admin/admin.module';
     // LeadsModule,
     // SettingsModule,
     // TestimonialsModule,
-    TypeOrmModule.forFeature([Category, Course, CourseInstallment, Blog, Award, Contact]),
+    TypeOrmModule.forFeature([
+      Category,
+      Course,
+      CourseInstallment,
+      Blog,
+      Award,
+      Contact,
+      Event,
+      EventCategory,
+    ]),
     AuthModule,
     PaymentsModule,
     UploadModule,

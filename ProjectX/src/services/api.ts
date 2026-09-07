@@ -1,4 +1,4 @@
-import type { Course, Blog, Category, Award, ContactFormData } from '../types';
+import type { Course, Blog, Category, Award, ContactFormData, EventItem, EventCategory } from '../types';
 import { COURSES, BLOGS, CATEGORIES, AWARDS } from './mockData';
 
 const rawApiUrl = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3000/api' : '/api');
@@ -207,5 +207,38 @@ export const api = {
       console.error(e);
       return { success: false };
     }
-  }
+  },
+
+  getEvents: async (): Promise<EventItem[]> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/events`);
+      if (!resp.ok) throw new Error('Network error');
+      const data = await resp.json();
+      if (Array.isArray(data) && data.length > 0) {
+        const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
+        return data.map((ev: any) => ({
+          ...ev,
+          image: ev.image && !ev.image.startsWith('http') && !ev.image.startsWith('data:')
+            ? `${baseUrl}/${ev.image.replace(/^\//, '')}`
+            : ev.image,
+        }));
+      }
+      return data || [];
+    } catch (e) {
+      console.warn('API getEvents offline, returning empty list:', e);
+      return [];
+    }
+  },
+
+  getEventCategories: async (): Promise<EventCategory[]> => {
+    try {
+      const resp = await fetch(`${API_BASE_URL}/events/categories`);
+      if (!resp.ok) throw new Error('Network error');
+      const data = await resp.json();
+      return Array.isArray(data) ? data : [];
+    } catch (e) {
+      console.warn('API getEventCategories offline, returning empty list:', e);
+      return [];
+    }
+  },
 };

@@ -21,7 +21,7 @@ const IMAGE_EXTENSIONS = /\.(jpg|jpeg|png|webp|gif)$/i;
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
 // ─── Valid upload folders ──────────────────────────────────────────────────
-const VALID_FOLDERS = ['courses', 'blogs', 'misc'];
+const VALID_FOLDERS = ['courses', 'blogs', 'events', 'misc'];
 const BASE_UPLOAD_PATH = join(process.cwd(), 'uploads');
 
 // ─── Multer file filter ────────────────────────────────────────────────────

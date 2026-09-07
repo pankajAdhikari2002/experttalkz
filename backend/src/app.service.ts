@@ -7,6 +7,8 @@ import { CourseInstallment } from './entities/course-installment.entity';
 import { Blog } from './entities/blog.entity';
 import { Award } from './entities/award.entity';
 import { Contact } from './entities/contact.entity';
+import { Event } from './entities/event.entity';
+import { EventCategory } from './entities/event-category.entity';
 
 @Injectable()
 export class AppService {
@@ -17,6 +19,8 @@ export class AppService {
     @InjectRepository(Blog) private blogRepo: Repository<Blog>,
     @InjectRepository(Award) private awardRepo: Repository<Award>,
     @InjectRepository(Contact) private contactRepo: Repository<Contact>,
+    @InjectRepository(Event) private eventRepo: Repository<Event>,
+    @InjectRepository(EventCategory) private eventCategoryRepo: Repository<EventCategory>,
   ) {}
 
   async getCourses() {
@@ -59,6 +63,27 @@ export class AppService {
   async getBlogBySlug(slug: string) {
     return this.blogRepo.findOne({ 
       where: { slug, is_active: 1 } 
+    });
+  }
+
+  async getEvents() {
+    return this.eventRepo.find({
+      where: { status: 1 },
+      relations: ['category'],
+      order: {
+        is_featured: 'DESC',
+        created_at: 'DESC',
+      },
+    });
+  }
+
+  async getEventCategories() {
+    return this.eventCategoryRepo.find({
+      where: { status: 1 },
+      order: {
+        sort_order: 'ASC',
+        name: 'ASC',
+      },
     });
   }
 

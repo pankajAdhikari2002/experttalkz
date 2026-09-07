@@ -38,6 +38,16 @@ export class AppController {
     return this.appService.getBlogBySlug(slug);
   }
 
+  @Get('events')
+  getEvents() {
+    return this.appService.getEvents();
+  }
+
+  @Get('events/categories')
+  getEventCategories() {
+    return this.appService.getEventCategories();
+  }
+
   @Post('contact')
   async submitContact(@Body() body: any, @Req() req: any) {
     const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '';

@@ -62,6 +62,7 @@ export default function AdminLayout() {
     { name: 'Dashboard', path: '/admin', icon: 'dashboard', description: 'Overview & metrics' },
     { name: 'Courses', path: '/admin/courses', icon: 'menu_book', description: 'Manage catalog & pricing' },
     { name: 'Blogs', path: '/admin/blogs', icon: 'article', description: 'Articles & publications' },
+    { name: 'Events', path: '/admin/events', icon: 'event', description: 'Webinars, sessions & dates' },
     { name: 'Inquiries & Leads', path: '/admin/contacts', icon: 'contact_mail', description: 'Messages & inquiries' },
     { name: 'Team & Access', path: '/admin/users', icon: 'manage_accounts', description: 'Admin roles & users' },
   ];
@@ -79,6 +80,7 @@ export default function AdminLayout() {
       if (location.pathname.includes('/edit')) return 'Edit Blog Post';
       return 'Blogs';
     }
+    if (location.pathname.startsWith('/admin/events')) return 'Events & Categories';
     if (location.pathname.startsWith('/admin/contacts')) return 'Inquiries & Contact Leads';
     if (location.pathname.startsWith('/admin/users')) return 'Team & Access Control';
     return 'Admin Panel';
