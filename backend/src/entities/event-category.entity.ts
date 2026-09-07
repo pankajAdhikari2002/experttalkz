@@ -6,13 +6,13 @@ export class EventCategory {
   @PrimaryGeneratedColumn({ type: 'int', unsigned: true })
   id: number;
 
-  @Column({ length: 100 })
+  @Column({ type: 'varchar', length: 100 })
   name: string;
 
-  @Column({ length: 100, unique: true })
+  @Column({ type: 'varchar', length: 100, unique: true })
   slug: string;
 
-  @Column({ length: 50, default: 'blue' })
+  @Column({ type: 'varchar', length: 50, default: 'blue' })
   color: string;
 
   @Column({ type: 'int', default: 0 })
