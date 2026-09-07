@@ -16,18 +16,23 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setErrorMsg(null);
     try {
       const response = await api.submitLead(formData);
       if (response.success) {
         setSuccess(true);
         setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        setErrorMsg(response.message || 'Failed to submit inquiry. Please try again.');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Submission failed', error);
+      setErrorMsg(error?.message || 'Network error occurred while submitting message.');
     } finally {
       setLoading(false);
     }
@@ -114,6 +119,12 @@ const Contact = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                {errorMsg && (
+                  <div className="p-3.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm flex items-center gap-2">
+                    <span className="material-symbols-outlined text-lg shrink-0">error</span>
+                    <span>{errorMsg}</span>
+                  </div>
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1">
                      <label className="text-sm font-medium text-slate-300">Name</label>

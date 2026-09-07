@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Category } from './entities/category.entity';
@@ -6,6 +6,7 @@ import { Course } from './entities/course.entity';
 import { CourseInstallment } from './entities/course-installment.entity';
 import { Blog } from './entities/blog.entity';
 import { Award } from './entities/award.entity';
+import { Contact } from './entities/contact.entity';
 
 @Injectable()
 export class AppService {
@@ -15,6 +16,7 @@ export class AppService {
     @InjectRepository(CourseInstallment) private installmentRepo: Repository<CourseInstallment>,
     @InjectRepository(Blog) private blogRepo: Repository<Blog>,
     @InjectRepository(Award) private awardRepo: Repository<Award>,
+    @InjectRepository(Contact) private contactRepo: Repository<Contact>,
   ) {}
 
   async getCourses() {
@@ -58,5 +60,31 @@ export class AppService {
     return this.blogRepo.findOne({ 
       where: { slug, is_active: 1 } 
     });
+  }
+
+  async saveContactMessage(
+    data: { name: string; email: string; phone?: string; subject?: string; message: string },
+    ip?: string,
+  ) {
+    if (!data.name || !data.name.trim()) {
+      throw new BadRequestException('Name is required');
+    }
+    if (!data.email || !data.email.trim()) {
+      throw new BadRequestException('Valid email address is required');
+    }
+    if (!data.message || !data.message.trim()) {
+      throw new BadRequestException('Message is required');
+    }
+
+    const contact = new Contact();
+    contact.name = data.name.trim();
+    contact.email = data.email.trim();
+    contact.phone = data.phone?.trim() || '';
+    contact.subject = data.subject?.trim() || 'Website Inquiry';
+    contact.message = data.message.trim();
+    contact.status = 'unread';
+    contact.ip_address = ip || '';
+
+    return this.contactRepo.save(contact);
   }
 }

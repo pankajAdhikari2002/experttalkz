@@ -28,6 +28,7 @@ const AdminCourseForm = lazy(() => import('../pages/Admin/AdminCourseForm'));
 const AdminBlogs = lazy(() => import('../pages/Admin/AdminBlogs'));
 const AdminBlogForm = lazy(() => import('../pages/Admin/AdminBlogForm'));
 const AdminUsers = lazy(() => import('../pages/Admin/AdminUsers'));
+const AdminContacts = lazy(() => import('../pages/Admin/AdminContacts'));
 // Loading component
 const Loading = () => (
   <div style={{ 
@@ -106,6 +107,7 @@ export const router = createBrowserRouter([
           { path: 'blogs/new', element: <AdminBlogForm /> },
           { path: 'blogs/:id/edit', element: <AdminBlogForm /> },
           { path: 'users', element: <AdminUsers /> },
+          { path: 'contacts', element: <AdminContacts /> },
         ]
       }
     ]

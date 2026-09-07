@@ -111,11 +111,25 @@ export const api = {
 
   submitLead: async (data: ContactFormData): Promise<{ success: boolean; message: string }> => {
     try {
-      console.log('Lead pseudo-submitted:', data);
-      return { success: true, message: 'Message sent successfully!' };
+      const resp = await fetch(`${API_BASE_URL}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const res = await resp.json();
+      if (!resp.ok) {
+        return {
+          success: false,
+          message: Array.isArray(res.message) ? res.message.join(', ') : (res.message || 'Failed to submit inquiry. Please try again.'),
+        };
+      }
+      return {
+        success: true,
+        message: res.message || 'Thank you! Your message has been received.',
+      };
     } catch (e) {
-      console.error(e);
-      return { success: false, message: 'Failed to send message.' };
+      console.error('Contact submission error:', e);
+      return { success: false, message: 'Network error. Please check your connection and try again.' };
     }
   },
 

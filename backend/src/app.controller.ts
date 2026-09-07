@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Req, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller('api')
@@ -36,6 +36,22 @@ export class AppController {
   @Get('blogs/:slug')
   getBlogBySlug(@Param('slug') slug: string) {
     return this.appService.getBlogBySlug(slug);
+  }
+
+  @Post('contact')
+  async submitContact(@Body() body: any, @Req() req: any) {
+    const ip = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '';
+    const saved = await this.appService.saveContactMessage(body, Array.isArray(ip) ? ip[0] : ip);
+    return {
+      success: true,
+      message: 'Thank you for reaching out! Your message has been received.',
+      id: saved.id,
+    };
+  }
+
+  @Post('leads')
+  async submitLead(@Body() body: any, @Req() req: any) {
+    return this.submitContact(body, req);
   }
 
   private mapCourse(c: any) {
