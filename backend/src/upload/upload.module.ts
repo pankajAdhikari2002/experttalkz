@@ -3,9 +3,10 @@ import { MulterModule } from '@nestjs/platform-express';
 // @ts-ignore
 import { diskStorage } from 'multer';
 import { extname, join } from 'path';
+import { existsSync, mkdirSync } from 'fs';
 import { UploadController } from './upload.controller';
 
-const VALID_FOLDERS = ['courses', 'blogs', 'misc'];
+const VALID_FOLDERS = ['courses', 'blogs', 'events', 'misc'];
 const BASE_UPLOAD_PATH = join(process.cwd(), 'uploads');
 
 @Module({
@@ -14,9 +15,11 @@ const BASE_UPLOAD_PATH = join(process.cwd(), 'uploads');
       storage: diskStorage({
         destination: (req: any, _file: any, cb: any) => {
           const folder = String(req.params?.folder ?? 'misc');
-          const dest = VALID_FOLDERS.includes(folder)
-            ? join(BASE_UPLOAD_PATH, folder)
-            : join(BASE_UPLOAD_PATH, 'misc');
+          const safeFolder = VALID_FOLDERS.includes(folder) ? folder : 'misc';
+          const dest = join(BASE_UPLOAD_PATH, safeFolder);
+          if (!existsSync(dest)) {
+            mkdirSync(dest, { recursive: true });
+          }
           cb(null, dest);
         },
         filename: (_req: any, file: any, cb: any) => {

@@ -186,8 +186,8 @@ export default function AdminEvents() {
     if (!file) return;
 
     const token = localStorage.getItem('expertTalkz_auth_token');
-    const formData = new FormData();
-    formData.append('file', file);
+    const uploadData = new FormData();
+    uploadData.append('file', file);
 
     setUploadingImage(true);
     try {
@@ -196,20 +196,20 @@ export default function AdminEvents() {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        body: formData,
+        body: uploadData,
       });
 
-      if (!res.ok) {
-        throw new Error('Upload failed');
-      }
-
       const data = await res.json();
-      const imageUrl = data.url || data.path || data.location;
-      setEventFormData((prev) => ({ ...prev, image: imageUrl }));
-      showToast('Image uploaded successfully');
+      if (res.ok && (data.url || data.path || data.location)) {
+        const uploadedUrl = data.url || data.path || data.location;
+        setEventFormData((prev) => ({ ...prev, image: uploadedUrl }));
+        showToast('Banner image uploaded successfully!');
+      } else {
+        showToast(data.message || 'Image upload failed', 'error');
+      }
     } catch (err) {
       console.error(err);
-      showToast('Image upload failed. Please try again.', 'error');
+      showToast('Failed to upload image. Please try again.', 'error');
     } finally {
       setUploadingImage(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
@@ -224,7 +224,7 @@ export default function AdminEvents() {
       return;
     }
     if (!eventFormData.date_text.trim()) {
-      showToast('Please enter the event date/schedule', 'error');
+      showToast('Please enter the event date or schedule', 'error');
       return;
     }
     if (!eventFormData.description.trim()) {
@@ -381,8 +381,8 @@ export default function AdminEvents() {
         <div
           className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-xl shadow-2xl border text-sm font-semibold transition-all duration-300 animate-in fade-in slide-in-from-bottom-5 ${
             toast.type === 'success'
-              ? 'bg-emerald-950/90 border-emerald-500/50 text-emerald-200'
-              : 'bg-rose-950/90 border-rose-500/50 text-rose-200'
+              ? 'bg-emerald-950/95 border-emerald-500/50 text-emerald-200'
+              : 'bg-rose-950/95 border-rose-500/50 text-rose-200'
           }`}
         >
           <span className="material-symbols-outlined text-lg">
@@ -754,12 +754,13 @@ export default function AdminEvents() {
       )}
 
       {/* ══════════════════════════════════════════════════════════════════════
-         EVENT CREATE / EDIT MODAL
+         EVENT CREATE / EDIT MODAL - FULLY VISIBLE & RESPONSIVE WITH FIXED HEADER & FOOTER
          ══════════════════════════════════════════════════════════════════════ */}
       {isEventModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
-          <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-2xl w-full p-6 md:p-8 space-y-6 shadow-2xl my-8">
-            <div className="flex items-center justify-between border-b border-[#30363d] pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-hidden animate-in fade-in duration-200">
+          <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-3xl w-full shadow-2xl flex flex-col max-h-[92vh] overflow-hidden animate-in zoom-in-95 duration-200">
+            {/* Modal Header - Fixed at Top */}
+            <div className="p-5 md:p-6 border-b border-[#30363d] flex items-center justify-between shrink-0 bg-[#161b22]">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
                   <span className="material-symbols-outlined text-xl">
@@ -768,22 +769,24 @@ export default function AdminEvents() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">
-                    {editingEvent ? 'Edit Event' : 'Create New Event'}
+                    {editingEvent ? 'Edit Event Details' : 'Create New Scheduled Event'}
                   </h3>
                   <p className="text-xs text-slate-400">
-                    Fill in the details to publish or update this event.
+                    Configure schedule, banner image, category, and action links.
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsEventModalOpen(false)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
+                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                title="Close"
               >
-                <span className="material-symbols-outlined">close</span>
+                <span className="material-symbols-outlined text-lg">close</span>
               </button>
             </div>
 
-            <form onSubmit={handleSaveEvent} className="space-y-4">
+            {/* Modal Body - Scrollable Container */}
+            <form id="eventForm" onSubmit={handleSaveEvent} className="p-5 md:p-6 overflow-y-auto space-y-5 flex-1">
               {/* Title & Badge */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="md:col-span-2 space-y-1.5">
@@ -803,7 +806,7 @@ export default function AdminEvents() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-slate-300">Badge Label</label>
+                  <label className="text-xs font-semibold text-slate-300">Badge Tag</label>
                   <input
                     type="text"
                     value={eventFormData.badge}
@@ -838,7 +841,7 @@ export default function AdminEvents() {
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-300">
-                    Date / Schedule Text <span className="text-rose-400">*</span>
+                    Date & Schedule Display <span className="text-rose-400">*</span>
                   </label>
                   <input
                     type="text"
@@ -853,9 +856,9 @@ export default function AdminEvents() {
                 </div>
               </div>
 
-              {/* Color Theme Selector */}
+              {/* Theme Color Selector */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">Theme Color</label>
+                <label className="text-xs font-semibold text-slate-300">Color Theme</label>
                 <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                   {colorOptions.map((c) => (
                     <button
@@ -864,7 +867,7 @@ export default function AdminEvents() {
                       onClick={() => setEventFormData((prev) => ({ ...prev, color: c.value }))}
                       className={`px-3 py-2 rounded-xl text-xs font-bold border transition-all text-center ${c.bg} ${
                         eventFormData.color === c.value
-                          ? 'ring-2 ring-primary ring-offset-2 ring-offset-[#161b22]'
+                          ? 'ring-2 ring-primary ring-offset-2 ring-offset-[#161b22] scale-[1.03]'
                           : 'opacity-70 hover:opacity-100'
                       }`}
                     >
@@ -874,12 +877,14 @@ export default function AdminEvents() {
                 </div>
               </div>
 
-              {/* Image Upload / URL */}
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-slate-300">
-                  Event Banner Image
+              {/* Banner Image Upload & Direct URL */}
+              <div className="space-y-2 p-4 rounded-xl bg-[#0d1117] border border-[#30363d]">
+                <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
+                  <span>Event Banner / Image</span>
+                  {uploadingImage && <span className="text-primary text-xs font-bold animate-pulse">Uploading file...</span>}
                 </label>
-                <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+
+                <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
                   <input
                     type="file"
                     ref={fileInputRef}
@@ -891,47 +896,49 @@ export default function AdminEvents() {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     disabled={uploadingImage}
-                    className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 font-semibold text-xs flex items-center gap-2 transition-all disabled:opacity-50"
+                    className="px-4 py-2.5 rounded-xl bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary font-bold text-xs flex items-center justify-center gap-2 transition-all disabled:opacity-50"
                   >
                     <span className="material-symbols-outlined text-base">
-                      {uploadingImage ? 'sync' : 'upload_file'}
+                      {uploadingImage ? 'sync' : 'cloud_upload'}
                     </span>
-                    <span>{uploadingImage ? 'Uploading...' : 'Upload Image File'}</span>
+                    <span>{uploadingImage ? 'Uploading Image...' : 'Browse & Upload Image'}</span>
                   </button>
 
-                  <div className="flex-1 w-full">
+                  <div className="flex-1">
                     <input
                       type="text"
                       value={eventFormData.image}
                       onChange={(e) =>
                         setEventFormData((prev) => ({ ...prev, image: e.target.value }))
                       }
-                      placeholder="Or paste direct image URL (/uploads/events/...)"
-                      className="w-full px-3.5 py-2 bg-[#0d1117] border border-[#30363d] rounded-xl text-white text-xs focus:outline-none focus:border-primary"
+                      placeholder="Or paste external / direct image URL"
+                      className="w-full px-3.5 py-2.5 bg-[#161b22] border border-[#30363d] rounded-xl text-white text-xs focus:outline-none focus:border-primary"
                     />
                   </div>
                 </div>
 
                 {eventFormData.image && (
-                  <div className="relative w-full h-32 rounded-xl overflow-hidden border border-[#30363d] mt-2">
+                  <div className="relative w-full h-36 rounded-xl overflow-hidden border border-[#30363d] mt-2 group bg-black/40">
                     <img
                       src={eventFormData.image}
-                      alt="Preview"
+                      alt="Banner Preview"
                       className="w-full h-full object-cover"
                     />
-                    <button
-                      type="button"
-                      onClick={() => setEventFormData((prev) => ({ ...prev, image: '' }))}
-                      className="absolute top-2 right-2 p-1 rounded-lg bg-black/60 text-white hover:bg-rose-600 transition-colors"
-                      title="Remove Image"
-                    >
-                      <span className="material-symbols-outlined text-sm">close</span>
-                    </button>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setEventFormData((prev) => ({ ...prev, image: '' }))}
+                        className="px-3 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg"
+                      >
+                        <span className="material-symbols-outlined text-sm">delete</span>
+                        <span>Remove Banner</span>
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
 
-              {/* Link URL & Button Text */}
+              {/* Action Link & Button Text */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-300">Action Link URL</label>
@@ -941,7 +948,7 @@ export default function AdminEvents() {
                     onChange={(e) =>
                       setEventFormData((prev) => ({ ...prev, link_url: e.target.value }))
                     }
-                    placeholder="e.g. /courses or /contact or external URL"
+                    placeholder="e.g. /courses or /contact or https://..."
                     className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#30363d] rounded-xl text-white text-sm focus:outline-none focus:border-primary"
                   />
                 </div>
@@ -954,7 +961,7 @@ export default function AdminEvents() {
                     onChange={(e) =>
                       setEventFormData((prev) => ({ ...prev, link_text: e.target.value }))
                     }
-                    placeholder="e.g. Learn More, Register Free"
+                    placeholder="e.g. Register Free, Explore Course"
                     className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#30363d] rounded-xl text-white text-sm focus:outline-none focus:border-primary"
                   />
                 </div>
@@ -963,7 +970,7 @@ export default function AdminEvents() {
               {/* Description */}
               <div className="space-y-1.5">
                 <label className="text-xs font-semibold text-slate-300">
-                  Event Description <span className="text-rose-400">*</span>
+                  Event Description & Agenda <span className="text-rose-400">*</span>
                 </label>
                 <textarea
                   required
@@ -972,13 +979,13 @@ export default function AdminEvents() {
                   onChange={(e) =>
                     setEventFormData((prev) => ({ ...prev, description: e.target.value }))
                   }
-                  placeholder="Provide details about what attendees will learn, prerequisites, live schedule details, etc."
-                  className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#30363d] rounded-xl text-white text-sm focus:outline-none focus:border-primary leading-relaxed resize-none"
+                  placeholder="Detail the event agenda, what attendees will learn, software covered, and prerequisites..."
+                  className="w-full px-3.5 py-2.5 bg-[#0d1117] border border-[#30363d] rounded-xl text-white text-sm focus:outline-none focus:border-primary leading-relaxed resize-y"
                 />
               </div>
 
               {/* Featured & Status Checkboxes */}
-              <div className="flex flex-wrap items-center gap-6 pt-2">
+              <div className="flex flex-wrap items-center gap-6 pt-2 pb-1">
                 <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-300">
                   <input
                     type="checkbox"
@@ -1003,31 +1010,32 @@ export default function AdminEvents() {
                     }
                     className="rounded border-[#30363d] text-primary focus:ring-primary w-4 h-4 bg-[#0d1117]"
                   />
-                  <span>Publish Immediately (Active)</span>
+                  <span>Publish Immediately (Active on website)</span>
                 </label>
               </div>
-
-              {/* Submit Buttons */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#30363d]">
-                <button
-                  type="button"
-                  onClick={() => setIsEventModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-sm font-semibold transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={eventSubmitting}
-                  className="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all disabled:opacity-50 flex items-center gap-2"
-                >
-                  {eventSubmitting && (
-                    <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
-                  )}
-                  <span>{editingEvent ? 'Save Changes' : 'Create Event'}</span>
-                </button>
-              </div>
             </form>
+
+            {/* Modal Footer - Fixed at Bottom */}
+            <div className="p-4 md:p-5 border-t border-[#30363d] flex items-center justify-end gap-3 shrink-0 bg-[#161b22]">
+              <button
+                type="button"
+                onClick={() => setIsEventModalOpen(false)}
+                className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-sm font-semibold transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                form="eventForm"
+                disabled={eventSubmitting || uploadingImage}
+                className="px-6 py-2.5 rounded-xl bg-primary hover:bg-primary/90 text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all disabled:opacity-50 flex items-center gap-2"
+              >
+                {eventSubmitting && (
+                  <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                )}
+                <span>{editingEvent ? 'Update Event' : 'Create Event'}</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -1036,11 +1044,11 @@ export default function AdminEvents() {
          CATEGORY CREATE / EDIT MODAL
          ══════════════════════════════════════════════════════════════════════ */}
       {isCategoryModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl animate-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-[#30363d] pb-3">
               <h3 className="text-base font-bold text-white">
-                {editingCategory ? 'Edit Category' : 'Add Event Category'}
+                {editingCategory ? 'Edit Event Category' : 'Add Event Category'}
               </h3>
               <button
                 onClick={() => setIsCategoryModalOpen(false)}
@@ -1062,7 +1070,7 @@ export default function AdminEvents() {
                   onChange={(e) =>
                     setCategoryFormData((prev) => ({ ...prev, name: e.target.value }))
                   }
-                  placeholder="e.g. Masterclasses, Workshops"
+                  placeholder="e.g. Masterclasses, Technical Sessions"
                   className="w-full px-3.5 py-2 bg-[#0d1117] border border-[#30363d] rounded-xl text-white text-sm focus:outline-none focus:border-primary"
                 />
               </div>
@@ -1140,8 +1148,8 @@ export default function AdminEvents() {
          DELETE CONFIRMATION MODAL
          ══════════════════════════════════════════════════════════════════════ */}
       {deleteConfirmation && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-[#161b22] border border-[#30363d] rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl text-center animate-in zoom-in-95 duration-200">
             <div className="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
               <span className="material-symbols-outlined text-2xl">warning</span>
             </div>
