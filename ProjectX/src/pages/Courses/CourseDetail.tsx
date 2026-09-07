@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import type { Course } from '../../types';
 import { api } from '../../services/api';
 import { useCurrency } from '../../context/CurrencyContext';
+import { useAuth } from '../../context/AuthContext';
 import Meta from '../../components/common/Meta';
 import Loader from '../../components/common/Loader';
 import { CheckCircle2, Clock, BarChart3, Award, PlayCircle, ShieldCheck, FileText, ArrowLeft } from 'lucide-react';
@@ -11,8 +12,10 @@ const CourseDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { formatPrice } = useCurrency();
+  const { isAuthenticated } = useAuth();
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isEnrolled, setIsEnrolled] = useState(false);
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -20,6 +23,13 @@ const CourseDetail = () => {
         try {
           const data = await api.getCourseBySlug(slug);
           setCourse(data || null);
+
+          if (isAuthenticated) {
+            const enrollCheck = await api.checkCourseEnrollment(slug);
+            if (enrollCheck.enrolled) {
+              setIsEnrolled(true);
+            }
+          }
         } catch (error) {
           console.error('Failed to fetch course', error);
         } finally {
@@ -28,7 +38,7 @@ const CourseDetail = () => {
       }
     };
     fetchCourse();
-  }, [slug]);
+  }, [slug, isAuthenticated]);
 
   if (loading) {
     return <Loader fullScreen />;
@@ -273,17 +283,27 @@ const CourseDetail = () => {
 
               {/* Action Buttons */}
               <div className="space-y-3">
-                <Link
-                  to={`/buy/${slug}`}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-primary hover:bg-yellow-400 text-black font-black text-sm shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  <span className="material-symbols-outlined text-xl">bolt</span>
-                  Enroll Now
-                </Link>
+                {isEnrolled ? (
+                  <Link
+                    to="/dashboard"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm shadow-xl shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span className="material-symbols-outlined text-xl">check_circle</span>
+                    Enrolled • Go to Dashboard
+                  </Link>
+                ) : (
+                  <Link
+                    to={`/buy/${slug}`}
+                    className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-primary hover:bg-yellow-400 text-black font-black text-sm shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span className="material-symbols-outlined text-xl">bolt</span>
+                    Enroll Now
+                  </Link>
+                )}
 
                 <div className="text-center text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
                   <ShieldCheck size={14} className="text-green-400" />
-                  Secure checkout & instant course access
+                  {isEnrolled ? 'Course is active in your student dashboard' : 'Secure checkout & instant course access'}
                 </div>
               </div>
 

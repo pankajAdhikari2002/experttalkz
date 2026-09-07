@@ -5,8 +5,20 @@ export class Order {
   @PrimaryGeneratedColumn({ type: 'bigint', unsigned: true })
   id: number;
 
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  order_number: string;
+
   @Column({ type: 'bigint', unsigned: true, nullable: true })
   user_id: number;
+
+  @Column({ type: 'bigint', unsigned: true, nullable: true })
+  course_id: number;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  course_name: string;
+
+  @Column({ type: 'varchar', length: 255, nullable: true })
+  course_slug: string;
 
   @Column({ type: 'decimal', precision: 10, scale: 2 })
   total_amount: number;

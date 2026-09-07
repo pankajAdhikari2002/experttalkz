@@ -173,7 +173,7 @@ export const api = {
 
   createPaypalOrder: async (courseSlug: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
       const resp = await fetch(`${API_BASE_URL}/payments/create-paypal-order`, {
         method: 'POST',
         headers: { 
@@ -182,17 +182,20 @@ export const api = {
         },
         body: JSON.stringify({ slug: courseSlug })
       });
-      if (!resp.ok) throw new Error('Order creation error');
-      return await resp.json();
-    } catch (e) {
-      console.error(e);
-      return { id: null };
+      const data = await resp.json();
+      if (!resp.ok) {
+        return { id: null, message: data.message || 'Failed to create PayPal order' };
+      }
+      return data;
+    } catch (e: any) {
+      console.error('createPaypalOrder error:', e);
+      return { id: null, message: e.message || 'Network error' };
     }
   },
 
   capturePaypalOrder: async (orderID: string) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
       const resp = await fetch(`${API_BASE_URL}/payments/capture-paypal-order`, {
         method: 'POST',
         headers: { 
@@ -204,8 +207,38 @@ export const api = {
       if (!resp.ok) return { success: false };
       return await resp.json();
     } catch (e) {
-      console.error(e);
+      console.error('capturePaypalOrder error:', e);
       return { success: false };
+    }
+  },
+
+  getMyCourses: async (): Promise<any[]> => {
+    try {
+      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
+      if (!token) return [];
+      const resp = await fetch(`${API_BASE_URL}/payments/my-courses`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (!resp.ok) return [];
+      const data = await resp.json();
+      return Array.isArray(data) ? data : [];
+    } catch (e) {
+      console.error('getMyCourses error:', e);
+      return [];
+    }
+  },
+
+  checkCourseEnrollment: async (slug: string): Promise<{ enrolled: boolean; course_id?: number }> => {
+    try {
+      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
+      if (!token) return { enrolled: false };
+      const resp = await fetch(`${API_BASE_URL}/payments/check-enrollment/${slug}`, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (!resp.ok) return { enrolled: false };
+      return await resp.json();
+    } catch (e) {
+      return { enrolled: false };
     }
   },
 

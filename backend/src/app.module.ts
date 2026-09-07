@@ -12,6 +12,7 @@ import { Award } from './entities/award.entity';
 import { Contact } from './entities/contact.entity';
 import { Event } from './entities/event.entity';
 import { EventCategory } from './entities/event-category.entity';
+import { CourseUser } from './entities/course-user.entity';
 import { AuthModule } from './auth/auth.module';
 import { PaymentsModule } from './payments/payments.module';
 import { UploadModule } from './upload/upload.module';
@@ -89,6 +90,7 @@ import { AdminModule } from './admin/admin.module';
       Contact,
       Event,
       EventCategory,
+      CourseUser,
     ]),
     AuthModule,
     PaymentsModule,
