@@ -141,13 +141,16 @@ export const api = {
         body: JSON.stringify({ email, password })
       });
       if (!resp.ok) {
-        let msg = 'Login failed';
-        try { const err = await resp.json(); msg = err.message || msg; } catch (e) {}
+        let msg = 'Invalid email or password';
+        try {
+          const err = await resp.json();
+          msg = Array.isArray(err.message) ? err.message.join(', ') : (err.message || msg);
+        } catch (e) {}
         return { success: false, message: msg };
       }
       return await resp.json();
     } catch (e) {
-      console.error(e);
+      console.error('Login error:', e);
       return { success: false, message: 'Network error or server unreachable' };
     }
   },
@@ -161,12 +164,15 @@ export const api = {
       });
       if (!resp.ok) {
         let msg = 'Registration failed';
-        try { const err = await resp.json(); msg = err.message || msg; } catch (e) {}
+        try {
+          const err = await resp.json();
+          msg = Array.isArray(err.message) ? err.message.join(', ') : (err.message || msg);
+        } catch (e) {}
         return { success: false, message: msg };
       }
       return await resp.json();
     } catch (e) {
-      console.error(e);
+      console.error('Signup error:', e);
       return { success: false, message: 'Network error or server unreachable' };
     }
   },
