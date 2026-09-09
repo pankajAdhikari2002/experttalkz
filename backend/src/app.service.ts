@@ -91,22 +91,92 @@ export class AppService {
     data: { name: string; email: string; phone?: string; subject?: string; message: string },
     ip?: string,
   ) {
-    if (!data.name || !data.name.trim()) {
-      throw new BadRequestException('Name is required');
+    if (!data || typeof data !== 'object') {
+      throw new BadRequestException('Invalid submission data.');
     }
-    if (!data.email || !data.email.trim()) {
-      throw new BadRequestException('Valid email address is required');
+
+    // 1. Name validation
+    if (!data.name || typeof data.name !== 'string' || !data.name.trim()) {
+      throw new BadRequestException('Full name is required.');
     }
-    if (!data.message || !data.message.trim()) {
-      throw new BadRequestException('Message is required');
+    const name = data.name.trim();
+    if (name.length < 2) {
+      throw new BadRequestException('Name must be at least 2 characters long.');
+    }
+    if (name.length > 100) {
+      throw new BadRequestException('Name cannot exceed 100 characters.');
+    }
+    const nameRegex = /^[a-zA-Z\s.'\-\u00C0-\u024F\u1E00-\u1EFF]+$/;
+    if (!nameRegex.test(name)) {
+      throw new BadRequestException('Name can only contain letters, spaces, hyphens, and periods.');
+    }
+
+    // 2. Email validation
+    if (!data.email || typeof data.email !== 'string' || !data.email.trim()) {
+      throw new BadRequestException('Email address is required.');
+    }
+    const email = data.email.trim().toLowerCase();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email) || email.length > 120) {
+      throw new BadRequestException('Please provide a valid email address (e.g. name@domain.com).');
+    }
+
+    // 3. Phone validation
+    if (!data.phone || typeof data.phone !== 'string' || !data.phone.trim()) {
+      throw new BadRequestException('Phone number is required.');
+    }
+    const phone = data.phone.trim();
+    const digitsOnly = phone.replace(/\D/g, '');
+    if (digitsOnly.length < 7 || digitsOnly.length > 15) {
+      throw new BadRequestException('Phone number must contain between 7 and 15 digits.');
+    }
+    const phoneFormatRegex = /^(\+?\d{1,4}[-.\s]?)?(\(?\d{1,4}\)?[-.\s]?)?[\d\s.-]{5,16}$/;
+    if (!phoneFormatRegex.test(phone)) {
+      throw new BadRequestException('Invalid phone number format.');
+    }
+
+    // 4. Subject validation
+    if (!data.subject || typeof data.subject !== 'string' || !data.subject.trim()) {
+      throw new BadRequestException('Subject is required.');
+    }
+    const subject = data.subject.trim();
+    if (subject.length < 3) {
+      throw new BadRequestException('Subject must be at least 3 characters.');
+    }
+    if (subject.length > 200) {
+      throw new BadRequestException('Subject cannot exceed 200 characters.');
+    }
+
+    // 5. Message validation
+    if (!data.message || typeof data.message !== 'string' || !data.message.trim()) {
+      throw new BadRequestException('Message is required.');
+    }
+    const message = data.message.trim();
+    if (message.length < 10) {
+      throw new BadRequestException('Message must be at least 10 characters long.');
+    }
+    if (message.length > 3000) {
+      throw new BadRequestException('Message cannot exceed 3000 characters.');
+    }
+
+    // 6. Anti-spam / duplicate prevention (same email and message within 60 seconds)
+    const recentDuplicate = await this.contactRepo.findOne({
+      where: { email, message },
+      order: { created_at: 'DESC' },
+    });
+    if (recentDuplicate && recentDuplicate.created_at) {
+      const diffMs = Date.now() - new Date(recentDuplicate.created_at).getTime();
+      if (diffMs < 60000) {
+        throw new BadRequestException('A duplicate message was recently received. Please wait a moment before resending.');
+      }
     }
 
     const contact = new Contact();
-    contact.name = data.name.trim();
-    contact.email = data.email.trim();
-    contact.phone = data.phone?.trim() || '';
-    contact.subject = data.subject?.trim() || 'Website Inquiry';
-    contact.message = data.message.trim();
+    contact.name = name;
+    contact.email = email;
+    contact.phone = phone;
+    contact.subject = subject;
+    contact.message = message;
     contact.status = 'unread';
     contact.ip_address = ip || '';
 
