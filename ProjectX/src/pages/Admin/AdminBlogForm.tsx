@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import RichWordEditor from '../../components/common/RichWordEditor';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 export default function AdminBlogForm() {
   const { id } = useParams();
@@ -39,7 +41,7 @@ export default function AdminBlogForm() {
     if (isEdit) {
       const fetchBlog = async () => {
         try {
-          const token = localStorage.getItem('expertTalkz_auth_token');
+          const token = getAuthToken();
           const res = await fetch(`/api/admin/blogs/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
@@ -115,7 +117,7 @@ export default function AdminBlogForm() {
     if (field === 'featured_image') setUploadingFeatured(true);
     if (field === 'banner_image') setUploadingBanner(true);
 
-    const token = localStorage.getItem('expertTalkz_auth_token');
+    const token = getAuthToken();
     const uploadData = new FormData();
     uploadData.append('file', file);
 
@@ -156,7 +158,7 @@ export default function AdminBlogForm() {
 
     setSaving(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const method = isEdit ? 'PUT' : 'POST';
       const url = isEdit ? `/api/admin/blogs/${id}` : '/api/admin/blogs';
 

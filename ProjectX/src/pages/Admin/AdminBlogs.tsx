@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 interface BlogItem {
   id: number;
@@ -31,7 +33,7 @@ export default function AdminBlogs() {
   const fetchBlogs = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const params = new URLSearchParams();
       params.append('limit', '50');
       if (search.trim()) params.append('search', search.trim());
@@ -71,7 +73,7 @@ export default function AdminBlogs() {
     );
 
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/blogs/${id}/status`, {
         method: 'PATCH',
         headers: {
@@ -102,7 +104,7 @@ export default function AdminBlogs() {
     setDeleting(true);
 
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/blogs/${deleteModal.id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },

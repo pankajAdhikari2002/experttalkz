@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 interface CourseItem {
   id: number;
@@ -60,7 +62,7 @@ export default function AdminCourses() {
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const params = new URLSearchParams();
       params.append('limit', '50');
       if (search.trim()) params.append('search', search.trim());
@@ -106,7 +108,7 @@ export default function AdminCourses() {
     );
 
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/courses/${id}/status`, {
         method: 'PATCH',
         headers: {
@@ -142,7 +144,7 @@ export default function AdminCourses() {
     );
 
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/courses/${id}/featured`, {
         method: 'PATCH',
         headers: {
@@ -177,7 +179,7 @@ export default function AdminCourses() {
     setDeleting(true);
 
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/courses/${deleteModal.id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },

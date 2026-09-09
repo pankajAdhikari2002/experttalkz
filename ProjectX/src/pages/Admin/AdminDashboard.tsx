@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getAuthToken } from '../../utils/authStorage';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({ courses: 0, publishedCourses: 0, blogs: 0 });
@@ -8,8 +9,9 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const token = localStorage.getItem('expertTalkz_auth_token');
+        const token = getAuthToken();
         const headers = { Authorization: `Bearer ${token}` };
+
 
         const [coursesRes, blogsRes] = await Promise.all([
           fetch('/api/admin/courses?limit=100', { headers }),

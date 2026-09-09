@@ -1,8 +1,10 @@
 import type { Course, Blog, Category, Award, ContactFormData, EventItem, EventCategory } from '../types';
 import { COURSES, BLOGS, CATEGORIES, AWARDS } from './mockData';
+import { getAuthToken } from '../utils/authStorage';
 
 const rawApiUrl = import.meta.env.VITE_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:3000/api' : '/api');
 const API_BASE_URL = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl.replace(/\/$/, '')}/api`;
+
 
 export const api = {
   getCourses: async (): Promise<Course[]> => {
@@ -177,9 +179,33 @@ export const api = {
     }
   },
 
+  getMe: async (): Promise<{ success: boolean; user?: any; message?: string }> => {
+    try {
+      const token = getAuthToken();
+      if (!token) return { success: false, message: 'No authentication token found' };
+      const resp = await fetch(`${API_BASE_URL}/auth/me`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (!resp.ok) {
+        let msg = 'Session expired or invalid';
+        try {
+          const err = await resp.json();
+          msg = Array.isArray(err.message) ? err.message.join(', ') : (err.message || msg);
+        } catch (e) {}
+        return { success: false, message: msg };
+      }
+      return await resp.json();
+    } catch (e) {
+      console.error('getMe error:', e);
+      return { success: false, message: 'Network error verifying session' };
+    }
+  },
+
   createPaypalOrder: async (courseSlug: string) => {
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
+      const token = getAuthToken();
       const resp = await fetch(`${API_BASE_URL}/payments/create-paypal-order`, {
         method: 'POST',
         headers: { 
@@ -201,7 +227,7 @@ export const api = {
 
   capturePaypalOrder: async (orderID: string) => {
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
+      const token = getAuthToken();
       const resp = await fetch(`${API_BASE_URL}/payments/capture-paypal-order`, {
         method: 'POST',
         headers: { 
@@ -220,7 +246,7 @@ export const api = {
 
   getMyCourses: async (): Promise<any[]> => {
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
+      const token = getAuthToken();
       if (!token) return [];
       const resp = await fetch(`${API_BASE_URL}/payments/my-courses`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -236,7 +262,7 @@ export const api = {
 
   checkCourseEnrollment: async (slug: string): Promise<{ enrolled: boolean; course_id?: number }> => {
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token') || localStorage.getItem('token');
+      const token = getAuthToken();
       if (!token) return { enrolled: false };
       const resp = await fetch(`${API_BASE_URL}/payments/check-enrollment/${slug}`, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -247,6 +273,7 @@ export const api = {
       return { enrolled: false };
     }
   },
+
 
   getEvents: async (): Promise<EventItem[]> => {
     try {

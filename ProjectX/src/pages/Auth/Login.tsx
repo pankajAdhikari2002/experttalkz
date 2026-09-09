@@ -1,9 +1,11 @@
 import { useState, useRef } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { getAuthToken, getDecodedToken } from '../../utils/authStorage';
 import Button from '../../components/common/Button';
 import Meta from '../../components/common/Meta';
 import { Mail, Lock, Eye, EyeOff, AlertCircle, ArrowRight, ShieldCheck } from 'lucide-react';
+
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -90,18 +92,15 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const result = await login(email.trim().toLowerCase(), password);
+      const result = await login(email.trim().toLowerCase(), password, rememberMe);
       if (result.success) {
-        const token = localStorage.getItem('expertTalkz_auth_token');
+        const token = getAuthToken();
         if (token) {
-          try {
-            const payloadBase64 = token.split('.')[1];
-            const decodedPayload = JSON.parse(atob(payloadBase64));
-            if (decodedPayload.role === 'admin') {
-              navigate('/admin');
-              return;
-            }
-          } catch (e) {}
+          const decodedPayload = getDecodedToken(token);
+          if (decodedPayload && decodedPayload.role === 'admin') {
+            navigate('/admin');
+            return;
+          }
         }
         const from = (location.state as any)?.from || '/dashboard';
         navigate(from);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
+import { getAuthToken, getActiveUser, clearAuthSession } from '../../utils/authStorage';
 
 export default function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function AdminLayout() {
 
   const fetchUnreadCount = async () => {
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       if (!token) return;
       const res = await fetch('/api/admin/contacts/unread-count', {
         headers: { Authorization: `Bearer ${token}` },
@@ -25,11 +26,10 @@ export default function AdminLayout() {
 
   useEffect(() => {
     try {
-      const activeUser = localStorage.getItem('expertTalkz_active_user');
+      const activeUser = getActiveUser<{ email?: string; name?: string }>();
       if (activeUser) {
-        const u = JSON.parse(activeUser);
-        if (u.email) setUserEmail(u.email);
-        if (u.name) setUserName(u.name);
+        if (activeUser.email) setUserEmail(activeUser.email);
+        if (activeUser.name) setUserName(activeUser.name);
       }
     } catch {}
 
@@ -53,10 +53,10 @@ export default function AdminLayout() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('expertTalkz_auth_token');
-    localStorage.removeItem('expertTalkz_active_user');
+    clearAuthSession();
     navigate('/login');
   };
+
 
   const menuItems = [
     { name: 'Dashboard', path: '/admin', icon: 'dashboard', description: 'Overview & metrics' },

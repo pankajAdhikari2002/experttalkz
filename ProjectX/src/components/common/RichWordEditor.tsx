@@ -7,6 +7,8 @@ import TextAlign from '@tiptap/extension-text-align';
 import Placeholder from '@tiptap/extension-placeholder';
 import { useState, useRef, useEffect } from 'react';
 import type { ChangeEvent } from 'react';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 interface RichWordEditorProps {
   value: string;
@@ -102,7 +104,7 @@ export default function RichWordEditor({
     if (!file) return;
 
     setUploadingImage(true);
-    const token = localStorage.getItem('expertTalkz_auth_token');
+    const token = getAuthToken();
     const formData = new FormData();
     formData.append('file', file);
 

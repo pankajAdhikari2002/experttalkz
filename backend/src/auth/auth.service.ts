@@ -169,4 +169,28 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
+
+  async getProfile(userId: number) {
+    if (!userId) {
+      throw new UnauthorizedException('Invalid session');
+    }
+    const user = await this.usersRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new UnauthorizedException('User session not found');
+    }
+    if (!user.is_active) {
+      throw new UnauthorizedException('Your account has been deactivated. Please contact support.');
+    }
+    return {
+      success: true,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        is_active: user.is_active,
+      },
+    };
+  }
 }
+

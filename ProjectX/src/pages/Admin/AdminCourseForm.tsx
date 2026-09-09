@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 interface CategoryOption {
   id: number;
@@ -72,7 +74,7 @@ export default function AdminCourseForm() {
     if (isEdit) {
       const fetchCourse = async () => {
         try {
-          const token = localStorage.getItem('expertTalkz_auth_token');
+          const token = getAuthToken();
           const res = await fetch(`/api/admin/courses/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
@@ -193,7 +195,7 @@ export default function AdminCourseForm() {
     if (field === 'thumbnail') setUploadingThumbnail(true);
     if (field === 'banner_images') setUploadingBanner(true);
 
-    const token = localStorage.getItem('expertTalkz_auth_token');
+    const token = getAuthToken();
     const uploadData = new FormData();
     uploadData.append('file', file);
 
@@ -230,7 +232,7 @@ export default function AdminCourseForm() {
 
     setSaving(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const method = isEdit ? 'PUT' : 'POST';
       const url = isEdit ? `/api/admin/courses/${id}` : '/api/admin/courses';
 

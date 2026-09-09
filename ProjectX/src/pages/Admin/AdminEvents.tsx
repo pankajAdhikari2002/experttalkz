@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Loader from '../../components/common/Loader';
 import type { EventItem, EventCategory } from '../../types';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 export default function AdminEvents() {
   const [activeTab, setActiveTab] = useState<'events' | 'categories'>('events');
@@ -62,7 +64,7 @@ export default function AdminEvents() {
   };
 
   const getAuthHeaders = () => {
-    const token = localStorage.getItem('expertTalkz_auth_token');
+    const token = getAuthToken();
     return {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
@@ -73,7 +75,7 @@ export default function AdminEvents() {
   const loadData = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const headers = { Authorization: `Bearer ${token}` };
 
       const [eventsRes, catsRes] = await Promise.all([
@@ -185,7 +187,7 @@ export default function AdminEvents() {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const token = localStorage.getItem('expertTalkz_auth_token');
+    const token = getAuthToken();
     const uploadData = new FormData();
     uploadData.append('file', file);
 

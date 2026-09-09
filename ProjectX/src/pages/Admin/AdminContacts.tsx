@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import Loader from '../../components/common/Loader';
+import { getAuthToken } from '../../utils/authStorage';
+
 
 interface ContactItem {
   id: number;
@@ -39,7 +41,7 @@ export default function AdminContacts() {
   const fetchContacts = async () => {
     setLoading(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const params = new URLSearchParams();
       params.append('limit', '100');
       if (search.trim()) params.append('search', search.trim());
@@ -74,7 +76,7 @@ export default function AdminContacts() {
 
   const handleStatusChange = async (id: number, newStatus: string) => {
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/contacts/${id}/status`, {
         method: 'PATCH',
         headers: {
@@ -119,7 +121,7 @@ export default function AdminContacts() {
     if (!deleteModal) return;
     setDeleting(true);
     try {
-      const token = localStorage.getItem('expertTalkz_auth_token');
+      const token = getAuthToken();
       const res = await fetch(`/api/admin/contacts/${deleteModal.id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
