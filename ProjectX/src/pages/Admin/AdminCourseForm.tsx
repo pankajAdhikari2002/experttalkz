@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getAuthToken } from '../../utils/authStorage';
-
+import { useCurrency } from '../../context/CurrencyContext';
 
 interface CategoryOption {
   id: number;
@@ -11,8 +11,10 @@ interface CategoryOption {
 }
 
 export default function AdminCourseForm() {
+  const { rate } = useCurrency();
   const { id } = useParams();
   const navigate = useNavigate();
+
   const isEdit = Boolean(id);
 
   const [loading, setLoading] = useState(isEdit);
@@ -521,11 +523,11 @@ export default function AdminCourseForm() {
               {/* Regular Price */}
               <div className="space-y-2">
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                  Regular Price (₹)
+                  Regular Price ($ USD)
                 </label>
                 <div className="relative">
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">
-                    ₹
+                    $
                   </span>
                   <input
                     type="number"
@@ -533,21 +535,28 @@ export default function AdminCourseForm() {
                     name="price"
                     value={formData.price}
                     onChange={handleChange}
-                    placeholder="1800.00"
+                    placeholder="999.00"
                     className="w-full pl-8 pr-4 py-3 bg-[#0d1117] border border-[#30363d] rounded-xl text-sm font-semibold text-white focus:outline-none focus:border-primary"
                   />
                 </div>
-                <span className="text-[11px] text-slate-400">Standard base price of the course</span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[11px] text-slate-400">Standard base price in USD</span>
+                  {formData.price && Number(formData.price) > 0 ? (
+                    <span className="text-[11px] text-emerald-400 font-semibold">
+                      ≈ ₹{Math.round(Number(formData.price) * rate).toLocaleString('en-IN')} INR at current rate (1 USD = ₹{rate.toFixed(2)})
+                    </span>
+                  ) : null}
+                </div>
               </div>
 
               {/* Discount / Selling Price */}
               <div className="space-y-2">
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
-                  Discount / Offer Price (₹)
+                  Discount / Offer Price ($ USD)
                 </label>
                 <div className="relative">
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">
-                    ₹
+                    $
                   </span>
                   <input
                     type="number"
@@ -555,15 +564,23 @@ export default function AdminCourseForm() {
                     name="discount_price"
                     value={formData.discount_price}
                     onChange={handleChange}
-                    placeholder="1500.00"
+                    placeholder="799.00"
                     className="w-full pl-8 pr-4 py-3 bg-[#0d1117] border border-[#30363d] rounded-xl text-sm font-semibold text-white focus:outline-none focus:border-primary"
                   />
                 </div>
-                <span className="text-[11px] text-slate-400">
-                  Actual price students will pay after discount
-                </span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-[11px] text-slate-400">
+                    Actual price students will pay in USD
+                  </span>
+                  {formData.discount_price && Number(formData.discount_price) > 0 ? (
+                    <span className="text-[11px] text-emerald-400 font-semibold">
+                      ≈ ₹{Math.round(Number(formData.discount_price) * rate).toLocaleString('en-IN')} INR at current rate (1 USD = ₹{rate.toFixed(2)})
+                    </span>
+                  ) : null}
+                </div>
               </div>
             </div>
+
           )}
         </div>
 

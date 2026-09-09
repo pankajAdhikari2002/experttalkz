@@ -12,8 +12,9 @@ const Buy = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
-  const { currency, formatPrice } = useCurrency();
+  const { currency, formatPrice, rate } = useCurrency();
   const [processing, setProcessing] = useState(false);
+
   const [course, setCourse] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [isEnrolled, setIsEnrolled] = useState(false);
@@ -157,11 +158,13 @@ const Buy = () => {
                     <span className="text-primary">{formatPrice(course.price)}</span>
                   </div>
                   {currency === 'INR' && (
-                    <p className="text-[11px] text-slate-400 text-right">
-                      (Approx. ${course.price} USD)
-                    </p>
+                    <div className="text-[11px] text-slate-400 text-right space-y-0.5 pt-1">
+                      <p>Exchange rate: 1 USD ≈ ₹{rate.toFixed(2)} INR</p>
+                      <p className="text-slate-500">Processed securely via PayPal as ${Number(course.price).toFixed(2)} USD</p>
+                    </div>
                   )}
                 </div>
+
 
                 <div className="bg-white/5 rounded-xl p-3 text-[11px] text-slate-400 space-y-1">
                   <div className="flex items-center gap-1.5 text-slate-300 font-semibold">

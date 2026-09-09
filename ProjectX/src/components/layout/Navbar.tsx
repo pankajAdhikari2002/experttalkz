@@ -7,7 +7,8 @@ import Button from '../common/Button';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
-  const { currency, setCurrency } = useCurrency();
+  const { currency, setCurrency, rate } = useCurrency();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -73,8 +74,12 @@ const Navbar = () => {
         {/* ── Desktop Currency Toggle & Auth Buttons ── */}
         <div className="hidden md:flex items-center gap-3.5">
           {/* Currency Switcher */}
-          <div className="flex items-center p-0.5 rounded-xl bg-white/5 border border-white/10 shadow-inner">
+          <div 
+            className="flex items-center p-0.5 rounded-xl bg-white/5 border border-white/10 shadow-inner"
+            title={`Live exchange rate: 1 USD ≈ ₹${rate.toFixed(2)} INR`}
+          >
             <button
+
               type="button"
               onClick={() => setCurrency('USD')}
               className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${

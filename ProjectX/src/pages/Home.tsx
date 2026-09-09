@@ -292,10 +292,16 @@ const Home = () => {
                           {course.course_name}
                         </h3>
                         <div className="flex items-center justify-between">
-                          <div className="flex items-baseline gap-1.5">
+                          <div className="flex items-baseline gap-2">
                             <span className="text-base font-black text-white">{formatPrice(course.discount_price || course.price)}</span>
+                            {course.discount_price && course.discount_price < course.price && (
+                              <span className="text-xs text-slate-400 line-through">
+                                {formatPrice(course.price)}
+                              </span>
+                            )}
                           </div>
                           <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full transition-colors ${isActive ? 'bg-primary text-white' : 'bg-white/5 text-slate-400 group-hover:bg-primary/20 group-hover:text-primary'}`}>
+
                             Enroll →
                           </span>
                         </div>
@@ -377,10 +383,16 @@ const Home = () => {
                     {course.description?.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()}
                   </p>
                   <div className="flex items-center justify-between mt-2 pt-3 border-t border-white/5">
-                    <div className="flex items-baseline gap-1.5">
+                    <div className="flex items-baseline gap-2">
                       <span className="text-lg font-black text-white">{formatPrice(course.discount_price || course.price)}</span>
+                      {course.discount_price && course.discount_price < course.price && (
+                        <span className="text-xs text-slate-400 line-through">
+                          {formatPrice(course.price)}
+                        </span>
+                      )}
                     </div>
                     <Link to={`/buy/${course.slug}`}>
+
                       <span className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all cursor-pointer">
                         Enroll Now
                       </span>

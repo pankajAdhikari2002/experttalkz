@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuthToken } from '../../utils/authStorage';
+import { useCurrency } from '../../context/CurrencyContext';
+
 
 
 interface CourseItem {
@@ -32,7 +34,9 @@ interface CategoryOption {
 }
 
 export default function AdminCourses() {
+  const { rate } = useCurrency();
   const [courses, setCourses] = useState<CourseItem[]>([]);
+
   const [categories, setCategories] = useState<CategoryOption[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -477,16 +481,22 @@ export default function AdminCourses() {
                           </span>
                         ) : (
                           <div className="flex flex-col">
-                            <span className="font-bold text-white text-sm">
-                              ₹{course.discount_price !== null && course.discount_price !== undefined ? course.discount_price : course.price}
-                            </span>
+                            <div className="flex items-baseline gap-1.5">
+                              <span className="font-bold text-white text-sm">
+                                ${course.discount_price !== null && course.discount_price !== undefined ? course.discount_price : course.price}
+                              </span>
+                              <span className="text-[11px] text-slate-400 font-medium">
+                                (≈ ₹{Math.round(Number(course.discount_price !== null && course.discount_price !== undefined ? course.discount_price : course.price) * rate).toLocaleString('en-IN')})
+                              </span>
+                            </div>
                             {course.discount_price && course.discount_price < course.price && (
-                              <span className="text-[11px] text-slate-400 line-through">
-                                ₹{course.price}
+                              <span className="text-[11px] text-slate-500 line-through">
+                                ${course.price}
                               </span>
                             )}
                           </div>
                         )}
+
                       </td>
 
                       {/* Featured Toggle */}
